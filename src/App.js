@@ -32,7 +32,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className='header-alerts'>
-            <p><strong>Alert!</strong> Scams are growing ever more complex and sophisticated. Learn more about protecting yourself from scams</p>
+            <p><strong>Alert!</strong>Scams are growing ever more complex and sophisticated. Learn more about protecting yourself from scams</p>
         </div>
         <div className='header-nav'>
           <div>
@@ -42,7 +42,7 @@ function App() {
                 <li><strong>Dashboard</strong></li>
                 <li><a href="#">Saving Account</a></li>
                 <li><a href="#">Transactions</a></li>
-                <li><a href="#">Cards</a></li>
+                <li><a href="#">Credit Cards</a></li>
               </ul>
             </div>
             <div>
