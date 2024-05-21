@@ -32,7 +32,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className='header-alerts'>
-            <p><strong>Alert!</strong>Scams are growing ever more complex and sophisticated. Learn more about protecting yourself from scams</p>
+            <p><strong>Alert!</strong> Scams are growing ever more complex and sophisticated. Learn more about protecting yourself from scams</p>
         </div>
         <div className='header-nav'>
           <div>
