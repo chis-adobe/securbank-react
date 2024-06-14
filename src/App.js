@@ -5,6 +5,7 @@ import bell from './resources/bell.svg';
 import avatar from './resources/avatar.png';
 import './App.css';
 import Articles from './components/articles';
+import Travels from './components/travels';
 import Accountbalance from './components/accountbalance';
 import Transactions from './components/transactions';
 import Expenses from './components/expenses';
@@ -67,7 +68,10 @@ function App() {
           </div>
           <div>
             <Articles articles={content && content.articles} />
-            </div>
+          </div>
+          <div>
+            <Travels travels={content && content.travels} />
+          </div>
         </div>
       </main>
 
