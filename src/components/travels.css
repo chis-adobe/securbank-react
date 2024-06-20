@@ -1,5 +1,14 @@
-.travelList {
+.offers, .articles {
     display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.travelList, .articleList {
+    display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     list-style-type: none;
     justify-content:space-between;
@@ -8,6 +17,7 @@
     color: #2C2C2C;
 }
 
+.articleList li,
 .travelList li {
     text-decoration: none;
     max-width: 400px;
@@ -15,8 +25,13 @@
 }
 
 @media only screen and (min-width: 1400px)  {
+    .articleList {
+        flex-direction: row;
+    }
+    .articleList li,
     .travelList li {
         max-width: 470px;
+        margin: 0 20px;
     }
 }
 

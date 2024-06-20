@@ -27,8 +27,6 @@ function App() {
 
   const itemId =  "urn:aemconnection:/content/dam/securbank/en/dashboard/account-dashboard/jcr:content/data/master";
             
-
-
   return (
     <div className="App">
       <header className="App-header">
@@ -66,12 +64,8 @@ function App() {
             <Transactions transactionTitle={content && content.transactionTitle}/>
             <Expenses expensesTitle={content && content.expensesTitle} />
           </div>
-          <div>
-            <Articles articles={content && content.articles} />
-          </div>
-          <div>
-            <Travels travels={content && content.travels} />
-          </div>
+          <Travels />
+          <Articles articles={content && content.articles} />
         </div>
       </main>
 

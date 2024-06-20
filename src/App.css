@@ -1,4 +1,5 @@
 :root {
+  min-width: 600px;
 
   /* Colors: */
   --brand-color: #0296A6;
