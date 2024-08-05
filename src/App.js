@@ -25,10 +25,12 @@ function App() {
     fetchContent();
   }, []);
 
+  const onLogin = async (email) => {
+    console.log(`Getting trips for ${email}`);
+  }
+
   const itemId =  "urn:aemconnection:/content/dam/securbank/en/dashboard/account-dashboard/jcr:content/data/master";
             
-
-
   return (
     <div className="App">
       <header className="App-header">
@@ -46,11 +48,7 @@ function App() {
                 <li><a href="#">Cards</a></li>
               </ul>
             </div>
-            <div>
-              <img src={bell} className="bell" alt="bell" />
-              <img src={avatar} className="avatar" alt="avatar" />
-              <div className='authFriendly'>Login</div>
-            </div>
+            <Login onLogin={onLogin}/>
           </div>
       </div>
         
