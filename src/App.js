@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import logo from './resources/SecurBank_Logo_Main.svg';
-import bell from './resources/bell.svg';
-import avatar from './resources/avatar.png';
+import Login from './components/login';
 import './App.css';
 import Articles from './components/articles';
 import Accountbalance from './components/accountbalance';

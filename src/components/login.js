@@ -1,4 +1,7 @@
 import './login.css';
+
+import bell from '../resources/bell.svg';
+import avatar from '../resources/avatar.png';
 import React, { useState } from 'react';
 
 function Login({onLogin}) {
@@ -29,4 +32,3 @@ function Login({onLogin}) {
 }
 
 export default Login;
-
