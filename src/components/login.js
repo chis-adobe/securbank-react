@@ -13,6 +13,10 @@ function Login({onLogin}) {
       onLogin(email);
       setIsOpen(false);
     }
+
+    const handleEmailChange = (e) => {
+      setEmail(e.target.value);
+    };
   
     return (
       <div>
@@ -23,8 +27,8 @@ function Login({onLogin}) {
         </button>
         {isOpen && (
           <div>
-            <input type="email" value="{email}" onChange={(e) => setEmail(e.target.value)} />
-            <button onclick={handleLogin}>Login</button>
+            <input type="email" placeholder="Enter your email" value="{email}" onChange={handleEmailChange} />
+            <button onClick={handleLogin}>Login</button>
           </div>
         )}
       </div>

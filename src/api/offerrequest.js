@@ -1,8 +1,8 @@
-export default async function FetchFAQ() {
+export default async function FetchOffer() {
   
     const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
     const aemauthorurl = process.env.REACT_APP_AEM_AUTHOR;
-    const aemurl = process.env.REACT_APP_FAQPERSISTEDQUERY_URL + `?ts=${Math.random()*1000}`;
+    const aemurl = process.env.REACT_APP_OFFERSQUERY_URL_DASHBOARD + `?ts=${Math.random()*1000}`;
     let options = {credentials: "include"};
     let url = aempublishurl + aemurl;
 
@@ -21,7 +21,7 @@ export default async function FetchFAQ() {
 
         // TODO - Add error handling here
         const responseData = await response.json()
-        console.log(responseData);
+        console.log(`Offer ${responseData}`);
 
         // TODO - Add error handling here
         return responseData;

@@ -10,7 +10,8 @@ export default async function FetchContent() {
         url = aemauthorurl + aemurl
     }
     try {
-        const response = await fetch(url, options)
+        //const response = await fetch(url, options)
+        const response = await fetch(url);
         // TODO - Add error handling here
         const responseData = await response.json()
         // TODO - Add error handling here
