@@ -15,6 +15,7 @@ import Offer from './components/offer';
 
 function App() {
   const [content, setContent] = useState(null);
+  const [submittedEmail, setSubmittedEmail] = useState('');
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -26,6 +27,7 @@ function App() {
   }, []);
 
   const onLogin = async (email) => {
+    setSubmittedEmail(email);
     console.log(`Getting trips for ${email}`);
   }
 
@@ -65,7 +67,7 @@ function App() {
             <Expenses expensesTitle={content && content.expensesTitle} />
           </div>
           <div>
-            <Offer />
+            {submittedEmail && <Offer email={submittedEmail}/>}
           </div>
         </div>
       </main>

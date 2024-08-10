@@ -1,18 +1,17 @@
-import './faq.css';
 import React, { useState, useEffect } from 'react';
 import FetchOffer from '../api/offerrequest';
 
-function FAQ() {
+const Offer = ({ email }) => {
 
-    const [faqs, setOffer] = useState(null);
+    const [offers, setOffer] = useState(null);
 
     useEffect(() => {
-      const fetchContent = async () => {
-        const result = await FetchOffer();
-        setOffer(result.data.faqList.items);
+      const fetchOffer = async (email) => {
+        const result = await FetchOffer(email);
+        setOffer(result.data.hotelOfferList.items);
       };
   
-      fetchContent();
+      fetchOffer(email);
 
     }, []);
   
@@ -21,14 +20,14 @@ function FAQ() {
             <div className='faq'>
                 <h4 className='sectionHeading'>Special Offer</h4>
                 <ul className="faqList">
-                    {faqs && faqs.map((faq, index) => (
-                        <li key={faq} data-aue-resource={"urn:aemconnection:" + faq._path + "/jcr:content/data/master"} data-aue-type="reference" data-aue-filter="cf">
+                    {offers && offers.map((offer, index) => (
+                        <li key={offer} data-aue-resource={"urn:aemconnection:" + offer._path + "/jcr:content/data/master"} data-aue-type="reference" data-aue-filter="cf">
                             <details className="faqDetails">    
                                 <summary className="faqHeading">
-                                    <span data-aue-prop="question" data-aue-type="text" >{faq.question}</span>
+                                    <span data-aue-prop="question" data-aue-type="text" >{offer.title}</span>
                                     <b></b>
                                 </summary>
-                                <div data-aue-prop="answer" data-aue-type="richtext" className="faqDescription">{faq.answer['plaintext']}</div>
+                                <div data-aue-prop="answer" data-aue-type="richtext" className="faqDescription">{offer.teaser['html']}</div>
                             </details>
                         </li>
                     ))}
@@ -37,4 +36,4 @@ function FAQ() {
         )
 }
 
-export default FAQ;
+export default Offer;
