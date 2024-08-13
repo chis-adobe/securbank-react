@@ -10,19 +10,19 @@ export default function Transactions({ transactionTitle }) {
             <table id="transactionList">
                 <tbody>
                 <tr>
-                    <td><img src={shopicon} /></td><td><strong>Farmer's Shop</strong><br/>15/05/2023</td><td>Grocery</td><td>Card Payment</td><td>-$345</td>
+                    <td><img src={entertainmenticon} /></td><td><strong>Seattle</strong><br/>15/05/2023</td><td>Card Payment</td><td>$345</td>
                 </tr>
                 <tr>
-                    <td><img src={financeicon} /></td><td><strong>Mobile Bill</strong><br/>15/05/2023</td><td>Finance</td><td>Transfer</td><td>-$95</td>
+                    <td><img src={entertainmenticon} /></td><td><strong>Salt Lake City</strong><br/>15/05/2023</td><td>Transfer</td><td>$555</td>
                 </tr>
                 <tr>
-                    <td><img src={financeicon} /></td><td><strong>Internet Bill</strong><br/>13/05/2023</td><td>Finance</td><td>Transfer</td><td>-$220.40</td>
+                    <td><img src={entertainmenticon} /></td><td><strong>Atlanta</strong><br/>13/05/2023</td><td>Transfer</td><td>$220</td>
                 </tr>
                 <tr>
-                    <td><img src={entertainmenticon} /></td><td><strong>Cinema</strong><br/>12/05/2023</td><td>Entertainment</td><td>Card Payment</td><td>-$20</td>
+                    <td><img src={entertainmenticon} /></td><td><strong>Detroit</strong><br/>12/05/2023</td><td>Card Payment</td><td>$209</td>
                 </tr>
                 <tr>
-                    <td><img src={shopicon} /></td><td><strong>Farmer's Shop</strong><br/>12/05/2023</td><td>Grocery</td><td>Card Payment</td><td>-$23</td>
+                    <td><img src={entertainmenticon} /></td><td><strong>Atlanta</strong><br/>12/05/2023</td><td>Card Payment</td><td>$230</td>
                 </tr>
                 </tbody>
             </table>
