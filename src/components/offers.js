@@ -29,6 +29,8 @@ function FAQ() {
                                     <b></b>
                                 </summary>
                                 <div data-aue-prop="answer" data-aue-type="richtext" className="offerDescription">{offer.description['plaintext']}</div>
+                                <img src={offer.cityimage._publishUrl}/>
+                                <div class="offerExpiry">Available Until {offer.availableuntil}</div>
                             </details>
                         </li>
                     ))}

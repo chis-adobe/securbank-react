@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import logo from './resources/SecurBank_Logo_Main.svg';
+import logo from './resources/Delta_logo.svg.png';
 import bell from './resources/bell.svg';
 import avatar from './resources/avatar.png';
 import './App.css';
