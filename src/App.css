@@ -160,7 +160,6 @@
   }
 
 header {
-
   height: 68px;
   @media (min-width: 900px) {
     height: 116px;
@@ -180,8 +179,6 @@ header {
   }
 }
 
-
-
 .header-alerts p {
   margin: 0;
   color: var(--unnamed-color-ffffff);
@@ -193,8 +190,6 @@ header {
   font-weight: 300;
   
 }
-
-
 
 .header-nav {
   min-height: 72px;
@@ -232,7 +227,14 @@ header {
 }
 
 .header-nav li strong{
-  color: #000;
+  color: #ff333a;
+}
+
+img.banner {
+  max-height: 100%;
+  object-fit: cover;
+  height: 200px;
+  width: 100%;
 }
 
 .logo {
@@ -248,20 +250,12 @@ header {
   }
 }
 
-.authFriendly {
-  padding-top: 8px;
-  text-align: right;
-  font: normal normal 18px/24px adobe-clean;
-  letter-spacing: 0px;
-  color: #2C2C2C;
-  opacity: 1;
-}
-
 .avatar {
   height: 40px;
   margin-right: 16px;
 }
 
 .bell {
+  height: 40px;
   margin-right: 16px;
 }

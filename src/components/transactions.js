@@ -6,23 +6,23 @@ import entertainmenticon from '../resources/entertainment_icon.svg';
 export default function Transactions({ transactionTitle }) {
     return (
         <div className='transactions'>
-            <h4 className='sectionHeading' data-aue-prop="transactionTitle" data-aue-type="text">{transactionTitle}</h4>
+            <h4 className='sectionHeading' data-aue-prop="transactionTitle" data-aue-type="text">Latest Trips</h4>
             <table id="transactionList">
                 <tbody>
                 <tr>
-                    <td><img src={shopicon} /></td><td><strong>Farmer's Shop</strong><br/>15/05/2023</td><td>Grocery</td><td>Card Payment</td><td>-$345</td>
+                    <td><img src={entertainmenticon} /></td><td><strong>Toronto</strong><br/>15/05/2023</td><td>Card Payment</td><td>$345</td>
                 </tr>
                 <tr>
-                    <td><img src={financeicon} /></td><td><strong>Mobile Bill</strong><br/>15/05/2023</td><td>Finance</td><td>Transfer</td><td>-$95</td>
+                    <td><img src={entertainmenticon} /></td><td><strong>Calgary</strong><br/>15/05/2023</td><td>Points</td><td>15,000</td>
                 </tr>
                 <tr>
-                    <td><img src={financeicon} /></td><td><strong>Internet Bill</strong><br/>13/05/2023</td><td>Finance</td><td>Transfer</td><td>-$220.40</td>
+                    <td><img src={entertainmenticon} /></td><td><strong>Montreal</strong><br/>13/05/2023</td><td>Points</td><td>25,000</td>
                 </tr>
                 <tr>
-                    <td><img src={entertainmenticon} /></td><td><strong>Cinema</strong><br/>12/05/2023</td><td>Entertainment</td><td>Card Payment</td><td>-$20</td>
+                    <td><img src={entertainmenticon} /></td><td><strong>Calgary</strong><br/>12/05/2023</td><td>Card Payment</td><td>$510</td>
                 </tr>
                 <tr>
-                    <td><img src={shopicon} /></td><td><strong>Farmer's Shop</strong><br/>12/05/2023</td><td>Grocery</td><td>Card Payment</td><td>-$23</td>
+                    <td><img src={entertainmenticon} /></td><td><strong>Vancouver</strong><br/>12/05/2023</td><td>Card Payment</td><td>$721</td>
                 </tr>
                 </tbody>
             </table>

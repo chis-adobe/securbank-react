@@ -27,7 +27,9 @@ const Offer = ({ email }) => {
                                     <span data-aue-prop="question" data-aue-type="text" >{offer.title}</span>
                                     <b></b>
                                 </summary>
-                                <div data-aue-prop="answer" data-aue-type="richtext" className="faqDescription">{offer.teaser['html']}</div>
+                                <div data-aue-prop="answer" data-aue-type="richtext" className="faqDescription">{offer.teaser['plaintext']}</div>
+                                <img src={offer.bannerImage._publishUrl}/>
+                                <button className='authFriendly' onClick={offer.linkUrl}>{offer.linkLabel}</button>
                             </details>
                         </li>
                     ))}

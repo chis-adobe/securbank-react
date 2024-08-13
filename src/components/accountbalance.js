@@ -7,16 +7,16 @@ export default function Accountbalance({greeting}) {
         <div>
             <div>
                 <h2 className="greeting" data-aue-prop="greeting" data-aue-type="text">{greeting}</h2>
-                <p className='accountNoLabel'>Account Number</p>
-                <p className='accountNo'>5122 6233 9544 3487</p>
+                <p className='accountNoLabel'>Aeroplan Numberr</p>
+                <p className='accountNo'>755 338 274</p>
             </div>
             <div className='accountbalance' style={{ backgroundImage: `url(${maskedbackground})` }}>
                 <div className='balance'>
-                    <p>Account Balance</p>
-                    <h3>$1,920.00</h3>
+                    <p>Aeroplan Points</p>
+                    <h3>15231</h3>
                 </div>
                 <div className='options'>
-                    <p>Make A Transfer</p>
+                    <p>Book a trip on points</p>
                 </div>
             </div>
         </div>

@@ -27,8 +27,8 @@ function Login({onLogin}) {
         </button>
         {isOpen && (
           <div>
-            <input type="email" placeholder="Enter your email" value={email} onChange={handleEmailChange} />
-            <button onClick={handleLogin}>Login</button>
+            <input class="authinput" type="email" placeholder="Enter your email" value={email} onChange={handleEmailChange} />
+            <button className='authFriendly' onClick={handleLogin}>Login</button>
           </div>
         )}
       </div>

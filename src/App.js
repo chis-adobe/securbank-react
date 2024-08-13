@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import logo from './resources/SecurBank_Logo_Main.svg';
+import logo from './resources/aircanadalogo.png'
 import Login from './components/login';
 import './App.css';
 import Articles from './components/articles';
@@ -64,7 +64,7 @@ function App() {
           </div>
           <div className='twocol'>
             <Transactions transactionTitle={content && content.transactionTitle}/>
-            <Expenses expensesTitle={content && content.expensesTitle} />
+            <Expenses expensesTitle="Points Balance" />
           </div>
           <div>
             {submittedEmail && <Offer email={submittedEmail}/>}

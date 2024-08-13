@@ -1,0 +1,13 @@
+.authFriendly {
+  padding-top: 8px;
+  text-align: right;
+  font: normal normal 18px/24px adobe-clean;
+  letter-spacing: 0px;
+  color: white;
+  opacity: 1;
+  margin: 0;
+}
+
+.authinput {
+  margin: 0 10px;
+}
