@@ -5,6 +5,7 @@ import FetchOffers from '../api/offerrequest';
 function FAQ() {
 
     const [offers, setOffers] = useState(null);
+    const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
 
     useEffect(() => {
       const fetchOffers = async () => {
