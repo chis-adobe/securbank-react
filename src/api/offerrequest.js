@@ -3,12 +3,21 @@ export default async function FetchOffer(email) {
     const USER_TRIPS = {
         "wknd-profile+90@outlook.svpoc.io": "LIS",
         "wknd-profile+39@gmail.svpoc.io": "LIS",
+        "wknd-profile+85@gmail.svpoc.io": "LIS",
+        "wknd-profile+63@gmail.svpoc.io": "LIS",
+        "wknd-profile+35@gmail.svpoc.io": "LIS",
         "wknd-profile+193@msn.svpoc.io": "LON",
         "wknd-profile+158@outlook.svpoc.io": "LON",
+        "wknd-profile+179@outlook.svpoc.io": "LON",
+        "wknd-profile+209@msn.svpoc.io": "LON",
+        "wknd-profile+189@msn.svpoc.io": "LON",
         "wknd-profile+425@mailfence.svpoc.io": "LAS",
         "wknd-profile+438@mailfence.svpoc.io": "LAS",
         "wknd-profile+265@msn.svpoc.io": "LAS",
         "wknd-profile+324@comcast.svpoc.io": "LAS",
+        "wknd-profile+290@comcast.svpoc.io": "LAS",
+        "wknd-profile+383@mailfence.svpoc.io": "LAS",
+        "wknd-profile+435@mailfence.svpoc.io": "LAS",
     }
 
     const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
