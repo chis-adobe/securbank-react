@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import logo from './resources/SecurBank_Logo_Main.svg';
+import logo from './resources/Delta_logo.svg.png';
 import bell from './resources/bell.svg';
 import avatar from './resources/avatar.png';
 import './App.css';
@@ -12,6 +12,7 @@ import CreditCardDetails from './components/creditcarddetails';
 import Footer from './components/footer';
 import FetchContent from './api/contentrequest';
 import FAQ from './components/faq';
+import Offers from './components/offers';
 
 function App() {
   const [content, setContent] = useState(null);
@@ -71,6 +72,9 @@ function App() {
           </div>
           <div>
             <Articles articles={content && content.articles} />
+          </div>
+          <div>
+            <Offers />
           </div>
         </div>
       </main>
