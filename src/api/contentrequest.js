@@ -6,9 +6,13 @@ export default async function FetchContent() {
     let options = {credentials: "include"};
     let url = aempublishurl + aemurl;
     
-    if(window.location && window.location.ancestorOrigins.length > 0) {
+    var location = window.location != window.parent.location ? 
+           document.referrer :
+           document.location.href;
+    if(location.includes('aem/editor/canvas') > 0) {
         url = aemauthorurl + aemurl
     }
+
     try {
         //const response = await fetch(url, options)
         const response = await fetch(url);
