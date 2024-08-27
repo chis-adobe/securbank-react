@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <Helmet>
-        <meta name="urn:adobe:aue:system:aemconnection" content="aem:${process.env.REACT_APP_AEM_AUTHOR}"></meta>
+        <meta name="urn:adobe:aue:system:aemconnection" content={'aem:'+process.env.REACT_APP_AEM_AUTHOR}></meta>
       </Helmet>
       <header className="App-header">
         <div className='header-alerts'>
