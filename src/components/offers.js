@@ -10,7 +10,9 @@ function FAQ() {
     useEffect(() => {
       const fetchOffers = async () => {
         const result = await FetchOffers();
-        setOffers(result.data.flightOfferList.items);
+        let filteredResults = result.data.adventureList.items.filter(adventure => adventure._path.startsWith("/content/dam/delta/en"));
+
+        setOffers(filteredResults);
       };
   
       fetchOffers();
@@ -30,8 +32,8 @@ function FAQ() {
                                     <b></b>
                                 </summary>
                                 <div data-aue-prop="answer" data-aue-type="richtext" className="offerDescription">{offer.description['plaintext']}</div>
-                                <img src={aempublishurl + offer.cityimage._dynamicUrl}/>
-                                <div class="offerExpiry">Available Until {offer.availableuntil}</div>
+                                <img src={aempublishurl + offer.primaryImage._dynamicUrl}/>
+                                <div class="offerExpiry">Trip Length {offer.tripLength}</div>
                             </details>
                         </li>
                     ))}

@@ -2,7 +2,8 @@ export default async function FetchOffers() {
   
     const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
     const aemauthorurl = process.env.REACT_APP_AEM_AUTHOR;
-    const aemurl = process.env.REACT_APP_OFFERPERSISTEDQUERY_URL + `?ts=${Math.random()*1000}`;
+    //const aemurl = process.env.REACT_APP_OFFERPERSISTEDQUERY_URL + `?ts=${Math.random()*1000}`;
+    const aemurl = process.env.REACT_APP_ADVENTUREQUERY_URL + `?ts=${Math.random()*1000}`;
     let options = {credentials: "include"};
     let url = aempublishurl + aemurl;
 
