@@ -34,6 +34,7 @@
 .offerHeading {
     text-align: left;
     font: normal normal 600 18px/18px adobe-clean;
+    font-size: 25px;
     letter-spacing: 0px;
     color: #2C2C2C;
     opacity: 1;
@@ -60,6 +61,13 @@ details[open] summary b::after {
     letter-spacing: 0px;
     color: #2C2C2C;
     opacity: 1;
-    margin-bottom: 0px;
-    margin-top: 10px;
+    margin: 10px 0;
+}
+
+.offerExpiry {
+    margin: 10px 0;
+}
+
+.offerExpiry .label {
+    font-weight: bold;
 }

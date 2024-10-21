@@ -22,7 +22,7 @@ function FAQ() {
 
         return (
             <div className='offers'>
-                <h4 className='sectionHeading'>Offers</h4>
+                <h4 className='sectionHeading'>Adventures</h4>
                 <ul className="offerList">
                     {offers && offers.map((offer, index) => (
                         <li key={offer} data-aue-resource={"urn:aemconnection:" + offer._path + "/jcr:content/data/master"} data-aue-type="reference" data-aue-filter="cf">
@@ -32,8 +32,8 @@ function FAQ() {
                                     <b></b>
                                 </summary>
                                 <div data-aue-prop="answer" data-aue-type="richtext" className="offerDescription">{offer.description['plaintext']}</div>
+                                <div class="offerExpiry"><span class="label">Trip Length:</span> {offer.tripLength}</div>
                                 <img src={aempublishurl + offer.primaryImage._dynamicUrl}/>
-                                <div class="offerExpiry">Trip Length {offer.tripLength}</div>
                             </details>
                         </li>
                     ))}
