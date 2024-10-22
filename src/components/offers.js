@@ -33,7 +33,7 @@ function FAQ() {
                                 </summary>
                                 <div data-aue-prop="answer" data-aue-type="richtext" className="offerDescription">{offer.description['plaintext']}</div>
                                 <div class="offerExpiry"><span class="label">Trip Length:</span> {offer.tripLength}</div>
-                                <img src={aempublishurl + offer.primaryImage._dynamicUrl + "ts=" + Math.random()*1000}/>
+                                <img src={aempublishurl + offer.primaryImage._dynamicUrl + "&ts=" + Math.random()*1000}/>
                             </details>
                         </li>
                     ))}
