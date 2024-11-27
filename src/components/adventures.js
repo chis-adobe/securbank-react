@@ -37,7 +37,7 @@ function FAQ() {
                 <ul className="adventureList">
                     {adventures && adventures.map((adventure, index) => (
                         <li key={adventure} data-aue-resource={"urn:aemconnection:" + adventure._path + "/jcr:content/data/master"} data-aue-type="reference" data-aue-filter="cf">
-                            <img src={aempublishurl + adventure.primaryImage._dynamicUrl}/>
+                            <img data-aue-prop="primaryImage" data-aue-type="media" src={aempublishurl + adventure.primaryImage._dynamicUrl}/>
                             <div class="content">
                                 <div class="info">
                                     <h4 data-aue-prop="title" data-aue-type="text" class="title">{adventure.title}</h4>
