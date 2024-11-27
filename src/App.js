@@ -11,7 +11,11 @@ import CreditCardDetails from './components/creditcarddetails';
 import Footer from './components/footer';
 import FetchContent from './api/contentrequest';
 import FAQ from './components/faq';
+<<<<<<< HEAD
 import Offer from './components/offer';
+=======
+import Adventures from './components/adventures';
+>>>>>>> cc03dd8 (Added adventures component)
 
 import { Helmet } from 'react-helmet-async';
 
@@ -78,6 +82,9 @@ function App() {
           </div>
           <div>
             {submittedEmail && <Offer email={submittedEmail}/>}
+          </div>
+          <div>
+            <Adventures adventures={content && content.items} />
           </div>
           <div>
             <FAQ faq={content && content.articles} />
