@@ -12,6 +12,7 @@ import CreditCardDetails from './components/creditcarddetails';
 import Footer from './components/footer';
 import FetchContent from './api/contentrequest';
 import FAQ from './components/faq';
+import Adventures from './components/adventures';
 
 import { Helmet } from 'react-helmet-async';
 
@@ -68,6 +69,9 @@ function App() {
           <div className='twocol'>
             <Transactions transactionTitle={content && content.transactionTitle}/>
             <Expenses expensesTitle={content && content.expensesTitle} />
+          </div>
+          <div>
+            <Adventures adventures={content && content.items} />
           </div>
           <div>
             <FAQ faq={content && content.articles} />
