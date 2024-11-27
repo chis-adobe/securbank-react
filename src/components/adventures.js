@@ -40,12 +40,12 @@ function FAQ() {
                             <img src={aempublishurl + adventure.primaryImage._dynamicUrl}/>
                             <div class="content">
                                 <div class="info">
-                                    <h4 class="title">{adventure.title}</h4>
-                                    <span class="location"><b>Location: </b>{adventure.destination}</span>
-                                    <span class="date"><b>Date: </b>{adventure.date}</span>
+                                    <h4 data-aue-prop="title" data-aue-type="text" class="title">{adventure.title}</h4>
+                                    <span data-aue-prop="destination" data-aue-type="text" class="location"><b>Location: </b>{adventure.destination}</span>
+                                    <span data-aue-prop="date" data-aue-type="text" class="date"><b>Date: </b>{adventure.date}</span>
                                     <span class="activityType"><b>Adventure Type: </b>{adventure.adventureType}</span>
                                 </div>
-                                <div class="description">
+                                <div class="description" data-aue-prop="description" data-aue-type="text">
                                     {adventure.description.plaintext}
                                 </div>
                             </div>
