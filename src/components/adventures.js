@@ -41,6 +41,7 @@ function FAQ() {
                             <div class="content">
                                 <div class="info">
                                     <h4 data-aue-prop="title" data-aue-type="text" class="title">{adventure.title}</h4>
+                                    <h5 data-aue-prop="author" data-aue-type="text" class="author">{adventure.author?.firstName} {adventure.author?.lastName}</h5>
                                     <span data-aue-prop="destination" data-aue-type="text" class="location"><b>Location: </b>{adventure.destination}</span>
                                     <span data-aue-prop="date" data-aue-type="text" class="date"><b>Date: </b>{adventure.date}</span>
                                     <span class="activityType"><b>Adventure Type: </b>{adventure.adventureType}</span>
