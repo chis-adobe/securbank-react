@@ -3,8 +3,6 @@ import creditcardgold from '../resources/creditcardgold.png';
 import './creditcarddetails.css';
 
 export default function CreditCardDetails({ cardLabel }) {
-
-
     return (
         <div>
             <div className='creditcarddetails'>
