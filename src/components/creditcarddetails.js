@@ -9,7 +9,7 @@ export default function CreditCardDetails({ cardLabel }) {
         <div>
             <div className='creditcarddetails'>
                 <p className='accountNoLabel' span data-aue-prop="cardLabel" data-aue-type="text">{cardLabel}</p>
-                <p className='accountNo'>Meridian Rewards</p>
+                <p className='accountNo'>Desjardins Rewards</p>
             </div>
             <div className='flexrow'>
                 <div className='creditcard'>
