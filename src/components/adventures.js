@@ -30,7 +30,7 @@ function FAQ() {
                     Use Your Points for Adventures
                     <select id="category" name="category" value={category} onChange={handleCategoryChange}>
                         <option value="main">Main</option>
-                        <option value="family_skiing_adventure">Family</option>
+                        <option value="couple">Couple</option>
                         <option value="senior">Senior</option>
                     </select>
                 </h4>
