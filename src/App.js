@@ -72,13 +72,13 @@ function App() {
             <Expenses expensesTitle={content && content.expensesTitle} />
           </div>
           <div>
-            <Adventures adventures={content && content.items} />
-          </div>
-          <div>
             <FAQ faq={content && content.articles} />
           </div>
           <div>
             <Articles articles={content && content.articles} />
+          </div>
+          <div>
+            <Adventures adventures={content && content.items} />
           </div>
         </div>
       </main>
