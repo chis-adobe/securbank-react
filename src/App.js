@@ -51,6 +51,11 @@ function App() {
               </ul>
             </div>
             <Login onLogin={onLogin}/>
+            <div>
+              <img src={bell} className="bell" alt="bell" />
+              <img src={avatar} className="avatar" alt="avatar" />
+              <div className='authFriendly'>Zoran Nikolovski</div>
+            </div>
           </div>
       </div>
         
@@ -68,6 +73,12 @@ function App() {
           </div>
           <div>
             {submittedEmail && <Offer email={submittedEmail}/>}
+          </div>
+          <div>
+            <FAQ faq={content && content.articles} />
+          </div>
+          <div>
+            <Articles articles={content && content.articles} />
           </div>
         </div>
       </main>
