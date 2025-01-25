@@ -82,10 +82,10 @@ function App() {
             {submittedEmail && <Offer email={submittedEmail}/>}
           </div>
           <div>
-            <FAQ faq={content && content.articles} />
+            <Articles articles={content && content.articles} />
           </div>
           <div>
-            <Articles articles={content && content.articles} />
+            <FAQ faq={content && content.articles} />
           </div>
         </div>
       </main>
