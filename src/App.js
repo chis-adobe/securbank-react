@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import logo from './resources/aircanadalogo.png'
 import Login from './components/login';
-import bell from './resources/bell.svg';
-import avatar from './resources/avatar.png';
 import './App.css';
 import Articles from './components/articles';
 import Accountbalance from './components/accountbalance';
@@ -58,11 +56,6 @@ function App() {
               </ul>
             </div>
             <Login onLogin={onLogin}/>
-            <div>
-              <img src={bell} className="bell" alt="bell" />
-              <img src={avatar} className="avatar" alt="avatar" />
-              <div className='authFriendly'>Mark Szulc</div>
-            </div>
           </div>
       </div>
         
