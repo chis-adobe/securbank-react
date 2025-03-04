@@ -1,5 +1,5 @@
-import creditcardgreen from '../resources/creditcardgreen.png';
-import creditcardgold from '../resources/creditcardgold.png';
+import creditcardgreen from '../resources/cc-avionrewards_ion.png';
+import creditcardgold from '../resources/cc_cashbackpreferred_en.png';
 import './creditcarddetails.css';
 
 export default function CreditCardDetails({ cardLabel }) {
@@ -9,7 +9,7 @@ export default function CreditCardDetails({ cardLabel }) {
         <div>
             <div className='creditcarddetails'>
                 <p className='accountNoLabel' span data-aue-prop="cardLabel" data-aue-type="text">{cardLabel}</p>
-                <p className='accountNo'>SecurBank Rewards</p>
+                <p className='accountNo'>Avion Rewards</p>
             </div>
             <div className='flexrow'>
                 <div className='creditcard'>
