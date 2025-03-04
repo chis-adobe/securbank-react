@@ -122,7 +122,7 @@ export default function Expenses({expensesTitle}) {
                 itemStyle: {
                     barBorderRadius: 5,
                     borderWidth: 1,
-                    color: 'rgb(2, 150, 166)'
+                    color: '#006AC3'
                   }
               },
             ],
