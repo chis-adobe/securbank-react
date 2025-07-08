@@ -94,7 +94,9 @@ function ArticleDetail() {
                 data-aue-type="media" 
                 className="article-detail-image" 
                 alt={article.headline}
-                src={aempublishurl + article.heroImage._dynamicUrl + "&width=800"} 
+                src={article.heroImage && article.heroImage._dynamicUrl 
+                  ? aempublishurl + article.heroImage._dynamicUrl + "&width=800"
+                  : "https://via.placeholder.com/800x450/cccccc/666666?text=No+Image"} 
               />
             </div>
             
