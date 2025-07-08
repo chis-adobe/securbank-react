@@ -16,10 +16,8 @@ function ArticleDetail() {
     const fetchArticle = async () => {
       try {
         setLoading(true);
-        // Add leading slash back since React Router strips it
-        const fullArticlePath = '/' + articlePath;
-        // Use the dedicated articleByPath endpoint
-        const result = await FetchArticleByPath(fullArticlePath);
+        // Use the articlePath directly since the environment variable already includes the path parameter structure
+        const result = await FetchArticleByPath(articlePath);
         
         if (result && result.data && result.data.articleByPath && result.data.articleByPath.item) {
           setArticle(result.data.articleByPath.item);
