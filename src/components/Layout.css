@@ -1,0 +1,16 @@
+/* Layout component styles */
+/* Most styles are inherited from App.css */
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+main {
+  min-height: calc(100vh - 200px); /* Adjust based on header/footer height */
+} 

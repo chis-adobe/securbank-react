@@ -1,4 +1,5 @@
 import './articles.css';
+import { Link } from 'react-router-dom';
 
 function Articles({articles}) {
 
@@ -9,9 +10,11 @@ function Articles({articles}) {
         <ul className="articleList">
             {articles && articles.map((article, index) => (
                 <li key={index} data-aue-resource={"urn:aemconnection:" + article._path + "/jcr:content/data/master"} data-aue-type="reference" data-aue-filter="cf">
-                    <img data-aue-prop="heroImage" data-aue-type="media" className="articleImage" alt="decorative" src={aempublishurl + article.heroImage._dynamicUrl + "&width=470"} />
-                    <h5 data-aue-prop="headline" data-aue-type="text" className="articleHeading">{article.headline}</h5>
-                    <div data-aue-prop="main" data-aue-type="richtext" className="articleDescription">{article.main['plaintext']}</div>
+                    <Link to={`/article/${encodeURIComponent(article._path)}`} className="article-link">
+                        <img data-aue-prop="heroImage" data-aue-type="media" className="articleImage" alt="decorative" src={aempublishurl + article.heroImage._dynamicUrl + "&width=470"} />
+                        <h5 data-aue-prop="headline" data-aue-type="text" className="articleHeading">{article.headline}</h5>
+                        <div data-aue-prop="main" data-aue-type="richtext" className="articleDescription">{article.main['plaintext']}</div>
+                    </Link>
                 </li>
             ))}
         </ul>

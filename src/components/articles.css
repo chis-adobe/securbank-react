@@ -12,8 +12,6 @@
     text-decoration: none;
     max-width: 400px;
     font-size: 18px;
-
-    
 }
 
 @media only screen and (min-width: 1400px)  {
@@ -22,10 +20,29 @@
     }
 }
 
+.article-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.article-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
 .articleImage {
     width: 470px;
     aspect-ratio: 16 / 9 ;
     object-fit: cover;
+    transition: transform 0.2s ease;
+}
+
+.article-link:hover .articleImage {
+    transform: scale(1.02);
 }
 
 .articleHeading {
@@ -35,6 +52,11 @@
     color: #2C2C2C;
     opacity: 1;
     margin: 0;
+    transition: color 0.2s ease;
+}
+
+.article-link:hover .articleHeading {
+    color: #3b82f6;
 }
 
 .articleDescription {
