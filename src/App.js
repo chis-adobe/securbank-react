@@ -20,7 +20,7 @@ function DashboardContent() {
   useEffect(() => {
     const fetchContent = async () => {
       const result = await FetchContent();
-      setContent(result.data.dashboardByPath.item);
+      setContent(result.data.dashboardList.items[0]);
     };
 
     fetchContent();
