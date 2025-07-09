@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import creditcardgreen from '../resources/creditcardgreen.png';
 import creditcardgold from '../resources/creditcardgold.png';
 import './creditcarddetails.css';
@@ -20,6 +21,7 @@ export default function CreditCardDetails({ cardLabel }) {
                         <li><a href="#">Block card</a></li>
                         <li><a href="#">Pay off the card</a></li>
                         <li><a href="#">Card settings</a></li>
+                        <li><Link to="/local-articles">Local Articles</Link></li>
                     </ul>
                  </div>
                 <div className='creditcardoffer'>

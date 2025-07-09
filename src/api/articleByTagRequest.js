@@ -1,10 +1,8 @@
-export default async function FetchContent(languagePath = '') {
+export default async function FetchArticlesByTag(tag) {
   
     const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
     const aemauthorurl = process.env.REACT_APP_AEM_AUTHOR;
-    // Construct the URL with the proper path structure: /content/dam/genetec + language path
-    const basePath = '/content/dam/genetec' + languagePath;
-    const aemurl = process.env.REACT_APP_PERSISTEDQUERY_URL_DASHBOARD + basePath + `?ts=${Math.random()*1000}`;
+    const aemurl = process.env.REACT_APP_PERSISTEDQUERY_URL_ARTICLE_BY_REGION + tag.toLowerCase() + `?ts=${Math.random()*1000}`;
     let options = {credentials: "include"};
     let url = aempublishurl + aemurl;
     
@@ -25,4 +23,4 @@ export default async function FetchContent(languagePath = '') {
     } catch {
         return null
     }
-}
+} 

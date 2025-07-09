@@ -10,26 +10,33 @@ import CreditCardDetails from './components/creditcarddetails';
 import FetchContent from './api/contentrequest';
 import FAQ from './components/faq';
 import ArticleDetail from './components/ArticleDetail';
+import ArticleCarousel from './components/ArticleCarousel';
 import Layout from './components/Layout';
 
 import { Helmet } from 'react-helmet-async';
 
-function DashboardContent() {
+function DashboardContent({ language, onLanguageToggle }) {
   const [content, setContent] = useState(null);
+
+  const getLanguagePath = () => {
+    return language === 'en' ? '/en' : '/fr';
+  };
 
   useEffect(() => {
     const fetchContent = async () => {
-      const result = await FetchContent();
+      const languagePath = getLanguagePath();
+      const result = await FetchContent(languagePath);
       setContent(result.data.dashboardList.items[0]);
     };
 
     fetchContent();
-  }, []);
+  }, [language]);
 
-  const itemId =  "urn:aemconnection:/content/dam/securbank/en/dashboard/account-dashboard/jcr:content/data/master";
+  const languagePath = getLanguagePath();
+  const itemId = `urn:aemconnection:/content/dam/genetec${languagePath}/dashboard/account-dashboard/jcr:content/data/master`;
 
   return (
-    <Layout>
+    <Layout language={language} onLanguageToggle={onLanguageToggle}>
       <Helmet>
         <meta name="urn:adobe:aue:system:aemconnection" content={'aem:'+process.env.REACT_APP_AEM_AUTHOR}></meta>
       </Helmet>
@@ -55,11 +62,18 @@ function DashboardContent() {
 }
 
 function App() {
+  const [language, setLanguage] = useState('en'); // Default to English
+
+  const toggleLanguage = () => {
+    setLanguage(prev => prev === 'en' ? 'fr' : 'en');
+  };
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<DashboardContent />} />
+        <Route path="/" element={<DashboardContent language={language} onLanguageToggle={toggleLanguage} />} />
         <Route path="/article/:articlePath" element={<ArticleDetail />} />
+        <Route path="/local-articles" element={<ArticleCarousel />} />
       </Routes>
     </Router>
   );

@@ -52,11 +52,14 @@
     color: #2C2C2C;
     opacity: 1;
     margin: 0;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+    padding: 0 16px;
+    text-decoration: none;
 }
 
 .article-link:hover .articleHeading {
     color: #3b82f6;
+    text-decoration: underline;
 }
 
 .articleDescription {
@@ -67,4 +70,27 @@
     opacity: 1;
     margin-bottom: 25px;
     margin-top: 10px;
+    padding: 0 16px 16px 16px;
+    text-decoration: none;
+}
+
+.articleDescription a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.articleDescription a:hover {
+    text-decoration: none;
+}
+
+/* Ensure no text decoration on the link itself */
+.article-link,
+.article-link:hover {
+    text-decoration: none;
+}
+
+/* Ensure description never gets underlined */
+.articleDescription,
+.article-link:hover .articleDescription {
+    text-decoration: none;
 }

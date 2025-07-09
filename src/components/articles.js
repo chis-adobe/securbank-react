@@ -21,7 +21,12 @@ function Articles({articles}) {
                                 : "https://via.placeholder.com/470x264/cccccc/666666?text=No+Image"} 
                         />
                         <h5 data-aue-prop="headline" data-aue-type="text" className="articleHeading">{article.headline}</h5>
-                        <div data-aue-prop="main" data-aue-type="richtext" className="articleDescription">{article.main['plaintext']}</div>
+                        <div 
+                            data-aue-prop="main" 
+                            data-aue-type="richtext" 
+                            className="articleDescription"
+                            dangerouslySetInnerHTML={{ __html: article.blurb.html || article.main['html'] }}
+                        />
                     </Link>
                 </li>
             ))}
