@@ -8,10 +8,8 @@ export default async function FetchContent(languagePath = '') {
     let options = {credentials: "include"};
     let url = aempublishurl + aemurl;
     
-    var location = window.location != window.parent.location ? 
-           document.referrer :
-           document.location.href;
-    if(location.includes('aem/universal-editor/canvas') > 0) {
+    let frameLocation = window.location != window.parent.location ? document.referrer : document.location.href;
+    if(frameLocation.includes('aem/universal-editor/canvas') > 0) {
         url = aemauthorurl + aemurl
     }
 
