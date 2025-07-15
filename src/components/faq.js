@@ -22,7 +22,7 @@ function FAQ() {
                 <h4 className='sectionHeading'>Frequently Asked Questions</h4>
                 <ul className="faqList">
                     {faqs && faqs.map((faq, index) => (
-                        <li key={faq} data-aue-resource={"urn:aemconnection:" + faq._path + "/jcr:content/data/master"} data-aue-type="reference" data-aue-filter="cf">
+                        <li key={index} data-aue-resource={"urn:aemconnection:" + faq._path + "/jcr:content/data/master"} data-aue-type="reference" data-aue-filter="cf">
                             <details className="faqDetails">    
                                 <summary className="faqHeading">
                                     <span data-aue-prop="question" data-aue-type="text" >{faq.question}</span>

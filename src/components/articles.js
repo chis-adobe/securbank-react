@@ -25,7 +25,7 @@ function Articles({articles}) {
                             data-aue-prop="main" 
                             data-aue-type="richtext" 
                             className="articleDescription"
-                            dangerouslySetInnerHTML={{ __html: article.blurb.html || article.main['html'] }}
+                            dangerouslySetInnerHTML={{ __html: article.blurb ? article.blurb.html : article.main.html }}
                         />
                     </Link>
                 </li>

@@ -3,7 +3,7 @@ export default async function FetchContent(languagePath = '') {
     const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
     const aemauthorurl = process.env.REACT_APP_AEM_AUTHOR;
     // Construct the URL with the proper path structure: /content/dam/genetec + language path
-    const basePath = '/content/dam/genetec' + languagePath;
+    const basePath = `/content/dam/genetec${languagePath}/content-fragments/dashboard/account-dashboard`;
     const aemurl = process.env.REACT_APP_PERSISTEDQUERY_URL_DASHBOARD + basePath + `?ts=${Math.random()*1000}`;
     let options = {credentials: "include"};
     let url = aempublishurl + aemurl;

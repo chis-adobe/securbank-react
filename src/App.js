@@ -8,10 +8,11 @@ import Transactions from './components/transactions';
 import Expenses from './components/expenses';
 import CreditCardDetails from './components/creditcarddetails';
 import FetchContent from './api/contentrequest';
-import FAQ from './components/faq';
 import ArticleDetail from './components/ArticleDetail';
 import ArticleCarousel from './components/ArticleCarousel';
+import FAQPage from './components/FAQPage';
 import Layout from './components/Layout';
+import Scene7Banner from './components/Scene7Banner';
 
 import { Helmet } from 'react-helmet-async';
 
@@ -26,7 +27,7 @@ function DashboardContent({ language, onLanguageToggle }) {
     const fetchContent = async () => {
       const languagePath = getLanguagePath();
       const result = await FetchContent(languagePath);
-      setContent(result.data.dashboardList.items[0]);
+      setContent(result.data.dashboardByPath.item);
     };
 
     fetchContent();
@@ -41,17 +42,12 @@ function DashboardContent({ language, onLanguageToggle }) {
         <meta name="urn:adobe:aue:system:aemconnection" content={'aem:'+process.env.REACT_APP_AEM_AUTHOR}></meta>
       </Helmet>
       <div className='section' data-aue-resource={itemId} data-aue-type="reference" data-aue-filter="cf">
-        <div><a href={content && content.bannerUrl}><img src={content && content.banner._publishUrl} className="banner" alt="banner" data-aue-prop="banner"  data-aue-type="media"  /></a></div>
-        <div className='twocol'>
-          <Accountbalance greeting={content && content.greeting} />
-          <CreditCardDetails cardLabel={content && content.cardLabel}  />
-        </div>
-        <div className='twocol'>
-          <Transactions transactionTitle={content && content.transactionTitle}/>
-          <Expenses expensesTitle={content && content.expensesTitle} />
-        </div>
-        <div>
-          <FAQ faq={content && content.articles} />
+        <Scene7Banner 
+          imageSrc={content && content.banner && content.banner._publishUrl}
+          bannerUrl={content && content.bannerUrl}
+          altText="banner"
+        />
+        <div dangerouslySetInnerHTML={{ __html: content && content.intro && content.intro.html}}>
         </div>
         <div>
           <Articles articles={content && content.articles} />
@@ -69,13 +65,19 @@ function App() {
   };
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<DashboardContent language={language} onLanguageToggle={toggleLanguage} />} />
-        <Route path="/article/:articlePath" element={<ArticleDetail />} />
-        <Route path="/local-articles" element={<ArticleCarousel />} />
-      </Routes>
-    </Router>
+    <>
+      <Helmet>
+        <script type="text/javascript" src="https://s7d1.scene7.com/s7viewers/libs/responsive_image.js"></script>
+      </Helmet>
+      <Router>
+        <Routes>
+          <Route path="/" element={<DashboardContent language={language} onLanguageToggle={toggleLanguage} />} />
+          <Route path="/article/:articlePath" element={<ArticleDetail />} />
+          <Route path="/local-articles" element={<ArticleCarousel />} />
+          <Route path="/faq" element={<FAQPage />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

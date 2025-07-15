@@ -2,9 +2,9 @@
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
-    justify-content:space-between;
+    justify-content: space-between;
     padding: 0;
-    padding-inline-start:0;
+    padding-inline-start: 0;
     color: #2C2C2C;
 }
 
@@ -17,6 +17,31 @@
 @media only screen and (min-width: 1400px)  {
     .articleList li {
         max-width: 470px;
+    }
+}
+
+/* Center articles on smaller screens when they stack vertically */
+@media only screen and (max-width: 1200px) {
+    .articleList {
+        justify-content: center;
+        gap: 2rem;
+    }
+    
+    .articleList li {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .articleList {
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    
+    .articleList li {
+        max-width: 100%;
+        width: 100%;
     }
 }
 
@@ -36,9 +61,24 @@
 
 .articleImage {
     width: 470px;
-    aspect-ratio: 16 / 9 ;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     transition: transform 0.2s ease;
+}
+
+/* Make images responsive on smaller screens */
+@media only screen and (max-width: 1200px) {
+    .articleImage {
+        width: 100%;
+        max-width: 470px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .articleImage {
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 .article-link:hover .articleImage {

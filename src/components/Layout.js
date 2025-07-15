@@ -32,6 +32,7 @@ function Layout({ children, showAlert = true, language, onLanguageToggle }) {
                 <li><a href="#">Saving Account</a></li>
                 <li><a href="#">Transactions</a></li>
                 <li><a href="#">Cards</a></li>
+                <li><Link to="/faq">FAQ</Link></li>
               </ul>
             </div>
             <div className="header-right">

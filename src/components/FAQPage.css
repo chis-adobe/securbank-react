@@ -1,0 +1,170 @@
+/* FAQ Page styles */
+.faq-page-main {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.faq-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.faq-page-header {
+  margin-bottom: 2rem;
+}
+
+.faq-page-header .back-button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.faq-page-header .back-button:hover {
+  background: #2563eb;
+}
+
+.faq-page-header .back-button:focus {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* City article section styles */
+.city-article-loading {
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.city-article-loading .loading-spinner {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+.city-article-section {
+  margin-bottom: 2rem;
+}
+
+.city-article-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.city-article-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.city-article-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.city-article-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.city-article-content {
+  padding: 1.5rem;
+}
+
+.city-article-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.city-article-description {
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.city-article-description p {
+  margin-bottom: 0.5rem;
+}
+
+.city-article-description p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-page-content {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .faq-page-container {
+    padding: 1rem;
+  }
+  
+  .faq-page-content {
+    padding: 1.5rem;
+  }
+  
+  .faq-page-header .back-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .city-article-content {
+    padding: 1rem;
+  }
+  
+  .city-article-heading {
+    font-size: 1.1rem;
+  }
+  
+  .city-article-image {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-page-container {
+    padding: 0.5rem;
+  }
+  
+  .faq-page-content {
+    padding: 1rem;
+  }
+  
+  .faq-page-header .back-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .city-article-content {
+    padding: 0.75rem;
+  }
+  
+  .city-article-heading {
+    font-size: 1rem;
+  }
+  
+  .city-article-image {
+    height: 180px;
+  }
+} 
