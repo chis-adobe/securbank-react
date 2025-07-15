@@ -11,7 +11,7 @@ export default async function FetchContent(languagePath = '') {
     var location = window.location != window.parent.location ? 
            document.referrer :
            document.location.href;
-    if(location.includes('aem/editor/canvas') > 0) {
+    if(location.includes('aem/universal-editor/canvas') > 0) {
         url = aemauthorurl + aemurl
     }
 
