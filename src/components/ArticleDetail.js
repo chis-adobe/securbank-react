@@ -3,14 +3,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './ArticleDetail.css';
 import Layout from './Layout';
 import FetchArticleByPath from '../api/articleRequest';
+import ResponsiveImage from './ResponsiveImage';
 
 function ArticleDetail() {
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
   const { articlePath } = useParams();
   const navigate = useNavigate();
-  
-  const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -87,14 +86,14 @@ function ArticleDetail() {
             </header>
             
             <div className="article-detail-image-section">
-              <img 
-                data-aue-prop="heroImage" 
-                data-aue-type="media" 
-                className="article-detail-image" 
+              <ResponsiveImage
+                dmS7Url={article.heroImage?._dmS7Url}
+                smartCrops={article.heroImage?._smartCrops}
                 alt={article.headline}
-                src={article.heroImage && article.heroImage._dynamicUrl 
-                  ? aempublishurl + article.heroImage._dynamicUrl + "&width=800"
-                  : "https://via.placeholder.com/800x450/cccccc/666666?text=No+Image"} 
+                className="article-detail-image"
+                data-aue-prop="heroImage"
+                data-aue-type="media"
+                fallbackSrc="https://via.placeholder.com/800x450/cccccc/666666?text=No+Image"
               />
             </div>
             
