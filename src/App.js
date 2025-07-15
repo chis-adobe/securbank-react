@@ -34,7 +34,7 @@ function DashboardContent({ language, onLanguageToggle }) {
   }, [language]);
 
   const languagePath = getLanguagePath();
-  const itemId = `urn:aemconnection:/content/dam/genetec${languagePath}/dashboard/account-dashboard/jcr:content/data/master`;
+  const itemId = `urn:aemconnection:/content/dam/genetec${languagePath}/content-fragments/dashboard/account-dashboard/jcr:content/data/master`;
 
   return (
     <Layout language={language} onLanguageToggle={onLanguageToggle}>
