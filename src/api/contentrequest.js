@@ -1,8 +1,9 @@
-export default async function FetchContent() {
+export default async function FetchContent(language = 'en') {
   
     const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
     const aemauthorurl = process.env.REACT_APP_AEM_AUTHOR;
-    const aemurl = process.env.REACT_APP_PERSISTEDQUERY_URL_DASHBOARD + `?ts=${Math.random()*1000}`;
+    const languagePath = `/content/dam/securbank/${language}/dashboard/account-dashboard`;
+    const aemurl = process.env.REACT_APP_PERSISTEDQUERY_URL_DASHBOARD + `;path=${languagePath}?ts=${Math.random()*1000}`;
     let options = {credentials: "include"};
     let url = aempublishurl + aemurl;
     

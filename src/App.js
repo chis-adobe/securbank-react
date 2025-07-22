@@ -17,17 +17,22 @@ import { Helmet } from 'react-helmet-async';
 
 function App() {
   const [content, setContent] = useState(null);
+  const [language, setLanguage] = useState('en'); // Default to English
 
   useEffect(() => {
     const fetchContent = async () => {
-      const result = await FetchContent();
+      const result = await FetchContent(language);
       setContent(result.data.dashboardByPath.item);
     };
 
     fetchContent();
-  }, []);
+  }, [language]);
 
-  const itemId =  "urn:aemconnection:/content/dam/securbank/en/dashboard/account-dashboard/jcr:content/data/master";
+  const toggleLanguage = () => {
+    setLanguage(prev => prev === 'en' ? 'fr' : 'en');
+  };
+
+  const itemId =  `urn:aemconnection:/content/dam/securbank/${language}/dashboard/account-dashboard/jcr:content/data/master`;
 
   return (
     <div className="App">
@@ -53,6 +58,13 @@ function App() {
               <img src={bell} className="bell" alt="bell" />
               <img src={avatar} className="avatar" alt="avatar" />
               <div className='authFriendly'>Mark Szulc</div>
+              <button 
+                className="language-toggle" 
+                onClick={toggleLanguage}
+                aria-label={`Switch to ${language === 'en' ? 'French' : 'English'}`}
+              >
+                {language === 'en' ? 'FR' : 'EN'}
+              </button>
             </div>
           </div>
       </div>

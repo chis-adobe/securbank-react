@@ -249,12 +249,34 @@ header {
 }
 
 .authFriendly {
-  padding-top: 8px;
   text-align: right;
   font: normal normal 18px/24px adobe-clean;
   letter-spacing: 0px;
   color: #2C2C2C;
   opacity: 1;
+}
+
+.language-toggle {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin: 0 10px;
+  font-family: adobe-clean;
+}
+
+.language-toggle:hover {
+  background: #2563eb;
+}
+
+.language-toggle:focus {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
 }
 
 .avatar {
@@ -264,4 +286,10 @@ header {
 
 .bell {
   margin-right: 16px;
+}
+
+/* Align header elements to top */
+.header-nav > div > div:last-child {
+  display: flex;
+  align-items: flex-start;
 }
