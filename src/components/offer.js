@@ -5,7 +5,7 @@ import './offer.css';
 
 function Offer() {
   const [searchParams] = useSearchParams();
-  const offerId = searchParams.get('offerId') || '998';
+  const offerId = searchParams.get('offerId') || 'investment-offer';
   const variation = searchParams.get('variation') || 'main';
   const [offer, setOffer] = useState(null);
   const [loading, setLoading] = useState(true);
