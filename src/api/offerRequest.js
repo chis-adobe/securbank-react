@@ -1,7 +1,7 @@
-export default async function FetchOffer(offerId = '998', variation = 'main') {
+export default async function FetchOffer(offerId = 'investment-offer', variation = 'main') {
   const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
   const aemauthorurl = process.env.REACT_APP_AEM_AUTHOR;
-  const offerPath = process.env.REACT_APP_OFFERPATH || '/content/dam/securbank/en/offers';
+  const offerPath = process.env.REACT_APP_OFFERPATH || '/content/dam/chis/scotiabank';
   const aemurl = `${process.env.REACT_APP_OFFERQUERY_URL}${offerPath}/${offerId};variation=${variation}?ts=${Math.random()*1000}`;
   
   let options = { credentials: "include" };
