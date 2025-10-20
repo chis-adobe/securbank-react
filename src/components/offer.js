@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import FetchOffer from '../api/offerRequest';
 import './offer.css';
 
 function Offer() {
   const [searchParams] = useSearchParams();
+  const { user } = useAuth();
   const offerId = searchParams.get('offerId') || 'investment-offer';
-  const variation = searchParams.get('variation') || 'main';
+  
+  // Use the logged-in user's variation if available, otherwise fall back to URL param or 'main'
+  const urlVariation = searchParams.get('variation');
+  const variation = user?.variation || urlVariation || 'main';
+  
   const [offer, setOffer] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -32,7 +38,7 @@ function Offer() {
     };
 
     fetchOfferData();
-  }, [offerId, variation]);
+  }, [offerId, variation, user]);
 
   if (loading) {
     return (

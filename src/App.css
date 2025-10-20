@@ -2,6 +2,7 @@
 
   /* Colors: */
   --brand-color: #0296A6;
+  --accent-color: #FF0000;
   --secondary-color: #CBE7F0;
   --additional-color: #3E6470;
   --text-color: #2C2C2C;
@@ -264,4 +265,37 @@ header {
 
 .bell {
   margin-right: 16px;
+}
+
+.login-button-nav {
+  background-color: var(--brand-color);
+  color: white;
+  border: none;
+  padding: 8px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 16px;
+}
+
+.login-button-nav:hover {
+  background-color: var(--additional-color);
+}
+
+.logout-button {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--text-secondary-and-empty-input-form-);
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: normal;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 16px;
+}
+
+.logout-button:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--brand-color);
 }

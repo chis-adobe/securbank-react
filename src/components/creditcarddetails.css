@@ -16,14 +16,14 @@
 
 .creditcardactions {
     font: normal normal normal 16px/24px adobe-clean;
-    color: #0296A6;
+    color: var(--accent-color);
 }
 
 .creditcardactions ul {
     padding: 15px 0 0 0;
 }
 .creditcardactions li a {
-    color: #0296A6;
+    color: var(--accent-color);
 }
 
 .creditcardoffer {
@@ -35,11 +35,11 @@
     height: 143px;
     box-sizing: border-box;
     width: 290px;
-    color: #0296A6;
+    color: var(--accent-color);
 }
 
 .creditcardoffer a {
-    color: #0296A6;
+    color: var(--accent-color);
 }
 
 .creditcardoffer img {

@@ -98,7 +98,7 @@
 }
 
 .blue {
-    color: #0296A6;
+    color: var(--accent-color);
 }
 
 .pink {

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import logo from './resources/SecurBank_Logo_Main.svg';
+import logo from './resources/scotiabank-logo.png';
 import bell from './resources/bell.svg';
-import avatar from './resources/avatar.png';
 import './App.css';
 import Articles from './components/articles';
 import Accountbalance from './components/accountbalance';
@@ -14,11 +13,15 @@ import Footer from './components/footer';
 import FetchContent from './api/contentrequest';
 import FAQ from './components/faq';
 import Offer from './components/offer';
+import LoginModal from './components/loginmodal';
+import { AuthProvider, useAuth } from './context/AuthContext';
 
 import { Helmet } from 'react-helmet-async';
 
-function App() {
+function AppContent() {
   const [content, setContent] = useState(null);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const { isLoggedIn, user, logout } = useAuth();
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -54,8 +57,16 @@ function App() {
               </div>
               <div>
                 <img src={bell} className="bell" alt="bell" />
-                <img src={avatar} className="avatar" alt="avatar" />
-                <div className='authFriendly'>Mark Szulc</div>
+                {isLoggedIn ? (
+                  <>
+                    <div className='authFriendly'>{user.username}</div>
+                    <button className='logout-button' onClick={logout}>Logout</button>
+                  </>
+                ) : (
+                  <button className='login-button-nav' onClick={() => setIsLoginModalOpen(true)}>
+                    Login
+                  </button>
+                )}
               </div>
             </div>
         </div>
@@ -85,8 +96,21 @@ function App() {
         </main>
 
         <footer><Footer /></footer>
+        
+        <LoginModal 
+          isOpen={isLoginModalOpen} 
+          onClose={() => setIsLoginModalOpen(false)} 
+        />
       </div>
     </Router>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
 

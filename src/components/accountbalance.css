@@ -45,13 +45,13 @@
     text-decoration: underline;
     font: normal normal medium 16px/24px adobe-clean;
     letter-spacing: 0px;
-    color: #0296A6;
+    color: var(--accent-color);
     opacity: 1;
     margin: 22px 0px 32px;
 }
 
 .options p:first-child {
-    background: #0296A6 0% 0% no-repeat padding-box;
+    background: var(--accent-color) 0% 0% no-repeat padding-box;
     border-radius: 20px;
     opacity: 1;
     width: 156px;

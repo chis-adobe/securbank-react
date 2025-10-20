@@ -1,5 +1,5 @@
-import creditcardgreen from '../resources/creditcardgreen.png';
-import creditcardgold from '../resources/creditcardgold.png';
+import creditcardgreen from '../resources/AMEX_NoFee_SceneRedLogo_En.png';
+import creditcardgold from '../resources/gold.png';
 import './creditcarddetails.css';
 
 export default function CreditCardDetails({ cardLabel }) {

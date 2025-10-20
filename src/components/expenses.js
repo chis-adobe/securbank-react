@@ -171,7 +171,7 @@ export default function Expenses({expensesTitle}) {
                             symbol: 'none',
                             smooth: true,
                             itemStyle: {
-                                color: '#0296A6'
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim()
                             },
                             lineStyle: {
                                 width: 4
