@@ -60,7 +60,6 @@ function LoginModal({ isOpen, onClose }) {
         </form>
         
         <div className="login-hint">
-          <small>Hint: Use student@scotiabank.com for student offers</small>
         </div>
       </div>
     </div>

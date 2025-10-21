@@ -16,11 +16,26 @@ export const AuthProvider = ({ children }) => {
 
   const login = (username, password) => {
     // Mock authentication - all logins work
-    const userVariation = username === 'student@scotiabank.com' ? 'student' : 'main';
+    let userVariation = 'main';
+    let offerId = 'investment-offer'; // default offer
+    
+    // Map specific users to variations
+    if (username === 'student@scotiabank.com') {
+      userVariation = 'student';
+    }
+    
+    // Map specific users to offer IDs
+    if (username === 'asmith@frescopa.coffee') {
+      offerId = 'investment-offer';
+      userVariation = 'youngfamily';
+    } else if (username === 'jdupont@frescopa.coffee') {
+      offerId = 'mortgage-offer';
+    }
     
     setUser({
       username,
-      variation: userVariation
+      variation: userVariation,
+      offerId: offerId
     });
     setIsLoggedIn(true);
     return true;

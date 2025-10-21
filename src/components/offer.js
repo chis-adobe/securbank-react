@@ -7,7 +7,10 @@ import './offer.css';
 function Offer() {
   const [searchParams] = useSearchParams();
   const { user } = useAuth();
-  const offerId = searchParams.get('offerId') || 'investment-offer';
+  
+  // Use the logged-in user's offerId if available, otherwise fall back to URL param or default
+  const urlOfferId = searchParams.get('offerId');
+  const offerId = user?.offerId || urlOfferId || 'investment-offer';
   
   // Use the logged-in user's variation if available, otherwise fall back to URL param or 'main'
   const urlVariation = searchParams.get('variation');
