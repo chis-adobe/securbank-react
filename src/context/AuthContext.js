@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
     // Map specific users to offer IDs
     if (username === 'asmith@frescopa.coffee') {
       offerId = 'investment-offer';
-      userVariation = 'youngfamily';
+      userVariation = 'genai_youngfamily';
     } else if (username === 'jdupont@frescopa.coffee') {
       offerId = 'mortgage-offer';
     }
