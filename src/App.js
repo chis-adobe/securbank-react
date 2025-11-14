@@ -14,6 +14,7 @@ import Footer from './components/footer';
 import FetchContent from './api/contentrequest';
 import FAQ from './components/faq';
 import Offer from './components/offer';
+import CreditCards from './components/creditcards';
 
 import { Helmet } from 'react-helmet-async';
 
@@ -58,10 +59,9 @@ function App() {
                 <div className='authFriendly'>Mark Szulc</div>
               </div>
             </div>
-        </div>
-          
+          </div>
         </header>
-        <main >
+        <main>
           <div className='section' data-aue-resource={itemId} data-aue-type="reference" data-aue-filter="cf">
             <div><a href={content && content.bannerUrl}><img src={content && content.banner._publishUrl} className="banner" alt="banner" data-aue-prop="banner"  data-aue-type="media"  /></a></div>
             <div className='twocol'>
@@ -77,6 +77,9 @@ function App() {
             </div>
             <div>
               <Offer />
+            </div>
+            <div>
+              <CreditCards />
             </div>
             <div>
               <Articles articles={content && content.articles} />
