@@ -79,9 +79,6 @@ function App() {
               <CreditCards />
             </div>
             <div>
-              <Offer />
-            </div>
-            <div>
               <Articles articles={content && content.articles} />
             </div>
           </div>
