@@ -13,8 +13,11 @@ function CreditCards() {
         const fetchContent = async () => {
             const result = await FetchCreditCards();
             if (result && result.data && result.data.creditCardList && result.data.creditCardList.items) {
-                // Only take the first 4 credit cards
-                const limitedCards = result.data.creditCardList.items.slice(0, 4);
+                // Filter out cards without images, then take the first 4
+                const cardsWithImages = result.data.creditCardList.items.filter(
+                    card => card.creditCardImage && card.creditCardImage._dynamicUrl
+                );
+                const limitedCards = cardsWithImages.slice(0, 4);
                 setCreditCards(limitedCards);
             }
         };
