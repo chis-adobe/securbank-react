@@ -1,9 +1,13 @@
 import './creditcards.css';
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import FetchCreditCards from '../api/creditcardrequest';
 
 function CreditCards() {
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
     const [creditCards, setCreditCards] = useState(null);
+    const variation = searchParams.get('variation') || 'main';
 
     useEffect(() => {
         const fetchContent = async () => {
@@ -20,12 +24,23 @@ function CreditCards() {
 
     const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
 
+    const handleCardClick = (cardPath) => {
+        navigate(`/card-detail?path=${encodeURIComponent(cardPath)}&variation=${variation}`);
+    };
+
     return (
         <div className='creditCardsSection'>
             <h4 className='sectionHeading'>Our Credit Cards</h4>
             <ul className="creditCardList">
                 {creditCards && creditCards.map((card, index) => (
-                    <li key={index} data-aue-resource={"urn:aemconnection:" + card._path + "/jcr:content/data/master"} data-aue-type="reference" data-aue-filter="cf">
+                    <li 
+                        key={index} 
+                        data-aue-resource={"urn:aemconnection:" + card._path + "/jcr:content/data/master"} 
+                        data-aue-type="reference" 
+                        data-aue-filter="cf"
+                        onClick={() => handleCardClick(card._path)}
+                        className="creditCardItem"
+                    >
                         {card.creditCardImage && card.creditCardImage._dynamicUrl && (
                             <img 
                                 data-aue-prop="creditCardImage" 

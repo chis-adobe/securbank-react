@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import logo from './resources/SecurBank_Logo_Main.svg';
 import bell from './resources/bell.svg';
@@ -15,6 +15,7 @@ import FetchContent from './api/contentrequest';
 import FAQ from './components/faq';
 import Offer from './components/offer';
 import CreditCards from './components/creditcards';
+import CreditCardDetail from './components/creditcarddetail';
 
 import { Helmet } from 'react-helmet-async';
 
@@ -62,26 +63,31 @@ function App() {
           </div>
         </header>
         <main>
-          <div className='section' data-aue-resource={itemId} data-aue-type="reference" data-aue-filter="cf">
-            <div><a href={content && content.bannerUrl}><img src={content && content.banner._publishUrl} className="banner" alt="banner" data-aue-prop="banner"  data-aue-type="media"  /></a></div>
-            <div className='twocol'>
-              <Accountbalance greeting={content && content.greeting} />
-              <CreditCardDetails cardLabel={content && content.cardLabel}  />
-            </div>
-            <div className='twocol'>
-              <Transactions transactionTitle={content && content.transactionTitle}/>
-              <Expenses expensesTitle={content && content.expensesTitle} />
-            </div>
-            <div>
-              <FAQ faq={content && content.articles} />
-            </div>
-            <div>
-              <CreditCards />
-            </div>
-            <div>
-              <Articles articles={content && content.articles} />
-            </div>
-          </div>
+          <Routes>
+            <Route path="/card-detail" element={<CreditCardDetail />} />
+            <Route path="/" element={
+              <div className='section' data-aue-resource={itemId} data-aue-type="reference" data-aue-filter="cf">
+                <div><a href={content && content.bannerUrl}><img src={content && content.banner._publishUrl} className="banner" alt="banner" data-aue-prop="banner"  data-aue-type="media"  /></a></div>
+                <div className='twocol'>
+                  <Accountbalance greeting={content && content.greeting} />
+                  <CreditCardDetails cardLabel={content && content.cardLabel}  />
+                </div>
+                <div className='twocol'>
+                  <Transactions transactionTitle={content && content.transactionTitle}/>
+                  <Expenses expensesTitle={content && content.expensesTitle} />
+                </div>
+                <div>
+                  <FAQ faq={content && content.articles} />
+                </div>
+                <div>
+                  <CreditCards />
+                </div>
+                <div>
+                  <Articles articles={content && content.articles} />
+                </div>
+              </div>
+            } />
+          </Routes>
         </main>
 
         <footer><Footer /></footer>

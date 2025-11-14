@@ -4,32 +4,37 @@
 
 .creditCardList {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     list-style-type: none;
     justify-content: space-between;
     padding: 0;
     padding-inline-start: 0;
     color: #2C2C2C;
-    gap: 20px;
+    gap: 15px;
 }
 
 .creditCardList li {
     text-decoration: none;
-    max-width: 400px;
-    font-size: 18px;
+    flex: 1;
+    min-width: 0;
+    max-width: 300px;
+    font-size: 16px;
 }
 
-@media only screen and (min-width: 1400px) {
-    .creditCardList li {
-        max-width: 470px;
-    }
+.creditCardItem {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.creditCardItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .creditCardImage {
     width: 100%;
-    max-width: 470px;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     border-radius: 8px;
 }
 
