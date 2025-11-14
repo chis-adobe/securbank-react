@@ -1,0 +1,63 @@
+.creditCardsSection {
+    margin: 40px 0;
+}
+
+.creditCardList {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content: space-between;
+    padding: 0;
+    padding-inline-start: 0;
+    color: #2C2C2C;
+    gap: 20px;
+}
+
+.creditCardList li {
+    text-decoration: none;
+    max-width: 400px;
+    font-size: 18px;
+}
+
+@media only screen and (min-width: 1400px) {
+    .creditCardList li {
+        max-width: 470px;
+    }
+}
+
+.creditCardImage {
+    width: 100%;
+    max-width: 470px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.creditCardHeading {
+    text-align: left;
+    font: normal normal 600 18px/22px adobe-clean;
+    letter-spacing: 0px;
+    color: #2C2C2C;
+    opacity: 1;
+    margin: 15px 0 10px 0;
+}
+
+.creditCardDescription {
+    text-align: left;
+    font: normal normal normal 18px/22px adobe-clean;
+    letter-spacing: 0px;
+    color: #2C2C2C;
+    opacity: 1;
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+
+.sectionHeading {
+    text-align: left;
+    font: normal normal 600 24px/29px adobe-clean;
+    letter-spacing: 0px;
+    color: #2C2C2C;
+    opacity: 1;
+    margin-bottom: 20px;
+}
+

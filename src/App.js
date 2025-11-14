@@ -12,6 +12,7 @@ import CreditCardDetails from './components/creditcarddetails';
 import Footer from './components/footer';
 import FetchContent from './api/contentrequest';
 import FAQ from './components/faq';
+import CreditCards from './components/creditcards';
 
 import { Helmet } from 'react-helmet-async';
 
@@ -71,6 +72,9 @@ function App() {
           </div>
           <div>
             <FAQ faq={content && content.articles} />
+          </div>
+          <div>
+            <CreditCards />
           </div>
           <div>
             <Articles articles={content && content.articles} />
