@@ -76,10 +76,10 @@ function App() {
               <FAQ faq={content && content.articles} />
             </div>
             <div>
-              <Offer />
+              <CreditCards />
             </div>
             <div>
-              <CreditCards />
+              <Offer />
             </div>
             <div>
               <Articles articles={content && content.articles} />
