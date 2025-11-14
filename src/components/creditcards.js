@@ -9,8 +9,8 @@ function CreditCards() {
         const fetchContent = async () => {
             const result = await FetchCreditCards();
             if (result && result.data && result.data.creditCardList && result.data.creditCardList.items) {
-                // Only take the first 3 credit cards
-                const limitedCards = result.data.creditCardList.items.slice(0, 3);
+                // Only take the first 4 credit cards
+                const limitedCards = result.data.creditCardList.items.slice(0, 4);
                 setCreditCards(limitedCards);
             }
         };
