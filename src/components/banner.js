@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FetchBanner from '../api/bannerRequest';
 import './banner.css';
 
-function Banner() {
+function Banner({ dietType = 'standard' }) {
   const [banner, setBanner] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -10,35 +10,29 @@ function Banner() {
     const fetchBannerData = async () => {
       try {
         setLoading(true);
-        console.log('Fetching banner data');
-        const result = await FetchBanner();
+        console.log('Fetching banner data with diet type:', dietType);
+        const result = await FetchBanner(dietType);
         console.log('Banner API result:', result);
         
-        if (result) {
-          // Find the asset with diet === "vegan"
-          const veganAsset = Object.entries(result).find(([key, value]) => {
-            // Skip non-asset properties
-            if (!value['jcr:content']) return false;
-            
-            const metadata = value['jcr:content']?.metadata;
-            return metadata?.diet === 'vegan';
-          });
-
-          if (veganAsset) {
-            const [assetName, assetData] = veganAsset;
-            const metadata = assetData['jcr:content'].metadata;
+        if (result && result.data && result.data.metroBannerList && result.data.metroBannerList.items) {
+          const items = result.data.metroBannerList.items;
+          
+          if (items.length > 0) {
+            // Get the first banner item
+            const firstBanner = items[0];
             
             const bannerData = {
-              title: metadata['autogen:title'] || 'Product',
-              description: metadata['autogen:description'] || '',
-              imagePath: `/content/dam/metro/en/grocery/${assetName}`,
-              tags: metadata['autogen:subject'] || []
+              title: firstBanner.title || 'Banner',
+              description: firstBanner.description || '',
+              ctaLabel: firstBanner.ctaLabel || null,
+              ctaPath: firstBanner.ctaPath || null,
+              imagePath: firstBanner.image?._publishUrl || firstBanner.image?._authorUrl || ''
             };
             
             console.log('Setting banner data:', bannerData);
             setBanner(bannerData);
           } else {
-            console.log('No vegan asset found in result');
+            console.log('No banner items found in result');
           }
         } else {
           console.log('No banner data found in result');
@@ -51,7 +45,7 @@ function Banner() {
     };
 
     fetchBannerData();
-  }, []);
+  }, [dietType]);
 
   if (loading) {
     return (
@@ -82,13 +76,11 @@ function Banner() {
           {banner.description && (
             <p className="banner-description">{banner.description}</p>
           )}
-          {banner.tags && banner.tags.length > 0 && (
-            <div className="banner-tags">
-              {banner.tags.slice(0, 5).map((tag, index) => (
-                <span key={index} className="banner-tag">
-                  {tag}
-                </span>
-              ))}
+          {banner.ctaLabel && (
+            <div className="banner-cta">
+              <button className="banner-cta-button">
+                {banner.ctaLabel}
+              </button>
             </div>
           )}
         </div>

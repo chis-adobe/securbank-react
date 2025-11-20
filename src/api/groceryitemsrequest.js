@@ -1,7 +1,7 @@
-export default async function FetchBanner(dietType = 'standard') {
+export default async function FetchGroceryItems() {
   const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
   const aemauthorurl = process.env.REACT_APP_AEM_AUTHOR;
-  const aemurl = process.env.REACT_APP_GROCERYBANNER_URL + dietType + `?ts=${Math.random()*1000}`;
+  const aemurl = process.env.REACT_APP_GROCERYITEMS_URL + `?ts=${Math.random()*1000}`;
   let options = { credentials: "include" };
   let url = aempublishurl + aemurl;
 
@@ -14,14 +14,14 @@ export default async function FetchBanner(dietType = 'standard') {
   }
 
   try {
-    console.log('Fetching banner data from URL:', url);
+    console.log('Fetching grocery items from URL:', url);
     const response = await fetch(url, options);
-    console.log('Banner API response status:', response.status);
+    console.log('Grocery items API response status:', response.status);
     const responseData = await response.json();
-    console.log('Banner API response data:', responseData);
+    console.log('Grocery items API response data:', responseData);
     return responseData;
   } catch (error) {
-    console.error('Banner API fetch error:', error);
+    console.error('Grocery items API fetch error:', error);
     return null;
   }
 }

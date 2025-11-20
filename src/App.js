@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import logo from './resources/SecurBank_Logo_Main.svg';
 import bell from './resources/bell.svg';
-import avatar from './resources/avatar.png';
 import './App.css';
 import Articles from './components/articles';
 import Accountbalance from './components/accountbalance';
@@ -17,11 +16,15 @@ import Offer from './components/offer';
 import CreditCards from './components/creditcards';
 import CreditCardDetail from './components/creditcarddetail';
 import Banner from './components/banner';
+import LoginModal from './components/loginmodal';
+import GroceryCarousel from './components/grocerycarousel';
 
 import { Helmet } from 'react-helmet-async';
 
 function App() {
   const [content, setContent] = useState(null);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -31,6 +34,15 @@ function App() {
 
     fetchContent();
   }, []);
+
+  const handleLogin = (userData) => {
+    setUser(userData);
+    setIsLoginModalOpen(false);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+  };
 
   const itemId =  "urn:aemconnection:/content/dam/securbank/en/dashboard/account-dashboard/jcr:content/data/master";
 
@@ -57,8 +69,18 @@ function App() {
               </div>
               <div>
                 <img src={bell} className="bell" alt="bell" />
-                <img src={avatar} className="avatar" alt="avatar" />
-                <div className='authFriendly'>Mark Szulc</div>
+                {!user ? (
+                  <button className='login-button' onClick={() => setIsLoginModalOpen(true)}>
+                    Login
+                  </button>
+                ) : (
+                  <div className='user-info'>
+                    <span className='user-email'>{user.email}</span>
+                    <button className='logout-button' onClick={handleLogout}>
+                      Logout
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -68,7 +90,8 @@ function App() {
             <Route path="/card-detail" element={<CreditCardDetail />} />
             <Route path="/" element={
               <div className='section' data-aue-resource={itemId} data-aue-type="reference" data-aue-filter="cf">
-                <Banner />
+                <Banner dietType={user?.dietType || 'standard'} />
+                <GroceryCarousel />
                 <div><a href={content && content.bannerUrl}><img src={content && content.banner._publishUrl} className="banner" alt="banner" data-aue-prop="banner"  data-aue-type="media"  /></a></div>
                 <div className='twocol'>
                   <Accountbalance greeting={content && content.greeting} />
@@ -93,6 +116,12 @@ function App() {
         </main>
 
         <footer><Footer /></footer>
+        
+        <LoginModal 
+          isOpen={isLoginModalOpen} 
+          onClose={() => setIsLoginModalOpen(false)}
+          onLogin={handleLogin}
+        />
       </div>
     </Router>
   );

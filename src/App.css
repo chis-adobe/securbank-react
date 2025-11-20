@@ -265,3 +265,63 @@ header {
 .bell {
   margin-right: 16px;
 }
+
+/* Login/Logout Buttons */
+.login-button,
+.logout-button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-family: adobe-clean, sans-serif;
+  margin-left: 16px;
+}
+
+.login-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.login-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 16px;
+}
+
+.user-email {
+  font-size: 0.875rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.logout-button {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.logout-button:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .user-info {
+    display: none;
+  }
+  
+  .login-button {
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+  }
+}
