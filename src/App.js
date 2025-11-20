@@ -16,6 +16,7 @@ import FAQ from './components/faq';
 import Offer from './components/offer';
 import CreditCards from './components/creditcards';
 import CreditCardDetail from './components/creditcarddetail';
+import Banner from './components/banner';
 
 import { Helmet } from 'react-helmet-async';
 
@@ -67,6 +68,7 @@ function App() {
             <Route path="/card-detail" element={<CreditCardDetail />} />
             <Route path="/" element={
               <div className='section' data-aue-resource={itemId} data-aue-type="reference" data-aue-filter="cf">
+                <Banner />
                 <div><a href={content && content.bannerUrl}><img src={content && content.banner._publishUrl} className="banner" alt="banner" data-aue-prop="banner"  data-aue-type="media"  /></a></div>
                 <div className='twocol'>
                   <Accountbalance greeting={content && content.greeting} />
