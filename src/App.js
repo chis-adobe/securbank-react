@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import logo from './resources/SecurBank_Logo_Main.svg';
+import logo from './resources/logo-metro.png';
 import bell from './resources/bell.svg';
 import './App.css';
 import Articles from './components/articles';
