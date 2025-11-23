@@ -156,23 +156,68 @@
   outline-offset: 2px;
 }
 
-/* Demo Info */
-.login-demo-info {
+/* Demo Accordion */
+.login-demo-accordion {
   margin-top: 2rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.login-demo-accordion-header {
+  width: 100%;
   padding: 1rem;
   background: #f9fafb;
-  border-radius: 8px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  transition: background 0.2s ease;
+  font-family: inherit;
+}
+
+.login-demo-accordion-header:hover {
+  background: #f3f4f6;
+}
+
+.accordion-icon {
+  font-size: 0.75rem;
+  transition: transform 0.3s ease;
+  color: #6b7280;
+}
+
+.accordion-icon.open {
+  transform: rotate(180deg);
+}
+
+.login-demo-info {
+  padding: 1rem;
+  background: #ffffff;
   font-size: 0.75rem;
   color: #6b7280;
-  text-align: center;
+  text-align: left;
+  border-top: 1px solid #e5e7eb;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .login-demo-info p {
-  margin: 0.25rem 0;
-}
-
-.login-demo-info strong {
-  color: #374151;
+  margin: 0.5rem 0;
+  padding-left: 0.5rem;
 }
 
 /* Responsive Design */

@@ -11,6 +11,7 @@ function LoginModal({ isOpen, onClose, onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showDemoAccounts, setShowDemoAccounts] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,6 +40,7 @@ function LoginModal({ isOpen, onClose, onLogin }) {
     setEmail('');
     setPassword('');
     setError('');
+    setShowDemoAccounts(false);
     onClose();
   };
 
@@ -91,11 +93,24 @@ function LoginModal({ isOpen, onClose, onLogin }) {
           </button>
         </form>
 
-        <div className="login-demo-info">
-          <p><strong>Demo Accounts:</strong></p>
-          <p>liviu@metro.com (vegan)</p>
-          <p>hubrit@metro.com (vegetarian)</p>
-          <p>Any other email (standard)</p>
+        <div className="login-demo-accordion">
+          <button 
+            type="button"
+            className="login-demo-accordion-header"
+            onClick={() => setShowDemoAccounts(!showDemoAccounts)}
+          >
+            <span>Demo Accounts</span>
+            <span className={`accordion-icon ${showDemoAccounts ? 'open' : ''}`}>
+              ▼
+            </span>
+          </button>
+          {showDemoAccounts && (
+            <div className="login-demo-info">
+              <p>liviu@metro.com (vegan)</p>
+              <p>hubrit@metro.com (vegetarian)</p>
+              <p>Any other email (standard)</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
