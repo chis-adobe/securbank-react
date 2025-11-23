@@ -21,12 +21,17 @@ function Banner({ dietType = 'standard' }) {
             // Get the first banner item
             const firstBanner = items[0];
             
+            // Add cache buster to image URL
+            const imageUrl = firstBanner.image?._publishUrl || firstBanner.image?._authorUrl || '';
+            const cacheBuster = `?ts=${Date.now()}`;
+            const imagePathWithCacheBuster = imageUrl ? `${imageUrl}${cacheBuster}` : '';
+            
             const bannerData = {
               title: firstBanner.title || 'Banner',
               description: firstBanner.description || '',
               ctaLabel: firstBanner.ctaLabel || null,
               ctaPath: firstBanner.ctaPath || null,
-              imagePath: firstBanner.image?._publishUrl || firstBanner.image?._authorUrl || ''
+              imagePath: imagePathWithCacheBuster
             };
             
             console.log('Setting banner data:', bannerData);
