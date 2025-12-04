@@ -67,7 +67,7 @@ function App() {
                   <li><a href="#">Cards</a></li>
                 </ul>
               </div>
-              <div>
+              <div class="profile">
                 <img src={bell} className="bell" alt="bell" />
                 {!user ? (
                   <button className='login-button' onClick={() => setIsLoginModalOpen(true)}>
@@ -90,7 +90,7 @@ function App() {
             <Route path="/card-detail" element={<CreditCardDetail />} />
             <Route path="/" element={
               <div className='section' data-aue-resource={itemId} data-aue-type="reference" data-aue-filter="cf">
-                <Banner dietType={user?.dietType || 'standard'} />
+                <Banner accountType={user?.accountType || 'standard'} />
                 <GroceryCarousel />
                 <div><a href={content && content.bannerUrl}><img src={content && content.banner._publishUrl} className="banner" alt="banner" data-aue-prop="banner"  data-aue-type="media"  /></a></div>
                 <div className='twocol'>

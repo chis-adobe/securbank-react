@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './loginmodal.css';
 
-// Email to diet type mapping
-const EMAIL_DIET_MAP = {
-  'liviu@metro.com': 'vegan',
-  'hubrit@metro.com': 'vegetarian'
+// Email to account type mapping
+const EMAIL_ACCOUNT_MAP = {
+  'liviu@rbc.com': 'Checking',
+  'abbas@rbc.com': 'Savings'
 };
 
 function LoginModal({ isOpen, onClose, onLogin }) {
@@ -22,13 +22,13 @@ function LoginModal({ isOpen, onClose, onLogin }) {
       return;
     }
 
-    // Map email to diet type
-    const dietType = EMAIL_DIET_MAP[email.toLowerCase()] || 'standard';
+    // Map email to account type
+    const accountType = EMAIL_ACCOUNT_MAP[email.toLowerCase()] || 'standard';
 
     // Mock login - always succeeds
     onLogin({
       email: email,
-      dietType: dietType
+      accountType: accountType
     });
 
     // Reset form
@@ -106,8 +106,8 @@ function LoginModal({ isOpen, onClose, onLogin }) {
           </button>
           {showDemoAccounts && (
             <div className="login-demo-info">
-              <p>liviu@metro.com (vegan)</p>
-              <p>hubrit@metro.com (vegetarian)</p>
+              <p>liviu@rbc.com (Checking)</p>
+              <p>abbas@rbc.com (Savings)</p>
               <p>Any other email (standard)</p>
             </div>
           )}
