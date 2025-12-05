@@ -1,5 +1,5 @@
-import creditcardgreen from '../resources/creditcardgreen.png';
-import creditcardgold from '../resources/creditcardgold.png';
+import creditcardgreen from '../resources/more-rewards-rbc-visa.webp';
+import creditcardgold from '../resources/more-rewards-rbc-visa-infinite.webp';
 import './creditcarddetails.css';
 
 export default function CreditCardDetails({ cardLabel }) {
@@ -9,7 +9,7 @@ export default function CreditCardDetails({ cardLabel }) {
         <div>
             <div className='creditcarddetails'>
                 <p className='accountNoLabel' span data-aue-prop="cardLabel" data-aue-type="text">{cardLabel}</p>
-                <p className='accountNo'>SecurBank Rewards</p>
+                <p className='accountNo'>RBC Rewards</p>
             </div>
             <div className='flexrow'>
                 <div className='creditcard'>
