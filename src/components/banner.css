@@ -1,12 +1,18 @@
 /* Banner component styles */
 .banner-container {
   position: relative;
-  margin: 2rem auto 3rem auto;
+  margin: 0 -15px 40px -15px;
   border-radius: 0;
   overflow: hidden;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  max-width: 100%;
+  max-width: none;
+}
+
+@media (max-width: 899px) {
+  .banner-container {
+    margin: 0 0 40px 0;
+  }
 }
 
 .banner-content {
