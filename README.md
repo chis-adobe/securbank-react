@@ -1,6 +1,6 @@
-# RBC Dashboard Demo
+# SecurBank Dashboard Demo
 
-Create React App example for use with AEM Headless. Calls AEM Persisted Query for Article content at the bottom of the page, and will allow authoring of content within the Universal Editor.
+Create React App example for use with AEM Headless. Calls AEM Persisted Query for Article content at the bottom of the page, and will allow authoring of content within the Univerasl Editor.
 
 ## Deploy Your Own
 

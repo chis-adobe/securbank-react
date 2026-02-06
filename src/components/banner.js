@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FetchBanner from '../api/bannerRequest';
 import './banner.css';
 
-function Banner({ accountType = 'standard' }) {
+function Banner({ dietType = 'standard' }) {
   const [banner, setBanner] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -10,28 +10,27 @@ function Banner({ accountType = 'standard' }) {
     const fetchBannerData = async () => {
       try {
         setLoading(true);
-        console.log('Fetching banner data with account type:', accountType);
-        const result = await FetchBanner(accountType);
+        console.log('Fetching banner data with diet type:', dietType);
+        const result = await FetchBanner(dietType);
         console.log('Banner API result:', result);
         
-        if (result && result.data && result.data.offerList && result.data.offerList.items) {
-          const items = result.data.offerList.items;
+        if (result && result.data && result.data.metroBannerList && result.data.metroBannerList.items) {
+          const items = result.data.metroBannerList.items;
           
           if (items.length > 0) {
-            // Get the first offer item
-            const firstOffer = items[0];
+            // Get the first banner item
+            const firstBanner = items[0];
             
             // Add cache buster to image URL
-            const imageUrl = firstOffer.heroImage?._publishUrl || firstOffer.heroImage?._authorUrl || '';
+            const imageUrl = firstBanner.image?._publishUrl || firstBanner.image?._authorUrl || '';
             const cacheBuster = `?ts=${Date.now()}`;
             const imagePathWithCacheBuster = imageUrl ? `${imageUrl}${cacheBuster}` : '';
             
             const bannerData = {
-              headline: firstOffer.headline || 'Offer',
-              pretitle: firstOffer.pretitle || '',
-              description: firstOffer.detail?.plaintext || '',
-              ctaLabel: firstOffer.callToAction || null,
-              conditions: firstOffer.conditions || null,
+              title: firstBanner.title || 'Banner',
+              description: firstBanner.description || '',
+              ctaLabel: firstBanner.ctaLabel || null,
+              ctaPath: firstBanner.ctaPath || null,
               imagePath: imagePathWithCacheBuster
             };
             
@@ -51,7 +50,7 @@ function Banner({ accountType = 'standard' }) {
     };
 
     fetchBannerData();
-  }, [accountType]);
+  }, [dietType]);
 
   if (loading) {
     return (
@@ -78,10 +77,7 @@ function Banner({ accountType = 'standard' }) {
     <div className="banner-container">
       <div className="banner-content">
         <div className="banner-text">
-          {banner.pretitle && (
-            <div className="banner-pretitle">{banner.pretitle}</div>
-          )}
-          <h1 className="banner-title">{banner.headline}</h1>
+          <h1 className="banner-title">{banner.title}</h1>
           {banner.description && (
             <p className="banner-description">{banner.description}</p>
           )}
@@ -92,14 +88,11 @@ function Banner({ accountType = 'standard' }) {
               </button>
             </div>
           )}
-          {banner.conditions && (
-            <p className="banner-conditions">{banner.conditions}</p>
-          )}
         </div>
         <div className="banner-image-container">
           <img 
             src={banner.imagePath} 
-            alt={banner.headline} 
+            alt={banner.title} 
             className="banner-image"
           />
         </div>

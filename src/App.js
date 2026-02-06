@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import logo from './resources/rbc-logo-wide.png';
+import logo from './resources/logo-metro.png';
 import bell from './resources/bell.svg';
 import './App.css';
 import Articles from './components/articles';
@@ -17,6 +17,7 @@ import CreditCards from './components/creditcards';
 import CreditCardDetail from './components/creditcarddetail';
 import Banner from './components/banner';
 import LoginModal from './components/loginmodal';
+import GroceryCarousel from './components/grocerycarousel';
 
 import { Helmet } from 'react-helmet-async';
 
@@ -66,7 +67,7 @@ function App() {
                   <li><a href="#">Cards</a></li>
                 </ul>
               </div>
-              <div class="profile">
+              <div>
                 <img src={bell} className="bell" alt="bell" />
                 {!user ? (
                   <button className='login-button' onClick={() => setIsLoginModalOpen(true)}>
@@ -89,6 +90,8 @@ function App() {
             <Route path="/card-detail" element={<CreditCardDetail />} />
             <Route path="/" element={
               <div className='section' data-aue-resource={itemId} data-aue-type="reference" data-aue-filter="cf">
+                <Banner dietType={user?.dietType || 'standard'} />
+                <GroceryCarousel />
                 <div><a href={content && content.bannerUrl}><img src={content && content.banner._publishUrl} className="banner" alt="banner" data-aue-prop="banner"  data-aue-type="media"  /></a></div>
                 <div className='twocol'>
                   <Accountbalance greeting={content && content.greeting} />
@@ -98,7 +101,6 @@ function App() {
                   <Transactions transactionTitle={content && content.transactionTitle}/>
                   <Expenses expensesTitle={content && content.expensesTitle} />
                 </div>
-                <Banner accountType={user?.accountType || 'standard'} />
                 <div>
                   <FAQ faq={content && content.articles} />
                 </div>

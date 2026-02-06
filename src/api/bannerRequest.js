@@ -1,9 +1,7 @@
-export default async function FetchBanner(accountType = 'standard') {
+export default async function FetchBanner(dietType = 'standard') {
   const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
   const aemauthorurl = process.env.REACT_APP_AEM_AUTHOR;
-  // Drop the first letter for server-side contains check
-  const accountTypeParam = accountType.substring(1);
-  const aemurl = process.env.REACT_APP_OFFERBYTAG_URL + accountTypeParam + `?ts=${Math.random()*1000}`;
+  const aemurl = process.env.REACT_APP_GROCERYBANNER_URL + dietType + `?ts=${Math.random()*1000}`;
   let options = { credentials: "include" };
   let url = aempublishurl + aemurl;
 
