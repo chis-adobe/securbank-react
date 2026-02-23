@@ -14,8 +14,8 @@ function Banner({ dietType = 'standard' }) {
         const result = await FetchBanner(dietType);
         console.log('Banner API result:', result);
         
-        if (result && result.data && result.data.metroBannerList && result.data.metroBannerList.items) {
-          const items = result.data.metroBannerList.items;
+        if (result && result.data && result.data.groceryBannerList && result.data.groceryBannerList.items) {
+          const items = result.data.groceryBannerList.items;
           
           if (items.length > 0) {
             // Get the first banner item
