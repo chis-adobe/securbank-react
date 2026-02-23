@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import FetchGroceryItems from '../api/groceryitemsrequest';
+import iconCanada from '../resources/icon-canada.svg';
 import './grocerycarousel.css';
+
+function formatPrice(dollars, cents) {
+  if (dollars == null && cents == null) return null;
+  const d = Number(dollars) || 0;
+  const c = (cents !== undefined && cents !== null) ? Number(cents) : 0;
+  const centsStr = String(c).padStart(2, '0');
+  return `$${d}.${centsStr}`;
+}
 
 function GroceryCarousel() {
   const [items, setItems] = useState([]);
@@ -94,41 +103,50 @@ function GroceryCarousel() {
         </button>
 
         <div className="grocery-carousel">
-          {visibleItems.map((item, index) => (
-            <div key={currentIndex + index} className="grocery-item">
-              <div className="grocery-item-image-container">
-                <img 
-                  src={item.image?._publishUrl || item.image?._authorUrl || ''} 
-                  alt={item.title} 
-                  className="grocery-item-image"
-                />
-                {item.previousPrice && (
-                  <div className="grocery-item-badge">SALE</div>
-                )}
-              </div>
-              
-              <div className="grocery-item-content">
-                {item.brand && (
-                  <div className="grocery-item-brand">{item.brand}</div>
-                )}
-                <h3 className="grocery-item-title">{item.title}</h3>
-                {item.size && (
-                  <div className="grocery-item-size">{item.size}</div>
-                )}
-                
-                <div className="grocery-item-pricing">
-                  <div className="grocery-item-price">{item.price}</div>
-                  {item.previousPrice && (
-                    <div className="grocery-item-previous-price">{item.previousPrice}</div>
+          {visibleItems.map((item, index) => {
+            const priceDisplay = formatPrice(item.priceDollars, item.priceCents) ?? item.price;
+            const previousPriceDisplay = formatPrice(item.previousPriceDollars, item.previousPriceCents) ?? item.previousPrice;
+            return (
+              <div key={currentIndex + index} className="grocery-item">
+                <div className="grocery-item-image-container">
+                  {item.isCanadianItem && (
+                    <img src={iconCanada} alt="Canada" className="grocery-item-canada-icon" />
+                  )}
+                  <img 
+                    src={item.image?._publishUrl || item.image?._authorUrl || ''} 
+                    alt={item.title} 
+                    className="grocery-item-image"
+                  />
+                  {previousPriceDisplay && (
+                    <div className="grocery-item-badge">SALE</div>
                   )}
                 </div>
                 
-                {item.pricePerQuantity && (
-                  <div className="grocery-item-price-per-quantity">{item.pricePerQuantity}</div>
-                )}
+                <div className="grocery-item-content">
+                  {item.brand && (
+                    <div className="grocery-item-brand">{item.brand}</div>
+                  )}
+                  <h3 className="grocery-item-title">{item.title}</h3>
+                  {item.size && (
+                    <div className="grocery-item-size">{item.size}</div>
+                  )}
+                  
+                  <div className="grocery-item-pricing">
+                    {priceDisplay != null && (
+                      <div className="grocery-item-price">{priceDisplay}</div>
+                    )}
+                    {previousPriceDisplay && (
+                      <div className="grocery-item-previous-price">{previousPriceDisplay}</div>
+                    )}
+                  </div>
+                  
+                  {item.pricePerQuantity && (
+                    <div className="grocery-item-price-per-quantity">{item.pricePerQuantity}</div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <button 

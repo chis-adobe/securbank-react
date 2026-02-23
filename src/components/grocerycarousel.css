@@ -83,6 +83,16 @@
   transform: scale(1.05);
 }
 
+.grocery-item-canada-icon {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 32px;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .grocery-item-badge {
   position: absolute;
   top: 12px;
