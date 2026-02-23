@@ -91,7 +91,7 @@ function App() {
             <Route path="/" element={
               <div className='section' data-aue-resource={itemId} data-aue-type="reference" data-aue-filter="cf">
                 <Banner dietType={user?.dietType || 'standard'} />
-                <GroceryCarousel />
+                <GroceryCarousel dietType={user?.dietType || 'standard'} />
                 <div><a href={content && content.bannerUrl}><img src={content && content.banner._publishUrl} className="banner" alt="banner" data-aue-prop="banner"  data-aue-type="media"  /></a></div>
                 <div className='twocol'>
                   <Accountbalance greeting={content && content.greeting} />

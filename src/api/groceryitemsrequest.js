@@ -1,12 +1,12 @@
-export default async function FetchGroceryItems() {
+export default async function FetchGroceryItems(dietType = 'standard') {
   const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
   const aemauthorurl = process.env.REACT_APP_AEM_AUTHOR;
-  const aemurl = process.env.REACT_APP_GROCERYITEMS_URL + `?ts=${Math.random()*1000}`;
+  const aemurl = process.env.REACT_APP_GROCERYITEMS_URL + dietType + `?ts=${Math.random()*1000}`;
   let options = { credentials: "include" };
   let url = aempublishurl + aemurl;
 
   console.log(url);
-  var location = window.location != window.parent.location ? 
+  var location = window.location !== window.parent.location ? 
          document.referrer :
          document.location.href;
   if(location.includes('aem/editor/canvas') > 0) {

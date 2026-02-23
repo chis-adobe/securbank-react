@@ -11,7 +11,7 @@ function formatPrice(dollars, cents) {
   return `$${d}.${centsStr}`;
 }
 
-function GroceryCarousel() {
+function GroceryCarousel({ dietType = 'standard' }) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,8 +21,8 @@ function GroceryCarousel() {
     const fetchGroceryData = async () => {
       try {
         setLoading(true);
-        console.log('Fetching grocery items');
-        const result = await FetchGroceryItems();
+        console.log('Fetching grocery items with diet type:', dietType);
+        const result = await FetchGroceryItems(dietType);
         console.log('Grocery items API result:', result);
         
         if (result && result.data && result.data.groceryItemList && result.data.groceryItemList.items) {
@@ -41,7 +41,7 @@ function GroceryCarousel() {
     };
 
     fetchGroceryData();
-  }, []);
+  }, [dietType]);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const canGoNext = currentIndex + itemsPerPage < items.length;
