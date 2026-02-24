@@ -12,7 +12,6 @@ import CreditCardDetails from './components/creditcarddetails';
 import Footer from './components/footer';
 import FetchContent from './api/contentrequest';
 import FAQ from './components/faq';
-import Offer from './components/offer';
 import CreditCards from './components/creditcards';
 import CreditCardDetail from './components/creditcarddetail';
 import Banner from './components/banner';
@@ -61,9 +60,9 @@ function App() {
               <div>
                 <ul>
                   <li><strong>Dashboard</strong></li>
-                  <li><a href="#">Saving Account</a></li>
-                  <li><a href="#">Transactions</a></li>
-                  <li><a href="#">Cards</a></li>
+                  <li><a href="/">Saving Account</a></li>
+                  <li><a href="/">Transactions</a></li>
+                  <li><a href="/">Cards</a></li>
                 </ul>
               </div>
               <div class="profile">

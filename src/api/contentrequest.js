@@ -6,7 +6,7 @@ export default async function FetchContent() {
     let options = {credentials: "include"};
     let url = aempublishurl + aemurl;
     
-    var location = window.location != window.parent.location ? 
+    var location = window.location !== window.parent.location ? 
            document.referrer :
            document.location.href;
     if(location.includes('aem/editor/canvas') > 0) {
