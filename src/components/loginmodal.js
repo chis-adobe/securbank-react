@@ -14,6 +14,10 @@ const EMAIL_MAP = {
     values: [
       { key: 'user.unlockedvalue', value: '10892.17' }
     ]
+  },
+  'adeel@rbc.com': {
+    accountType: 'Checking',
+    values: []
   }
 };
 
@@ -131,6 +135,7 @@ function LoginModal({ isOpen, onClose, onLogin }) {
             <div className="login-demo-info">
               <p>liviu@rbc.com (Checking)</p>
               <p>abbas@rbc.com (Savings)</p>
+              <p>adeel@rbc.com (Checking, no unlocked value)</p>
               <p>Any other email (standard)</p>
             </div>
           )}

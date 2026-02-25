@@ -12,12 +12,13 @@ function OffersAndCommunications({ items, user }) {
 
   const isLoggedIn = !!user;
   const valueMap = user?.valueMap || {};
+  const hasUnlockedValue = !!valueMap['user.unlockedvalue'];
 
   return (
     <div className="offers-and-communications">
       {items.map((item, index) =>
         isCommunication(item) ? (
-          isLoggedIn && (
+          isLoggedIn && hasUnlockedValue && (
             <RbcCommunication
               key={index}
               communication={item}
