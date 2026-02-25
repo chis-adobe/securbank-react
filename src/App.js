@@ -16,6 +16,7 @@ import CreditCards from './components/creditcards';
 import CreditCardDetail from './components/creditcarddetail';
 import Banner from './components/banner';
 import LoginModal from './components/loginmodal';
+import OffersAndCommunications from './components/offers-and-communications';
 
 import { Helmet } from 'react-helmet-async';
 
@@ -97,7 +98,7 @@ function App() {
                   <Transactions transactionTitle={content && content.transactionTitle}/>
                   <Expenses expensesTitle={content && content.expensesTitle} />
                 </div>
-                <Banner accountType={user?.accountType || 'standard'} />
+                <OffersAndCommunications items={content && content.offersAndCommunications} user={user} />
                 <div>
                   <FAQ faq={content && content.articles} />
                 </div>
@@ -107,6 +108,7 @@ function App() {
                 <div>
                   <Articles articles={content && content.articles} />
                 </div>
+                <Banner accountType={user?.accountType || 'standard'} />
               </div>
             } />
           </Routes>

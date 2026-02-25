@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
 import './loginmodal.css';
 
-// Email to account type mapping
-const EMAIL_ACCOUNT_MAP = {
-  'liviu@rbc.com': 'Checking',
-  'abbas@rbc.com': 'Savings'
+// Email to user mapping (accountType + value placeholders)
+const EMAIL_MAP = {
+  'liviu@rbc.com': {
+    accountType: 'Checking',
+    values: [
+      { key: 'user.unlockedvalue', value: '7523.45' }
+    ]
+  },
+  'abbas@rbc.com': {
+    accountType: 'Savings',
+    values: [
+      { key: 'user.unlockedvalue', value: '10892.17' }
+    ]
+  }
 };
 
 function LoginModal({ isOpen, onClose, onLogin }) {
@@ -22,13 +32,26 @@ function LoginModal({ isOpen, onClose, onLogin }) {
       return;
     }
 
-    // Map email to account type
-    const accountType = EMAIL_ACCOUNT_MAP[email.toLowerCase()] || 'standard';
+    const emailLower = email.toLowerCase();
+    const userConfig = EMAIL_MAP[emailLower];
+
+    let accountType = 'standard';
+    const valueMap = {};
+
+    if (userConfig) {
+      accountType = userConfig.accountType;
+      for (const { key, value } of userConfig.values) {
+        if (value !== undefined && value !== null) {
+          valueMap[key] = value;
+        }
+      }
+    }
 
     // Mock login - always succeeds
     onLogin({
       email: email,
-      accountType: accountType
+      accountType: accountType,
+      valueMap: valueMap
     });
 
     // Reset form
