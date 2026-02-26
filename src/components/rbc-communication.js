@@ -27,14 +27,14 @@ function RbcCommunication({ communication, valueMap }) {
   return (
     <div className="rbc-communication" {...aueResource}>
       <div className="rbc-communication-box">
-        {top && <div className="rbc-communication-top">{top}</div>}
+        {top && <div className="rbc-communication-top" data-aue-prop="top" data-aue-type="text">{top}</div>}
         {placeholder && (
-          <div className="rbc-communication-placeholder">
+          <div className="rbc-communication-placeholder" data-aue-prop="placeholder" data-aue-type="text">
             {placeholder}
             {hasDisclaimer && <sup>†</sup>}
           </div>
         )}
-        {bottom && <div className="rbc-communication-bottom">{bottom}</div>}
+        {bottom && <div className="rbc-communication-bottom" data-aue-prop="bottom" data-aue-type="text">{bottom}</div>}
       </div>
       {hasDisclaimer && (
         <div className="rbc-communication-disclaimers">
@@ -44,6 +44,8 @@ function RbcCommunication({ communication, valueMap }) {
               <div
                 key={idx}
                 className="rbc-communication-disclaimer"
+                data-aue-prop="disclaimer"
+                data-aue-type="richtext"
                 dangerouslySetInnerHTML={{ __html: html }}
               />
             ))}

@@ -25,24 +25,26 @@ function RbcOffer({ offer }) {
             {descriptionHtml && (
               <div
                 className="rbc-offer-description"
+                data-aue-prop="description"
+                data-aue-type="richtext"
                 dangerouslySetInnerHTML={{ __html: descriptionHtml }}
               />
             )}
             {ctaText && (
               <div className="rbc-offer-cta">
                 {ctaUrl ? (
-                  <a href={ctaUrl} className="rbc-offer-cta-link">
+                  <a href={ctaUrl} className="rbc-offer-cta-link" data-aue-prop="ctaText" data-aue-type="text">
                     {ctaText}
                   </a>
                 ) : (
-                  <span className="rbc-offer-cta-link">{ctaText}</span>
+                  <span className="rbc-offer-cta-link" data-aue-prop="ctaText" data-aue-type="text">{ctaText}</span>
                 )}
               </div>
             )}
           </div>
           {imageUrl && (
             <div className="rbc-offer-image-container">
-              <img src={imageUrl} alt="" className="rbc-offer-image" />
+              <img src={imageUrl} alt="" className="rbc-offer-image" data-aue-prop="image" data-aue-type="media" />
             </div>
           )}
         </div>
@@ -53,6 +55,8 @@ function RbcOffer({ offer }) {
             <div
               key={idx}
               className="rbc-offer-disclaimer"
+              data-aue-prop="disclaimer"
+              data-aue-type="richtext"
               dangerouslySetInnerHTML={{ __html: html }}
             />
           ))}
