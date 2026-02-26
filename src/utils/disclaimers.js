@@ -14,7 +14,7 @@ export function collectDisclaimerItems(disclaimerArray) {
     for (const d of disclaimers) {
       if (d.termDetails && Array.isArray(d.termDetails)) {
         for (const td of d.termDetails) {
-          if (td.html) result.push({ html: td.html, _path: td._path });
+          if (td.html) result.push({ html: td.html, _path: d._path });
         }
       }
       if (d.referencedDisclaimers && d.referencedDisclaimers.length > 0) {
