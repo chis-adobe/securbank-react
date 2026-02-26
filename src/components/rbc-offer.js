@@ -12,8 +12,12 @@ function RbcOffer({ offer }) {
   const ctaUrl = offer.ctaUrl;
   const disclaimerHtmls = collectDisclaimerHtml(offer.disclaimer);
 
+  const aueResource = offer._path
+    ? { 'data-aue-resource': `urn:aemconnection:${offer._path}/jcr:content/data/master`, 'data-aue-type': 'reference', 'data-aue-filter': 'cf' }
+    : {};
+
   return (
-    <div className="rbc-offer">
+    <div className="rbc-offer" {...aueResource}>
       <div className="rbc-offer-card">
         <div className="rbc-offer-content">
           <div className="rbc-offer-body">

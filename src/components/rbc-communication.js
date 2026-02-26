@@ -20,8 +20,12 @@ function RbcCommunication({ communication, valueMap }) {
   const disclaimerHtmls = collectDisclaimerHtml(communication.disclaimer);
   const hasDisclaimer = disclaimerHtmls.length > 0;
 
+  const aueResource = communication._path
+    ? { 'data-aue-resource': `urn:aemconnection:${communication._path}/jcr:content/data/master`, 'data-aue-type': 'reference', 'data-aue-filter': 'cf' }
+    : {};
+
   return (
-    <div className="rbc-communication">
+    <div className="rbc-communication" {...aueResource}>
       <div className="rbc-communication-box">
         {top && <div className="rbc-communication-top">{top}</div>}
         {placeholder && (
