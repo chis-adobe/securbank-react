@@ -1,5 +1,5 @@
 import React from 'react';
-import { collectDisclaimerHtml } from '../utils/disclaimers';
+import { collectDisclaimerItems } from '../utils/disclaimers';
 import logo from '../resources/rbc-logo.png';
 import './rbc-offer.css';
 
@@ -10,7 +10,7 @@ function RbcOffer({ offer }) {
   const imageUrl = offer.image?._publishUrl;
   const ctaText = offer.ctaText;
   const ctaUrl = offer.ctaUrl;
-  const disclaimerHtmls = collectDisclaimerHtml(offer.disclaimer);
+  const disclaimerItems = collectDisclaimerItems(offer.disclaimer);
 
   const aueResource = offer._path
     ? { 'data-aue-resource': `urn:aemconnection:${offer._path}/jcr:content/data/master`, 'data-aue-type': 'reference', 'data-aue-filter': 'cf' }
@@ -49,17 +49,23 @@ function RbcOffer({ offer }) {
           )}
         </div>
       </div>
-      {disclaimerHtmls.length > 0 && (
+      {disclaimerItems.length > 0 && (
         <div className="rbc-offer-disclaimers">
-          {disclaimerHtmls.map((html, idx) => (
-            <div
-              key={idx}
-              className="rbc-offer-disclaimer"
-              data-aue-prop="disclaimer"
-              data-aue-type="richtext"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          ))}
+          {disclaimerItems.map((item, idx) => {
+            const aueResource = item._path
+              ? { 'data-aue-resource': `urn:aemconnection:${item._path}/jcr:content/data/master`, 'data-aue-type': 'reference', 'data-aue-filter': 'cf' }
+              : {};
+            return (
+              <div
+                key={idx}
+                className="rbc-offer-disclaimer"
+                data-aue-prop="disclaimer"
+                data-aue-type="richtext"
+                {...aueResource}
+                dangerouslySetInnerHTML={{ __html: item.html }}
+              />
+            );
+          })}
         </div>
       )}
     </div>

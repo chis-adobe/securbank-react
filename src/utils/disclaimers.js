@@ -1,10 +1,10 @@
 /**
- * Recursively collects all disclaimer HTML content from a disclaimer array.
+ * Recursively collects all disclaimer HTML content and paths from a disclaimer array.
  * Handles nested referencedDisclaimers.
  * @param {Array} disclaimerArray - Array of disclaimer objects
- * @returns {Array} Flat array of HTML strings from termDetails
+ * @returns {Array} Flat array of { html, _path } from termDetails
  */
-export function collectDisclaimerHtml(disclaimerArray) {
+export function collectDisclaimerItems(disclaimerArray) {
   if (!disclaimerArray || !Array.isArray(disclaimerArray)) return [];
 
   const result = [];
@@ -14,7 +14,7 @@ export function collectDisclaimerHtml(disclaimerArray) {
     for (const d of disclaimers) {
       if (d.termDetails && Array.isArray(d.termDetails)) {
         for (const td of d.termDetails) {
-          if (td.html) result.push(td.html);
+          if (td.html) result.push({ html: td.html, _path: td._path });
         }
       }
       if (d.referencedDisclaimers && d.referencedDisclaimers.length > 0) {
@@ -25,4 +25,9 @@ export function collectDisclaimerHtml(disclaimerArray) {
 
   traverse(disclaimerArray);
   return result;
+}
+
+/** @deprecated Use collectDisclaimerItems */
+export function collectDisclaimerHtml(disclaimerArray) {
+  return collectDisclaimerItems(disclaimerArray).map((item) => item.html);
 }

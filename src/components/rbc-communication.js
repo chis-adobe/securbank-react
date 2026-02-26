@@ -1,5 +1,5 @@
 import React from 'react';
-import { collectDisclaimerHtml } from '../utils/disclaimers';
+import { collectDisclaimerItems } from '../utils/disclaimers';
 import './rbc-communication.css';
 
 function replacePlaceholders(text, valueMap) {
@@ -17,8 +17,8 @@ function RbcCommunication({ communication, valueMap }) {
   const top = replacePlaceholders(communication.top, valueMap);
   const placeholder = replacePlaceholders(communication.placeholder, valueMap);
   const bottom = replacePlaceholders(communication.bottom, valueMap);
-  const disclaimerHtmls = collectDisclaimerHtml(communication.disclaimer);
-  const hasDisclaimer = disclaimerHtmls.length > 0;
+  const disclaimerItems = collectDisclaimerItems(communication.disclaimer);
+  const hasDisclaimer = disclaimerItems.length > 0;
 
   const aueResource = communication._path
     ? { 'data-aue-resource': `urn:aemconnection:${communication._path}/jcr:content/data/master`, 'data-aue-type': 'reference', 'data-aue-filter': 'cf' }
@@ -40,15 +40,21 @@ function RbcCommunication({ communication, valueMap }) {
         <div className="rbc-communication-disclaimers">
           <sup className="rbc-communication-disclaimer-dagger">†</sup>
           <div className="rbc-communication-disclaimers-content">
-            {disclaimerHtmls.map((html, idx) => (
-              <div
-                key={idx}
-                className="rbc-communication-disclaimer"
-                data-aue-prop="disclaimer"
-                data-aue-type="richtext"
-                dangerouslySetInnerHTML={{ __html: html }}
-              />
-            ))}
+            {disclaimerItems.map((item, idx) => {
+              const aueResource = item._path
+                ? { 'data-aue-resource': `urn:aemconnection:${item._path}/jcr:content/data/master`, 'data-aue-type': 'reference', 'data-aue-filter': 'cf' }
+                : {};
+              return (
+                <div
+                  key={idx}
+                  className="rbc-communication-disclaimer"
+                  data-aue-prop="disclaimer"
+                  data-aue-type="richtext"
+                  {...aueResource}
+                  dangerouslySetInnerHTML={{ __html: item.html }}
+                />
+              );
+            })}
           </div>
         </div>
       )}
