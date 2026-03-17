@@ -139,9 +139,9 @@ function LoginModal({ isOpen, onClose, onLogin }) {
           </button>
           {showDemoAccounts && (
             <div className="login-demo-info">
-              <p>asmith@frescopa.coffee (max-rate)</p>
-              <p>jdupont@frescopa.coffee (premium)</p>
-              <p>kparker@frescopa.coffee (cds)</p>
+              <p>asmith@frescopa.coffee</p>
+              <p>jdupont@frescopa.coffee</p>
+              <p>kparker@frescopa.coffee</p>
               <p>Any other email (standard)</p>
             </div>
           )}

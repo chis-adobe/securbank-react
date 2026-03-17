@@ -5,7 +5,7 @@ export default async function FetchAccountOffer(tag) {
   const aemauthorurl = process.env.REACT_APP_AEM_AUTHOR;
   const endpoint =
     process.env.REACT_APP_ACCOUNTOFFER_BYTAG ||
-    '/graphql/execute.json/securbank/AccountOfferByTag;tag=';
+    '/graphql/execute.json/securbank/accountOfferByTag;tag=';
   const aemurl = `${endpoint}${tag}?ts=${Math.random() * 1000}`;
 
   let options = { credentials: 'include' };
