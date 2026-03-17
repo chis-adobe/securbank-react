@@ -132,11 +132,24 @@
   }
 
   .account-offer-content {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .account-offer-title {
+    grid-column: 1;
+    grid-row: 1;
   }
 
   .account-offer-image-container {
+    grid-column: 1;
+    grid-row: 2;
     min-height: 200px;
+  }
+
+  .account-offer-body {
+    grid-column: 1;
+    grid-row: 3;
   }
 
   .account-offer-image {
