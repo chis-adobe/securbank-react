@@ -37,24 +37,31 @@
 }
 
 .account-offer-title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: #2C2C2C;
+  color: #212121;
   margin: 0 0 0.5rem 0;
 }
 
 .account-offer-tagline {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #006ac3;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #212121;
   margin-bottom: 1rem;
 }
 
 .account-offer-details {
   font-size: 1rem;
+  font-weight: 400;
   line-height: 1.6;
-  color: #2C2C2C;
+  color: #525252;
   margin-bottom: 1rem;
+}
+
+.account-offer-details,
+.account-offer-details li,
+.account-offer-details span {
+  color: #525252 !important;
 }
 
 .account-offer-details ul {
@@ -71,15 +78,21 @@
 }
 
 .account-offer-cta-link {
+  display: inline-block;
   font-size: 1rem;
   font-weight: 600;
-  color: #006ac3;
-  text-decoration: underline;
+  color: #ffffff;
+  background-color: #5D33B1;
+  text-decoration: none;
+  padding: 0.625rem 1.5rem;
+  border-radius: 5px;
   cursor: pointer;
+  border: none;
 }
 
-.account-offer-cta-link:hover {
-  text-decoration-thickness: 2px;
+a.account-offer-cta-link:hover {
+  background-color: #4a2990;
+  color: #ffffff;
 }
 
 .account-offer-image-container {
@@ -145,6 +158,7 @@
     grid-column: 1;
     grid-row: 2;
     min-height: 200px;
+    overflow: hidden;
   }
 
   .account-offer-body {
@@ -155,5 +169,7 @@
   .account-offer-image {
     height: auto;
     width: 100%;
+    transform: scaleY(1.25);
+    transform-origin: top center;
   }
 }
