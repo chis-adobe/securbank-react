@@ -152,6 +152,7 @@ a.account-offer-cta-link:hover {
   .account-offer-title {
     grid-column: 1;
     grid-row: 1;
+    text-align: center;
   }
 
   .account-offer-image-container {
