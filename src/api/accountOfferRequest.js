@@ -1,12 +1,12 @@
-export default async function FetchAccountOffer(path) {
-  if (!path) return null;
+export default async function FetchAccountOffer(tag) {
+  if (!tag) return null;
 
   const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
   const aemauthorurl = process.env.REACT_APP_AEM_AUTHOR;
   const endpoint =
-    process.env.REACT_APP_ACCOUNTOFFER_BYPATH ||
-    '/graphql/execute.json/securbank/AccountOfferByPath;path=';
-  const aemurl = `${endpoint}${path}?ts=${Math.random() * 1000}`;
+    process.env.REACT_APP_ACCOUNTOFFER_BYTAG ||
+    '/graphql/execute.json/securbank/AccountOfferByTag;tag=';
+  const aemurl = `${endpoint}${tag}?ts=${Math.random() * 1000}`;
 
   let options = { credentials: 'include' };
   let url = aempublishurl + aemurl;

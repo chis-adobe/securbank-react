@@ -97,8 +97,8 @@ function App() {
                   <Transactions transactionTitle={content && content.transactionTitle}/>
                   <Expenses expensesTitle={content && content.expensesTitle} />
                 </div>
-                {user?.accountOfferPath && (
-                  <AccountOffer accountOfferPath={user.accountOfferPath} />
+                {user?.accountTag && (
+                  <AccountOffer accountTag={user.accountTag} />
                 )}
                 <div>
                   <FAQ faq={content && content.articles} />

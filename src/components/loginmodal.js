@@ -1,30 +1,25 @@
 import React, { useState } from 'react';
 import './loginmodal.css';
 
-// Email to user mapping (accountType + value placeholders)
+// Email to user mapping (accountType + accountTag + value placeholders)
 const EMAIL_MAP = {
-  'liviu@morganstanley.com': {
+  'asmith@frescopa.coffee': {
     accountType: 'Checking',
-    accountOfferPath: '/content/dam/securbank/en/accounts/fragments/premium-savings-account',
+    accountTag: 'max-rate',
     values: [
       { key: 'user.unlockedvalue', value: '7523.45' }
     ]
   },
-  'kyun@morganstanley.com': {
+  'jdupont@frescopa.coffee': {
     accountType: 'Savings',
-    accountOfferPath: '/content/dam/securbank/en/accounts/fragments/certificates-of-deposit',
+    accountTag: 'premium',
     values: [
       { key: 'user.unlockedvalue', value: '10892.17' }
     ]
   },
-  'maureen@morganstanley.com': {
+  'kparker@frescopa.coffee': {
     accountType: 'Checking',
-    accountOfferPath: '/content/dam/securbank/en/accounts/fragments/certificates-of-deposit',
-    values: []
-  },
-  'susie@morganstanley.com': {
-    accountType: 'Savings',
-    accountOfferPath: '/content/dam/securbank/en/accounts/fragments/premium-savings-account',
+    accountTag: 'cds',
     values: []
   }
 };
@@ -48,12 +43,12 @@ function LoginModal({ isOpen, onClose, onLogin }) {
     const userConfig = EMAIL_MAP[emailLower];
 
     let accountType = 'standard';
-    let accountOfferPath = null;
+    let accountTag = null;
     const valueMap = {};
 
     if (userConfig) {
       accountType = userConfig.accountType;
-      accountOfferPath = userConfig.accountOfferPath || null;
+      accountTag = userConfig.accountTag || null;
       for (const { key, value } of userConfig.values) {
         if (value !== undefined && value !== null) {
           valueMap[key] = value;
@@ -65,7 +60,7 @@ function LoginModal({ isOpen, onClose, onLogin }) {
     onLogin({
       email: email,
       accountType: accountType,
-      accountOfferPath: accountOfferPath,
+      accountTag: accountTag,
       valueMap: valueMap
     });
 
@@ -144,10 +139,9 @@ function LoginModal({ isOpen, onClose, onLogin }) {
           </button>
           {showDemoAccounts && (
             <div className="login-demo-info">
-              <p>liviu@morganstanley.com (Checking)</p>
-              <p>kyun@morganstanley.com (Savings)</p>
-              <p>maureen@morganstanley.com (Checking, no account offer)</p>
-              <p>susie@morganstanley.com (Savings, premium savings)</p>
+              <p>asmith@frescopa.coffee (max-rate)</p>
+              <p>jdupont@frescopa.coffee (premium)</p>
+              <p>kparker@frescopa.coffee (cds)</p>
               <p>Any other email (standard)</p>
             </div>
           )}

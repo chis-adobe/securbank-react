@@ -39,22 +39,23 @@ function useWindowWidth() {
   return width;
 }
 
-function AccountOffer({ accountOfferPath }) {
+function AccountOffer({ accountTag }) {
   const [offer, setOffer] = useState(null);
   const [loading, setLoading] = useState(true);
   const screenWidth = useWindowWidth();
 
   useEffect(() => {
     const fetchOffer = async () => {
-      if (!accountOfferPath) {
+      if (!accountTag) {
         setLoading(false);
         return;
       }
       try {
         setLoading(true);
-        const result = await FetchAccountOffer(accountOfferPath);
-        if (result?.data?.accountOfferByPath?.item) {
-          setOffer(result.data.accountOfferByPath.item);
+        const result = await FetchAccountOffer(accountTag);
+        const items = result?.data?.accountOfferList?.items;
+        if (items && items.length > 0) {
+          setOffer(items[0]);
         } else {
           setOffer(null);
         }
@@ -67,14 +68,14 @@ function AccountOffer({ accountOfferPath }) {
     };
 
     fetchOffer();
-  }, [accountOfferPath]);
+  }, [accountTag]);
 
   const bannerUrl = useMemo(
     () => (offer?.banner ? getBannerUrl(offer.banner, screenWidth) : null),
     [offer?.banner, screenWidth]
   );
 
-  if (!accountOfferPath || loading) {
+  if (!accountTag || loading) {
     if (loading) {
       return (
         <div className="account-offer-loading">
