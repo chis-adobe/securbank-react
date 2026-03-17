@@ -12,15 +12,28 @@
 }
 
 .account-offer-content {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
   gap: 2rem;
-  align-items: stretch;
+  align-items: start;
+}
+
+.account-offer-title {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .account-offer-body {
-  flex: 1;
+  grid-column: 1;
+  grid-row: 2;
   min-width: 0;
+}
+
+.account-offer-image-container {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-self: stretch;
 }
 
 .account-offer-title {
@@ -70,7 +83,8 @@
 }
 
 .account-offer-image-container {
-  flex-shrink: 0;
+  flex: 1 1 50%;
+  min-width: 0;
   display: flex;
   align-items: stretch;
 }

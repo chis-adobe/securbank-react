@@ -92,12 +92,23 @@ function AccountOffer({ accountTag }) {
     <div className="account-offer">
       <div className="account-offer-card">
         <div className="account-offer-content">
+          {offer.title && (
+            <h3 className="account-offer-title" data-aue-prop="title" data-aue-type="text">
+              {offer.title}
+            </h3>
+          )}
+          {bannerUrl && (
+            <div className="account-offer-image-container">
+              <img
+                src={bannerUrl}
+                alt={offer.title || ''}
+                className="account-offer-image"
+                data-aue-prop="banner"
+                data-aue-type="media"
+              />
+            </div>
+          )}
           <div className="account-offer-body">
-            {offer.title && (
-              <h3 className="account-offer-title" data-aue-prop="title" data-aue-type="text">
-                {offer.title}
-              </h3>
-            )}
             {offer.offer && (
               <div className="account-offer-tagline" data-aue-prop="offer" data-aue-type="text">
                 {offer.offer}
@@ -134,17 +145,6 @@ function AccountOffer({ accountTag }) {
               </div>
             )}
           </div>
-          {bannerUrl && (
-            <div className="account-offer-image-container">
-              <img
-                src={bannerUrl}
-                alt={offer.title || ''}
-                className="account-offer-image"
-                data-aue-prop="banner"
-                data-aue-type="media"
-              />
-            </div>
-          )}
         </div>
       </div>
     </div>
