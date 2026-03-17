@@ -1,11 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import FetchAccountOffer from '../api/accountOfferRequest';
-import logo from '../resources/SecurBank_Logo_Main.svg';
 import './account-offer.css';
+
+function getSmartCropForWidth(smartCrops, width) {
+  if (!smartCrops || smartCrops.length === 0) return null;
+  const sorted = [...smartCrops].sort((a, b) => a.width - b.width);
+  const best = sorted.find((c) => c.width >= width);
+  return (best || sorted[sorted.length - 1]).name;
+}
+
+function getBannerUrl(banner, screenWidth) {
+  if (!banner) return null;
+  const dmS7Url = banner._dmS7Url;
+  const smartCrops = banner._smartCrops;
+  if (!dmS7Url) {
+    const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
+    const dynamicUrl = banner._dynamicUrl;
+    return dynamicUrl ? `${aempublishurl}${dynamicUrl}` : null;
+  }
+  const cacheBuster = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+  const separator = dmS7Url.includes('?') ? '&' : '?';
+  if (!smartCrops || smartCrops.length === 0) {
+    return `${dmS7Url}${separator}d=${cacheBuster}`;
+  }
+  const cropName = getSmartCropForWidth(smartCrops, screenWidth);
+  return `${dmS7Url}:${cropName}${separator}d=${cacheBuster}`;
+}
+
+function useWindowWidth() {
+  const [width, setWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 1024
+  );
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return width;
+}
 
 function AccountOffer({ accountOfferPath }) {
   const [offer, setOffer] = useState(null);
   const [loading, setLoading] = useState(true);
+  const screenWidth = useWindowWidth();
 
   useEffect(() => {
     const fetchOffer = async () => {
@@ -32,6 +69,11 @@ function AccountOffer({ accountOfferPath }) {
     fetchOffer();
   }, [accountOfferPath]);
 
+  const bannerUrl = useMemo(
+    () => (offer?.banner ? getBannerUrl(offer.banner, screenWidth) : null),
+    [offer?.banner, screenWidth]
+  );
+
   if (!accountOfferPath || loading) {
     if (loading) {
       return (
@@ -45,17 +87,11 @@ function AccountOffer({ accountOfferPath }) {
 
   if (!offer) return null;
 
-  const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
-  const bannerUrl = offer.banner?._dynamicUrl
-    ? `${aempublishurl}${offer.banner._dynamicUrl}`
-    : null;
-
   return (
     <div className="account-offer">
       <div className="account-offer-card">
         <div className="account-offer-content">
           <div className="account-offer-body">
-            <img src={logo} alt="SecurBank" className="account-offer-logo" />
             {offer.title && (
               <h3 className="account-offer-title" data-aue-prop="title" data-aue-type="text">
                 {offer.title}

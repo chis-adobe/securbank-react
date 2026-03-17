@@ -13,6 +13,7 @@
 
 .account-offer-content {
   display: flex;
+  flex-direction: row;
   gap: 2rem;
   align-items: flex-start;
 }
@@ -20,12 +21,6 @@
 .account-offer-body {
   flex: 1;
   min-width: 0;
-}
-
-.account-offer-logo {
-  height: 80px;
-  width: auto;
-  margin-bottom: 1rem;
 }
 
 .account-offer-title {
@@ -115,7 +110,7 @@
   100% { transform: rotate(360deg); }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .account-offer-card {
     padding: 1.5rem;
   }
@@ -125,7 +120,7 @@
   }
 
   .account-offer-image {
-    max-width: 120px;
-    max-height: 120px;
+    max-width: 100%;
+    max-height: 300px;
   }
 }

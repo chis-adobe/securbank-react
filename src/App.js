@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import logo from './resources/SecurBank_Logo_Main.svg';
+import logo from './resources/etrade-from-morgan-stanley-logo-light-theme.svg';
 import bell from './resources/bell.svg';
 import './App.css';
 import Articles from './components/articles';
@@ -57,7 +57,7 @@ function App() {
           </div>
           <div className='header-nav'>
             <div>
-              <img src={logo} className="logo" alt="logo" />
+              <img src={logo} className="logo" alt="E*TRADE" />
               <div>
                 <ul>
                   <li><strong>Dashboard</strong></li>
