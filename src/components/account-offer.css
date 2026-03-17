@@ -81,7 +81,7 @@
   display: inline-block;
   font-size: 1rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #ffffff !important;
   background-color: #5D33B1;
   text-decoration: none;
   padding: 0.625rem 1.5rem;
