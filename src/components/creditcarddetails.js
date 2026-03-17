@@ -1,5 +1,4 @@
-import creditcardgreen from '../resources/more-rewards-rbc-visa.webp';
-import creditcardgold from '../resources/more-rewards-rbc-visa-infinite.webp';
+import accountIcon from '../resources/finance_icon.svg';
 import './creditcarddetails.css';
 
 export default function CreditCardDetails({ cardLabel }) {
@@ -9,22 +8,22 @@ export default function CreditCardDetails({ cardLabel }) {
         <div>
             <div className='creditcarddetails'>
                 <p className='accountNoLabel' span data-aue-prop="cardLabel" data-aue-type="text">{cardLabel}</p>
-                <p className='accountNo'>RBC Rewards</p>
+                <p className='accountNo'>Primary Account</p>
             </div>
             <div className='flexrow'>
                 <div className='creditcard'>
-                    <img src={creditcardgreen} className="creditcardimage" alt="Credit Card" />
+                    <img src={accountIcon} className="creditcardimage" alt="Account" />
                 </div>
                 <div className='creditcardactions'>
                     <ul>
-                        <li><a href="/">Block card</a></li>
-                        <li><a href="/">Pay off the card</a></li>
-                        <li><a href="/">Card settings</a></li>
+                        <li><a href="/">Transfer funds</a></li>
+                        <li><a href="/">Make a payment</a></li>
+                        <li><a href="/">Account settings</a></li>
                     </ul>
                  </div>
                 <div className='creditcardoffer'>
-                    <img src={creditcardgold} className="creditcardimage" alt="Credit Card" />
-                    <p><a href="/">Apply for a new card</a></p>
+                    <img src={accountIcon} className="creditcardimage" alt="Account" />
+                    <p><a href="/">Open a new account</a></p>
                 </div>
             </div>
         </div>

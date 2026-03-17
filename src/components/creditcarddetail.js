@@ -37,12 +37,12 @@ function CreditCardDetail() {
     }
 
     if (!cardDetail) {
-        return <div className="creditCardDetailError">Credit card not found</div>;
+        return <div className="creditCardDetailError">Account not found</div>;
     }
 
     return (
         <div className='creditCardDetailSection'>
-            <button className='backButton' onClick={() => navigate(-1)}>← Back to Cards</button>
+            <button className='backButton' onClick={() => navigate(-1)}>← Back to Accounts</button>
             
             <div className='creditCardDetailHeader'>
                 {cardDetail.creditCardImage && cardDetail.creditCardImage._dynamicUrl && (

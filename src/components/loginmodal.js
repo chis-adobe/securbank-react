@@ -3,21 +3,21 @@ import './loginmodal.css';
 
 // Email to user mapping (accountType + value placeholders)
 const EMAIL_MAP = {
-  'liviu@rbc.com': {
+  'liviu@securbank.com': {
     accountType: 'Checking',
     accountOfferPath: '/content/dam/securbank/en/accounts/fragments/premium-savings-account',
     values: [
       { key: 'user.unlockedvalue', value: '7523.45' }
     ]
   },
-  'abbas@rbc.com': {
+  'abbas@securbank.com': {
     accountType: 'Savings',
     accountOfferPath: '/content/dam/securbank/en/accounts/fragments/certificates-of-deposit',
     values: [
       { key: 'user.unlockedvalue', value: '10892.17' }
     ]
   },
-  'adeel@rbc.com': {
+  'adeel@securbank.com': {
     accountType: 'Checking',
     accountOfferPath: '/content/dam/securbank/en/accounts/fragments/certificates-of-deposit',
     values: []
@@ -139,9 +139,9 @@ function LoginModal({ isOpen, onClose, onLogin }) {
           </button>
           {showDemoAccounts && (
             <div className="login-demo-info">
-              <p>liviu@rbc.com (Checking)</p>
-              <p>abbas@rbc.com (Savings)</p>
-              <p>adeel@rbc.com (Checking, no unlocked value)</p>
+              <p>liviu@securbank.com (Checking)</p>
+              <p>abbas@securbank.com (Savings)</p>
+              <p>adeel@securbank.com (Checking, no account offer)</p>
               <p>Any other email (standard)</p>
             </div>
           )}

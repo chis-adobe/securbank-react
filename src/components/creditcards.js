@@ -33,7 +33,7 @@ function CreditCards() {
 
     return (
         <div className='creditCardsSection'>
-            <h4 className='sectionHeading'>Our Credit Cards</h4>
+            <h4 className='sectionHeading'>Our Accounts</h4>
             <ul className="creditCardList">
                 {creditCards && creditCards.map((card, index) => (
                     <li 

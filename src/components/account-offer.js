@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FetchAccountOffer from '../api/accountOfferRequest';
-import logo from '../resources/rbc-logo.png';
+import logo from '../resources/SecurBank_Logo_Main.svg';
 import './account-offer.css';
 
 function AccountOffer({ accountOfferPath }) {
@@ -55,7 +55,7 @@ function AccountOffer({ accountOfferPath }) {
       <div className="account-offer-card">
         <div className="account-offer-content">
           <div className="account-offer-body">
-            <img src={logo} alt="RBC" className="account-offer-logo" />
+            <img src={logo} alt="SecurBank" className="account-offer-logo" />
             {offer.title && (
               <h3 className="account-offer-title" data-aue-prop="title" data-aue-type="text">
                 {offer.title}
