@@ -1,0 +1,131 @@
+.account-offer {
+  margin-bottom: 1.5rem;
+}
+
+.account-offer-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.account-offer-content {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.account-offer-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.account-offer-logo {
+  height: 80px;
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+.account-offer-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2C2C2C;
+  margin: 0 0 0.5rem 0;
+}
+
+.account-offer-tagline {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #006ac3;
+  margin-bottom: 1rem;
+}
+
+.account-offer-details {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #2C2C2C;
+  margin-bottom: 1rem;
+}
+
+.account-offer-details ul {
+  margin: 0 0 0.5rem 0;
+  padding-left: 1.25rem;
+}
+
+.account-offer-details li {
+  margin-bottom: 0.5rem;
+}
+
+.account-offer-cta {
+  margin-top: 1rem;
+}
+
+.account-offer-cta-link {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #006ac3;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.account-offer-cta-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.account-offer-image-container {
+  flex-shrink: 0;
+}
+
+.account-offer-image {
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.account-offer-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+  padding: 2rem;
+}
+
+.account-offer-loading .loading-spinner {
+  font-size: 1rem;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.account-offer-loading .loading-spinner::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e5e7eb;
+  border-top: 2px solid #006ac3;
+  border-radius: 50%;
+  animation: account-offer-spin 1s linear infinite;
+}
+
+@keyframes account-offer-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .account-offer-card {
+    padding: 1.5rem;
+  }
+
+  .account-offer-content {
+    flex-direction: column;
+  }
+
+  .account-offer-image {
+    max-width: 120px;
+    max-height: 120px;
+  }
+}

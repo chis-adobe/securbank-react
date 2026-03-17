@@ -5,18 +5,21 @@ import './loginmodal.css';
 const EMAIL_MAP = {
   'liviu@rbc.com': {
     accountType: 'Checking',
+    accountOfferPath: '/content/dam/securbank/en/accounts/fragments/premium-savings-account',
     values: [
       { key: 'user.unlockedvalue', value: '7523.45' }
     ]
   },
   'abbas@rbc.com': {
     accountType: 'Savings',
+    accountOfferPath: '/content/dam/securbank/en/accounts/fragments/certificates-of-deposit',
     values: [
       { key: 'user.unlockedvalue', value: '10892.17' }
     ]
   },
   'adeel@rbc.com': {
     accountType: 'Checking',
+    accountOfferPath: '/content/dam/securbank/en/accounts/fragments/certificates-of-deposit',
     values: []
   }
 };
@@ -40,10 +43,12 @@ function LoginModal({ isOpen, onClose, onLogin }) {
     const userConfig = EMAIL_MAP[emailLower];
 
     let accountType = 'standard';
+    let accountOfferPath = null;
     const valueMap = {};
 
     if (userConfig) {
       accountType = userConfig.accountType;
+      accountOfferPath = userConfig.accountOfferPath || null;
       for (const { key, value } of userConfig.values) {
         if (value !== undefined && value !== null) {
           valueMap[key] = value;
@@ -55,6 +60,7 @@ function LoginModal({ isOpen, onClose, onLogin }) {
     onLogin({
       email: email,
       accountType: accountType,
+      accountOfferPath: accountOfferPath,
       valueMap: valueMap
     });
 

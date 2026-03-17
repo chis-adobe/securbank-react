@@ -17,6 +17,7 @@ import CreditCardDetail from './components/creditcarddetail';
 import Banner from './components/banner';
 import LoginModal from './components/loginmodal';
 import OffersAndCommunications from './components/offers-and-communications';
+import AccountOffer from './components/account-offer';
 
 import { Helmet } from 'react-helmet-async';
 
@@ -99,6 +100,9 @@ function App() {
                   <Expenses expensesTitle={content && content.expensesTitle} />
                 </div>
                 <OffersAndCommunications items={content && content.offersAndCommunications} user={user} />
+                {user?.accountOfferPath && (
+                  <AccountOffer accountOfferPath={user.accountOfferPath} />
+                )}
                 <div>
                   <FAQ faq={content && content.articles} />
                 </div>
