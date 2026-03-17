@@ -158,7 +158,6 @@ a.account-offer-cta-link:hover {
     grid-column: 1;
     grid-row: 2;
     min-height: 200px;
-    overflow: hidden;
   }
 
   .account-offer-body {
@@ -169,7 +168,5 @@ a.account-offer-cta-link:hover {
   .account-offer-image {
     height: auto;
     width: 100%;
-    transform: scaleY(1.25);
-    transform-origin: top center;
   }
 }
