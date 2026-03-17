@@ -14,7 +14,6 @@ import FetchContent from './api/contentrequest';
 import FAQ from './components/faq';
 import CreditCards from './components/creditcards';
 import CreditCardDetail from './components/creditcarddetail';
-import Banner from './components/banner';
 import LoginModal from './components/loginmodal';
 import AccountOffer from './components/account-offer';
 
@@ -110,7 +109,6 @@ function App() {
                 <div>
                   <Articles articles={content && content.articles} />
                 </div>
-                <Banner accountType={user?.accountType || 'standard'} />
               </div>
             } />
           </Routes>

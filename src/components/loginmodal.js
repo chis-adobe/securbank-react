@@ -3,23 +3,28 @@ import './loginmodal.css';
 
 // Email to user mapping (accountType + value placeholders)
 const EMAIL_MAP = {
-  'liviu@securbank.com': {
+  'liviu@morganstanley.com': {
     accountType: 'Checking',
     accountOfferPath: '/content/dam/securbank/en/accounts/fragments/premium-savings-account',
     values: [
       { key: 'user.unlockedvalue', value: '7523.45' }
     ]
   },
-  'abbas@securbank.com': {
+  'kyun@morganstanley.com': {
     accountType: 'Savings',
     accountOfferPath: '/content/dam/securbank/en/accounts/fragments/certificates-of-deposit',
     values: [
       { key: 'user.unlockedvalue', value: '10892.17' }
     ]
   },
-  'adeel@securbank.com': {
+  'maureen@morganstanley.com': {
     accountType: 'Checking',
     accountOfferPath: '/content/dam/securbank/en/accounts/fragments/certificates-of-deposit',
+    values: []
+  },
+  'susie@morganstanley.com': {
+    accountType: 'Savings',
+    accountOfferPath: '/content/dam/securbank/en/accounts/fragments/premium-savings-account',
     values: []
   }
 };
@@ -139,9 +144,10 @@ function LoginModal({ isOpen, onClose, onLogin }) {
           </button>
           {showDemoAccounts && (
             <div className="login-demo-info">
-              <p>liviu@securbank.com (Checking)</p>
-              <p>abbas@securbank.com (Savings)</p>
-              <p>adeel@securbank.com (Checking, no account offer)</p>
+              <p>liviu@morganstanley.com (Checking)</p>
+              <p>kyun@morganstanley.com (Savings)</p>
+              <p>maureen@morganstanley.com (Checking, no account offer)</p>
+              <p>susie@morganstanley.com (Savings, premium savings)</p>
               <p>Any other email (standard)</p>
             </div>
           )}
