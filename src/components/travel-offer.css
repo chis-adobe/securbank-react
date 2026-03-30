@@ -1,0 +1,130 @@
+.travel-offer-section {
+  margin: 2rem 0;
+  padding: 0 12px;
+}
+
+.travel-offer-section-heading {
+  font-size: 1.5rem;
+  margin: 0 0 1.25rem;
+  color: #2c2c2c;
+}
+
+.travel-offer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.travel-offer-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .travel-offer-card {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .travel-offer-image-wrap {
+    flex: 0 0 42%;
+    max-width: 480px;
+  }
+
+  .travel-offer-body {
+    flex: 1;
+    padding: 1.5rem;
+  }
+}
+
+.travel-offer-image-wrap {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.travel-offer-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.travel-offer-body {
+  padding: 1.25rem;
+}
+
+.travel-offer-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.35rem;
+  color: #003366;
+}
+
+.travel-offer-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #2c2c2c;
+  margin-bottom: 1rem;
+}
+
+.travel-offer-description p {
+  margin: 0 0 0.5rem;
+}
+
+.travel-offer-promo {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  margin: 0 0 1rem;
+}
+
+.travel-offer-cta-wrap {
+  margin-bottom: 1rem;
+}
+
+.travel-offer-cta {
+  display: inline-block;
+  background: #c8102e;
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 0.65rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+a.travel-offer-cta:hover {
+  background: #a00d25;
+  color: #ffffff !important;
+}
+
+.travel-offer-disclaimer {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: #555;
+}
+
+.travel-offer-disclaimer-sep {
+  color: #888;
+}
+
+.travel-offer-terms-html {
+  display: inline;
+}
+
+.travel-offer-terms-html p {
+  display: inline;
+  margin: 0;
+}
+
+.travel-offer-loading,
+.travel-offer-empty {
+  padding: 1rem;
+  color: #666;
+}

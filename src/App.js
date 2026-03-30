@@ -13,9 +13,13 @@ import Footer from './components/footer';
 import FetchContent from './api/contentrequest';
 import FAQ from './components/faq';
 import Offers from './components/offers';
+import LoginModal from './components/loginmodal';
+import TravelOffer from './components/travel-offer';
 
 function App() {
   const [content, setContent] = useState(null);
+  const [user, setUser] = useState(null);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -25,6 +29,15 @@ function App() {
 
     fetchContent();
   }, []);
+
+  const handleLogin = (userData) => {
+    setUser(userData);
+    setIsLoginModalOpen(false);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+  };
 
   const itemId =  "urn:aemconnection:/content/dam/securbank/en/dashboard/account-dashboard/jcr:content/data/master";
             
@@ -49,8 +62,23 @@ function App() {
             </div>
             <div>
               <img src={bell} className="bell" alt="bell" />
-              <img src={avatar} className="avatar" alt="avatar" />
-              <div className='authFriendly'>Mark Szulc</div>
+              {!user ? (
+                <button
+                  type="button"
+                  className="login-nav-button"
+                  onClick={() => setIsLoginModalOpen(true)}
+                >
+                  Login
+                </button>
+              ) : (
+                <>
+                  <img src={avatar} className="avatar" alt="avatar" />
+                  <div className="authFriendly">{user.email}</div>
+                  <button type="button" className="logout-nav-button" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </>
+              )}
             </div>
           </div>
       </div>
@@ -67,6 +95,7 @@ function App() {
             <Transactions transactionTitle={content && content.transactionTitle}/>
             <Expenses expensesTitle={content && content.expensesTitle} />
           </div>
+          {user?.destination && <TravelOffer destination={user.destination} />}
           <div>
             <FAQ faq={content && content.articles} />
           </div>
@@ -80,6 +109,12 @@ function App() {
       </main>
 
       <footer><Footer /></footer>
+
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+        onLogin={handleLogin}
+      />
     </div>
   );
 }
