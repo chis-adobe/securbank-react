@@ -1,5 +1,4 @@
 import creditcardgreen from '../resources/delta-card.png';
-import creditcardgold from '../resources/creditcardgold.png';
 import './creditcarddetails.css';
 
 export default function CreditCardDetails({ cardLabel }) {

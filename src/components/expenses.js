@@ -13,15 +13,12 @@ import {
     GridComponent,
     TooltipComponent,
     TitleComponent,
-    DatasetComponent,
 } from 'echarts/components';
 // Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
 import {
     CanvasRenderer,
 // SVGRenderer,
 } from 'echarts/renderers';
-
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 
 // Register the required components
 echarts.use(
@@ -111,6 +108,8 @@ export default function Expenses({expensesTitle}) {
                     trigger: 'item',
                     responsive: true,
                     position: 'top',
+                    // ECharts replaces ${c} at runtime; not a JS template literal
+                    // eslint-disable-next-line no-template-curly-in-string -- ECharts formatter placeholder
                     formatter: '${c}',
                     backgroundColor: '#2C2C2C',
                     borderColor: '#2C2C2C',
