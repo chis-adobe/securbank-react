@@ -56,7 +56,7 @@ body.appear {
 }
 
 header {
-  height: calc(var(--nav-height) + 40px);
+  height: auto;
 }
 
 h1, h2, h3,
