@@ -50,7 +50,7 @@ function App() {
             <p><strong>Alert!</strong> Scams are growing ever more complex and sophisticated. Learn more about protecting yourself from scams</p>
         </div>
         <div className='header-nav'>
-          <div>
+          <div className="header-nav-inner">
             <img src={logo} className="logo" alt="logo" />
             <div>
               <ul>
@@ -60,8 +60,10 @@ function App() {
                 <li><button type="button" className="header-nav-link">Cards</button></li>
               </ul>
             </div>
-            <div>
-              <img src={bell} className="bell" alt="bell" />
+            <div className="header-toolbar">
+              <button type="button" className="header-toolbar-icon-btn" aria-label="Notifications">
+                <img src={bell} alt="" />
+              </button>
               {!user ? (
                 <button
                   type="button"
@@ -72,7 +74,7 @@ function App() {
                 </button>
               ) : (
                 <>
-                  <img src={avatar} className="avatar" alt="avatar" />
+                  <img src={avatar} className="header-toolbar-avatar" alt="" />
                   <div className="authFriendly">{user.email}</div>
                   <button type="button" className="logout-nav-button" onClick={handleLogout}>
                     Logout
