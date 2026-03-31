@@ -55,9 +55,9 @@ function App() {
             <div>
               <ul>
                 <li><strong>Dashboard</strong></li>
-                <li><a href="#">Saving Account</a></li>
-                <li><a href="#">Transactions</a></li>
-                <li><a href="#">Cards</a></li>
+                <li><button type="button" className="header-nav-link">Saving Account</button></li>
+                <li><button type="button" className="header-nav-link">Transactions</button></li>
+                <li><button type="button" className="header-nav-link">Cards</button></li>
               </ul>
             </div>
             <div>
