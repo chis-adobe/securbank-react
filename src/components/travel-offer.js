@@ -113,7 +113,7 @@ function TravelOfferCard({ offer, screenWidth }) {
   );
 }
 
-function TravelOffer({ destination }) {
+function TravelOffer({ destination, demographic }) {
   const [items, setItems] = useState(null);
   const [loading, setLoading] = useState(true);
   const screenWidth = useWindowWidth();
@@ -126,13 +126,13 @@ function TravelOffer({ destination }) {
         return;
       }
       setLoading(true);
-      const result = await FetchTravelOffers(destination);
+      const result = await FetchTravelOffers(destination, demographic);
       const list = result?.data?.travelOfferList?.items;
       setItems(Array.isArray(list) ? list : []);
       setLoading(false);
     };
     load();
-  }, [destination]);
+  }, [destination, demographic]);
 
   if (!destination) return null;
 

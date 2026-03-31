@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './loginmodal.css';
 
 const EMAIL_MAP = {
-  'asmith@frescopa.coffee': { destination: 'north-america' },
-  'jdupont@frescopa.coffee': { destination: 'europe' },
-  'kparker@frescopa.coffee': { destination: 'europe' }
+  'asmith@frescopa.coffee': { destination: 'north-america', demographic: 'student' },
+  'jdupont@frescopa.coffee': { destination: 'europe', demographic: 'family' },
+  'kparker@frescopa.coffee': { destination: 'europe', demographic: 'senior' }
 };
 
 function LoginModal({ isOpen, onClose, onLogin }) {
@@ -31,7 +31,8 @@ function LoginModal({ isOpen, onClose, onLogin }) {
 
     onLogin({
       email: email,
-      destination: userConfig.destination
+      destination: userConfig.destination,
+      demographic: userConfig.demographic
     });
 
     setEmail('');

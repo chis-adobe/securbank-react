@@ -95,7 +95,9 @@ function App() {
             <Transactions transactionTitle={content && content.transactionTitle}/>
             <Expenses expensesTitle={content && content.expensesTitle} />
           </div>
-          {user?.destination && <TravelOffer destination={user.destination} />}
+          {user?.destination && (
+            <TravelOffer destination={user.destination} demographic={user.demographic} />
+          )}
           <div>
             <FAQ faq={content && content.articles} />
           </div>

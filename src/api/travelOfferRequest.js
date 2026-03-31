@@ -1,4 +1,4 @@
-export default async function FetchTravelOffers(destinationTag) {
+export default async function FetchTravelOffers(destinationTag, demographic) {
   if (!destinationTag) return null;
 
   const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
@@ -6,7 +6,11 @@ export default async function FetchTravelOffers(destinationTag) {
   const endpoint =
     process.env.REACT_APP_TRAVEL_OFFER_QUERY_URL ||
     '/graphql/execute.json/securbank/travelOfferListByTag;tag=';
-  const aemurl = `${endpoint}${encodeURIComponent(destinationTag)}?ts=${Math.random() * 1000}`;
+  let pathAfterTag = `${endpoint}${encodeURIComponent(destinationTag)}`;
+  if (demographic) {
+    pathAfterTag += `;variation=${encodeURIComponent(`genai_${demographic}`)}`;
+  }
+  const aemurl = `${pathAfterTag}?ts=${Math.random() * 1000}`;
 
   let options = { credentials: 'include' };
   let url = aempublishurl + aemurl;
