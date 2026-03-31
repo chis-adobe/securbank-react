@@ -1,6 +1,7 @@
 .travel-offer-section {
   margin: 2rem 0;
-  padding: 0 12px;
+  /* horizontal padding comes from .section > div (index.css) at 900px+ */
+  padding: 0;
 }
 
 .travel-offer-section-heading {

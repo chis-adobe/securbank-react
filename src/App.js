@@ -98,7 +98,9 @@ function App() {
             <Expenses expensesTitle={content && content.expensesTitle} />
           </div>
           {user?.destination && (
-            <TravelOffer destination={user.destination} demographic={user.demographic} />
+            <div>
+              <TravelOffer destination={user.destination} demographic={user.demographic} />
+            </div>
           )}
           <div>
             <FAQ faq={content && content.articles} />
