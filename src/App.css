@@ -235,6 +235,17 @@ header {
   color: #000;
 }
 
+.header-nav-link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .logo {
   height: 37px;
 }

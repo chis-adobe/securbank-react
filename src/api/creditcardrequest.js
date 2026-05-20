@@ -7,7 +7,7 @@ export default async function FetchCreditCards() {
     let url = aempublishurl + aemurl;
 
     console.log('Fetching credit cards from:', url);
-    var location = window.location != window.parent.location ? 
+    var location = window.location !== window.parent.location ? 
            document.referrer :
            document.location.href;
     if(location.includes('aem/editor/canvas') > 0) {
