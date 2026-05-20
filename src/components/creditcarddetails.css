@@ -26,6 +26,29 @@
     color: #0296A6;
 }
 
+.creditcard-action-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: left;
+}
+
+.creditcardactions li .creditcard-action-link {
+    color: #0296A6;
+}
+
+.creditcardoffer .creditcard-action-link {
+    color: #0296A6;
+}
+
+.creditcard-action-link--inline {
+    text-align: inherit;
+}
+
 .creditcardoffer {
     border: 1px solid #E5E5E5;
     text-align: center;

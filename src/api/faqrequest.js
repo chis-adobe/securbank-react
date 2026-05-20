@@ -7,7 +7,7 @@ export default async function FetchFAQ() {
     let url = aempublishurl + aemurl;
 
     console.log(url);
-    var location = window.location != window.parent.location ? 
+    var location = window.location !== window.parent.location ? 
            document.referrer :
            document.location.href;
     if(location.includes('aem/editor/canvas') > 0) {

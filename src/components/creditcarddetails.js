@@ -17,14 +17,14 @@ export default function CreditCardDetails({ cardLabel }) {
                 </div>
                 <div className='creditcardactions'>
                     <ul>
-                        <li><a href="#">Block card</a></li>
-                        <li><a href="#">Pay off the card</a></li>
-                        <li><a href="#">Card settings</a></li>
+                        <li><button type="button" className="creditcard-action-link">Block card</button></li>
+                        <li><button type="button" className="creditcard-action-link">Pay off the card</button></li>
+                        <li><button type="button" className="creditcard-action-link">Card settings</button></li>
                     </ul>
                  </div>
                 <div className='creditcardoffer'>
                     <img src={creditcardgold} className="creditcardimage" alt="Credit Card" />
-                    <p><a href="#">Apply for a new card</a></p>
+                    <p><button type="button" className="creditcard-action-link creditcard-action-link--inline">Apply for a new card</button></p>
                 </div>
             </div>
         </div>
