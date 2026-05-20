@@ -13,6 +13,7 @@ import CreditCardDetails from './components/creditcarddetails';
 import Footer from './components/footer';
 import FetchContent from './api/contentrequest';
 import FAQ from './components/faq';
+import Offer from './components/offer';
 import CreditCards from './components/creditcards';
 import CreditCardDetail from './components/creditcarddetail';
 
@@ -77,6 +78,9 @@ function App() {
                 </div>
                 <div>
                   <FAQ faq={content && content.articles} />
+                </div>
+                <div>
+                  <Offer />
                 </div>
                 <div>
                   <CreditCards />
