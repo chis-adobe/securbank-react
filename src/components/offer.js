@@ -56,33 +56,40 @@ function Offer() {
   }
 
   return (
-    <div className="offer-container">
+    <div
+      className="offer-container"
+      data-aue-resource={"urn:aemconnection:" + offer._path + "/jcr:content/data/master"}
+      data-aue-type="reference"
+      data-aue-filter="cf"
+    >
       <div className="offer-content">
         {offer.pretitle && (
-          <div className="offer-pretitle">{offer.pretitle}</div>
+          <div className="offer-pretitle" data-aue-prop="pretitle" data-aue-type="text">{offer.pretitle}</div>
         )}
         
         {offer.headline && (
-          <h2 className="offer-headline">{offer.headline}</h2>
+          <h2 className="offer-headline" data-aue-prop="headline" data-aue-type="text">{offer.headline}</h2>
         )}
         
         {offer.detail && offer.detail.plaintext && (
-          <div className="offer-detail">{offer.detail.plaintext}</div>
+          <div className="offer-detail" data-aue-prop="detail" data-aue-type="richtext">{offer.detail.plaintext}</div>
         )}
         
         {offer.heroImage && offer.heroImage._publishUrl && (
           <div className="offer-image-container">
-            <img 
-              src={offer.heroImage._publishUrl} 
-              alt={offer.headline || 'Offer image'} 
+            <img
+              src={offer.heroImage._publishUrl}
+              alt={offer.headline || 'Offer image'}
               className="offer-image"
+              data-aue-prop="heroImage"
+              data-aue-type="media"
             />
           </div>
         )}
         
         {offer.callToAction && (
           <div className="offer-cta">
-            <button className="offer-cta-button">
+            <button className="offer-cta-button" data-aue-prop="callToAction" data-aue-type="text">
               {offer.callToAction}
             </button>
           </div>
