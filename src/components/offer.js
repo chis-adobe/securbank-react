@@ -3,26 +3,32 @@ import { useSearchParams } from 'react-router-dom';
 import FetchOffer from '../api/offerRequest';
 import './offer.css';
 
-function Offer() {
+function getOfferItem(result) {
+  return result?.data?.offerByTag?.item ?? result?.data?.offerByPath?.item ?? null;
+}
+
+function Offer({ audienceTag }) {
   const [searchParams] = useSearchParams();
-  const offerId = searchParams.get('offerId') || '998';
   const variation = searchParams.get('variation') || 'main';
   const [offer, setOffer] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (!audienceTag) {
+      setOffer(null);
+      setLoading(false);
+      return;
+    }
+
     const fetchOfferData = async () => {
       try {
         setLoading(true);
-        console.log('Fetching offer with ID:', offerId, 'variation:', variation, 'from query params');
-        const result = await FetchOffer(offerId, variation);
-        console.log('Offer API result:', result);
-        
-        if (result && result.data && result.data.offerByPath && result.data.offerByPath.item) {
-          console.log('Setting offer data:', result.data.offerByPath.item);
-          setOffer(result.data.offerByPath.item);
-        } else {
-          console.log('No offer data found in result');
+        setOffer(null);
+        const result = await FetchOffer(audienceTag, variation);
+
+        const item = getOfferItem(result);
+        if (item) {
+          setOffer(item);
         }
       } catch (error) {
         console.error('Error fetching offer:', error);
@@ -32,7 +38,11 @@ function Offer() {
     };
 
     fetchOfferData();
-  }, [offerId, variation]);
+  }, [audienceTag, variation]);
+
+  if (!audienceTag) {
+    return null;
+  }
 
   if (loading) {
     return (
@@ -48,7 +58,7 @@ function Offer() {
         <div className="offer-content">
           <div className="offer-error">
             <h3>No offer data available</h3>
-            <p>Unable to load offer information. Please check the console for details.</p>
+            <p>Unable to load an offer for audience &ldquo;{audienceTag}&rdquo;.</p>
           </div>
         </div>
       </div>
@@ -66,15 +76,15 @@ function Offer() {
         {offer.pretitle && (
           <div className="offer-pretitle" data-aue-prop="pretitle" data-aue-type="text">{offer.pretitle}</div>
         )}
-        
+
         {offer.headline && (
           <h2 className="offer-headline" data-aue-prop="headline" data-aue-type="text">{offer.headline}</h2>
         )}
-        
+
         {offer.detail && offer.detail.plaintext && (
           <div className="offer-detail" data-aue-prop="detail" data-aue-type="richtext">{offer.detail.plaintext}</div>
         )}
-        
+
         {offer.heroImage && offer.heroImage._publishUrl && (
           <div className="offer-image-container">
             <img
@@ -86,7 +96,7 @@ function Offer() {
             />
           </div>
         )}
-        
+
         {offer.callToAction && (
           <div className="offer-cta">
             <button className="offer-cta-button" data-aue-prop="callToAction" data-aue-type="text">
@@ -94,14 +104,14 @@ function Offer() {
             </button>
           </div>
         )}
-        
+
         {offer._variations && offer._variations.length > 0 && (
           <div className="offer-variations">
             <div className="offer-variations-label">Available for:</div>
             <div className="offer-variations-list">
-              {offer._variations.map((variation, index) => (
+              {offer._variations.map((offerVariation, index) => (
                 <span key={index} className="offer-variation-tag">
-                  {variation.replace(/_/g, ' ')}
+                  {offerVariation.replace(/_/g, ' ')}
                 </span>
               ))}
             </div>

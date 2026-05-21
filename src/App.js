@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import logo from './resources/SecurBank_Logo_Main.svg';
 import bell from './resources/bell.svg';
-import avatar from './resources/avatar.png';
 import './App.css';
+import LoginModal from './components/loginModal';
+import { authenticateUser } from './constants/authUsers';
 import Articles from './components/articles';
 import Accountbalance from './components/accountbalance';
 import Transactions from './components/transactions';
@@ -21,6 +22,25 @@ import { Helmet } from 'react-helmet-async';
 
 function App() {
   const [content, setContent] = useState(null);
+  const [user, setUser] = useState(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [loginError, setLoginError] = useState(null);
+
+  const handleLogin = (email) => {
+    const authenticated = authenticateUser(email);
+    if (!authenticated) {
+      setLoginError('Invalid email. Use liviu@securbank.com or mark@securbank.com.');
+      return;
+    }
+    setUser(authenticated);
+    setLoginError(null);
+    setShowLoginModal(false);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    setLoginError(null);
+  };
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -54,14 +74,41 @@ function App() {
                   <li><button type="button" className="header-nav-link">Cards</button></li>
                 </ul>
               </div>
-              <div>
+              <div className="login-info">
                 <img src={bell} className="bell" alt="bell" />
-                <img src={avatar} className="avatar" alt="avatar" />
-                <div className='authFriendly'>Mark Szulc</div>
+                {user ? (
+                  <div className="login-info-user">
+                    <span className="login-info-email">{user.displayName}</span>
+                    <button type="button" className="login-button login-button-secondary" onClick={handleLogout}>
+                      Log out
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    className="login-button"
+                    onClick={() => {
+                      setLoginError(null);
+                      setShowLoginModal(true);
+                    }}
+                  >
+                    Log in
+                  </button>
+                )}
               </div>
             </div>
           </div>
         </header>
+        {showLoginModal && (
+          <LoginModal
+            error={loginError}
+            onClose={() => {
+              setShowLoginModal(false);
+              setLoginError(null);
+            }}
+            onLogin={handleLogin}
+          />
+        )}
         <main>
           <Routes>
             <Route path="/card-detail" element={<CreditCardDetail />} />
@@ -80,7 +127,7 @@ function App() {
                   <FAQ faq={content && content.articles} />
                 </div>
                 <div>
-                  <Offer />
+                  <Offer audienceTag={user?.tag} />
                 </div>
                 <div>
                   <CreditCards />
