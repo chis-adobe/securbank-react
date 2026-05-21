@@ -4,7 +4,11 @@ import FetchOffer from '../api/offerRequest';
 import './offer.css';
 
 function getOfferItem(result) {
-  return result?.data?.offerByTag?.item ?? result?.data?.offerByPath?.item ?? null;
+  const items = result?.data?.offerList?.items;
+  if (items?.length > 0) {
+    return items[0];
+  }
+  return null;
 }
 
 function Offer({ audienceTag }) {
@@ -65,13 +69,16 @@ function Offer({ audienceTag }) {
     );
   }
 
+  const aueProps = offer._path
+    ? {
+        'data-aue-resource': `urn:aemconnection:${offer._path}/jcr:content/data/master`,
+        'data-aue-type': 'reference',
+        'data-aue-filter': 'cf',
+      }
+    : {};
+
   return (
-    <div
-      className="offer-container"
-      data-aue-resource={"urn:aemconnection:" + offer._path + "/jcr:content/data/master"}
-      data-aue-type="reference"
-      data-aue-filter="cf"
-    >
+    <div className="offer-container" {...aueProps}>
       <div className="offer-content">
         {offer.pretitle && (
           <div className="offer-pretitle" data-aue-prop="pretitle" data-aue-type="text">{offer.pretitle}</div>
