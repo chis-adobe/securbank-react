@@ -65,16 +65,17 @@ function App() {
               <p><strong>Alert!</strong> Scams are growing ever more complex and sophisticated. Learn more about protecting yourself from scams</p>
           </div>
           <div className='header-nav'>
-            <div>
-              <img src={logo} className="logo" alt="logo" />
-              <div>
+            <div className='header-nav-row'>
+              <img src={logo} className="logo" alt="CIBC Mellon" />
+              <nav className='header-nav-links'>
                 <ul>
-                  <li><strong>Dashboard</strong></li>
-                  <li><button type="button" className="header-nav-link">Saving Account</button></li>
-                  <li><button type="button" className="header-nav-link">Transactions</button></li>
-                  <li><button type="button" className="header-nav-link">Cards</button></li>
+                  <li><a href="https://cibc-mellon--cibc-mellon--chis-adobe.aem.page/en/">Home</a></li>
+                  <li><a href="https://cibc-mellon--cibc-mellon--chis-adobe.aem.page/creditcards">Credit Cards</a></li>
+                  <li><a href="https://cibc-mellon--cibc-mellon--chis-adobe.aem.page/insurance">Insurance</a></li>
+                  <li><a href="https://cibc-mellon--cibc-mellon--chis-adobe.aem.page/accounts">Accounts</a></li>
+                  <li><a href="https://cibc-mellon--cibc-mellon--chis-adobe.aem.page/loans">Loans</a></li>
                 </ul>
-              </div>
+              </nav>
               <div className="login-info">
                 <img src={bell} className="bell" alt="bell" />
                 {user ? (
