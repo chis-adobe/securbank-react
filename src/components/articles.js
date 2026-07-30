@@ -2,6 +2,7 @@ import './articles.css';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FetchArticle from '../api/articlerequest';
+import FetchArticleListByTag from '../api/articlelistbytagrequest';
 
 const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
 
@@ -29,31 +30,47 @@ function firstSentence(text) {
   return idx === -1 ? text : text.slice(0, idx + 1);
 }
 
-function Articles({ articles }) {
+function Articles({ articles, tag }) {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const paths = (articles || []).map(toPath).filter(Boolean);
-    if (!paths.length) {
+    const dashPaths = (articles || []).map(toPath).filter(Boolean);
+
+    let active = true;
+    const load = async () => {
+      let resolved;
+      if (tag) {
+        // Personalized: first card is the top article for the user's tag, the
+        // next two are the first two articles from the dashboard.
+        const [taggedList, second, third] = await Promise.all([
+          FetchArticleListByTag(tag),
+          dashPaths[0] ? FetchArticle(dashPaths[0]) : null,
+          dashPaths[1] ? FetchArticle(dashPaths[1]) : null,
+        ]);
+        const first = taggedList && taggedList[0] ? taggedList[0] : null;
+        resolved = [first, second, third];
+      } else {
+        // Default: render the dashboard articles as-is.
+        resolved = await Promise.all(dashPaths.map((path) => FetchArticle(path)));
+      }
+
+      if (active) {
+        setItems(resolved.filter(Boolean).map((item, i) => ({
+          ...item,
+          _path: item._path || dashPaths[i] || '',
+        })));
+      }
+    };
+
+    if (!dashPaths.length && !tag) {
       setItems([]);
       return undefined;
     }
 
-    let active = true;
-    const load = async () => {
-      const resolved = await Promise.all(
-        paths.map(async (path) => {
-          const item = await FetchArticle(path);
-          return item ? { ...item, _path: item._path || path } : null;
-        }),
-      );
-      if (active) setItems(resolved.filter(Boolean));
-    };
-
     load();
     return () => { active = false; };
-  }, [articles]);
+  }, [articles, tag]);
 
   const openArticle = (path) => {
     navigate(`/article?path=${encodeURIComponent(path)}`);
@@ -61,22 +78,26 @@ function Articles({ articles }) {
 
   return (
     <ul className="articleList">
-      {items.map((article) => (
+      {items.map((article, index) => (
         <li
-          key={article._path}
+          key={`${article._path}-${index}`}
           className="articleCard"
           onClick={() => openArticle(article._path)}
           data-aue-resource={`urn:aemconnection:${article._path}/jcr:content/data/master`}
           data-aue-type="reference"
           data-aue-filter="cf"
         >
-          <img
-            data-aue-prop="heroImage"
-            data-aue-type="media"
-            className="articleImage"
-            alt="decorative"
-            src={imageSrc(article.heroImage)}
-          />
+          {imageSrc(article.heroImage) ? (
+            <img
+              data-aue-prop="heroImage"
+              data-aue-type="media"
+              className="articleImage"
+              alt="decorative"
+              src={imageSrc(article.heroImage)}
+            />
+          ) : (
+            <div className="articleImage articleImagePlaceholder" data-aue-prop="heroImage" data-aue-type="media" />
+          )}
           <h5 data-aue-prop="headline" data-aue-type="text" className="articleHeading">{article.headline}</h5>
           <div data-aue-prop="main" data-aue-type="richtext" className="articleDescription">{firstSentence(article.main?.plaintext)}</div>
         </li>

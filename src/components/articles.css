@@ -39,6 +39,10 @@
     object-fit: cover;
 }
 
+.articleImagePlaceholder {
+    background: linear-gradient(135deg, #123a47 0%, #0079c1 100%);
+}
+
 .articleHeading {
     text-align: left;
     font: normal normal 600 18px/22px adobe-clean;

@@ -30,7 +30,7 @@ function App() {
   const handleLogin = (email) => {
     const authenticated = authenticateUser(email);
     if (!authenticated) {
-      setLoginError('Invalid email. Use liviu@cibcmellon.com or mark@cibcmellon.com.');
+      setLoginError('Invalid email. Use liviuchisdemo@gmail.com or liviuadobedemo@gmail.com.');
       return;
     }
     setUser(authenticated);
@@ -136,7 +136,7 @@ function App() {
                   <CreditCards />
                 </div>
                 <div>
-                  <Articles articles={content && content.articles} />
+                  <Articles articles={content && content.articles} tag={user?.tag} />
                 </div>
               </div>
             } />
