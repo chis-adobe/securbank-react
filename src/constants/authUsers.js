@@ -1,6 +1,6 @@
 export const MOCK_USERS = {
-  'liviu@securbank.com': { tag: 'mortgage', displayName: 'Liviu' },
-  'mark@securbank.com': { tag: 'premium', displayName: 'Mark' },
+  'liviu@cibcmellon.com': { tag: 'mortgage', displayName: 'Liviu' },
+  'mark@cibcmellon.com': { tag: 'premium', displayName: 'Mark' },
 };
 
 export function authenticateUser(email) {

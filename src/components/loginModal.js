@@ -31,7 +31,7 @@ function LoginModal({ onClose, onLogin, error }) {
             name="email"
             type="email"
             className="login-modal-input"
-            placeholder="you@securbank.com"
+            placeholder="you@cibcmellon.com"
             list="login-email-options"
             autoComplete="username"
             required

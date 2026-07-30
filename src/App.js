@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import logo from './resources/SecurBank_Logo_Main.svg';
+import logo from './resources/CIBCMellon_Logo_Main.svg';
 import bell from './resources/bell.svg';
 import './App.css';
 import LoginModal from './components/loginModal';
@@ -29,7 +29,7 @@ function App() {
   const handleLogin = (email) => {
     const authenticated = authenticateUser(email);
     if (!authenticated) {
-      setLoginError('Invalid email. Use liviu@securbank.com or mark@securbank.com.');
+      setLoginError('Invalid email. Use liviu@cibcmellon.com or mark@cibcmellon.com.');
       return;
     }
     setUser(authenticated);
@@ -51,7 +51,7 @@ function App() {
     fetchContent();
   }, []);
 
-  const itemId =  "urn:aemconnection:/content/dam/securbank/en/dashboard/account-dashboard/jcr:content/data/master";
+  const itemId =  "urn:aemconnection:/content/dam/cibc-mellon/en/dashboard/account-dashboard/jcr:content/data/master";
 
   return (
     <Router>
