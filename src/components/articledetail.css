@@ -1,0 +1,87 @@
+.articleDetail {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+    color: #2C2C2C;
+    text-align: left;
+}
+
+.articleDetailLoading,
+.articleDetailError {
+    max-width: 860px;
+    margin: 60px auto;
+    text-align: center;
+    font: normal normal normal 18px/24px adobe-clean;
+    color: #2C2C2C;
+}
+
+.articleDetailBack {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-bottom: 20px;
+    font: normal normal 600 16px/20px adobe-clean;
+    color: var(--brand-color);
+    cursor: pointer;
+}
+
+.articleDetailBack:hover {
+    text-decoration: underline;
+}
+
+.articleDetailHero {
+    margin: 0 0 24px;
+    width: 100%;
+}
+
+.articleDetailHero img {
+    width: 100%;
+    height: auto;
+    max-height: 460px;
+    object-fit: cover;
+    display: block;
+}
+
+.articleDetailHeadline {
+    text-align: left;
+    font: normal normal 700 36px/42px adobe-clean;
+    letter-spacing: 0;
+    color: #2C2C2C;
+    margin: 0 0 16px;
+}
+
+.articleDetailAuthor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.articleDetailAuthorPic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.articleDetailAuthorMeta {
+    display: flex;
+    flex-direction: column;
+}
+
+.articleDetailAuthorName {
+    font: normal normal 600 16px/20px adobe-clean;
+    color: #2C2C2C;
+}
+
+.articleDetailAuthorRole {
+    font: normal normal normal 14px/18px adobe-clean;
+    color: #818A96;
+}
+
+.articleDetailBody p {
+    font: normal normal normal 18px/28px adobe-clean;
+    letter-spacing: 0;
+    color: #2C2C2C;
+    margin: 0 0 18px;
+}

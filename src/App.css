@@ -168,6 +168,10 @@ header {
   }
 }
 
+.App-header {
+  background: var(--background-color-dark);
+}
+
 .header-alerts {
   display: none;
   @media (min-width: 900px) {
@@ -232,7 +236,7 @@ header {
 }
 
 .header-nav li strong{
-  color: #000;
+  color: #fff;
 }
 
 .header-nav-link {
@@ -247,7 +251,10 @@ header {
 }
 
 .logo {
-  height: 37px;
+  height: 48px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .twocol {
@@ -273,7 +280,7 @@ header {
 
 .login-info-email {
   font: normal normal 18px/24px adobe-clean, sans-serif;
-  color: #2c2c2c;
+  color: #fff;
 }
 
 .login-button {

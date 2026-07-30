@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import logo from './resources/CIBCMellon_Logo_Main.svg';
+import logo from './resources/CIBCMellon_Logo_Main.png';
 import bell from './resources/bell.svg';
 import './App.css';
 import LoginModal from './components/loginModal';
@@ -17,6 +17,7 @@ import FAQ from './components/faq';
 import Offer from './components/offer';
 import CreditCards from './components/creditcards';
 import CreditCardDetail from './components/creditcarddetail';
+import ArticleDetail from './components/articledetail';
 
 import { Helmet } from 'react-helmet-async';
 
@@ -112,6 +113,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/card-detail" element={<CreditCardDetail />} />
+            <Route path="/article" element={<ArticleDetail />} />
             <Route path="/" element={
               <div className='section' data-aue-resource={itemId} data-aue-type="reference" data-aue-filter="cf">
                 <div><a href={content && content.bannerUrl}><img src={content && content.banner._publishUrl} className="banner" alt="banner" data-aue-prop="banner"  data-aue-type="media"  /></a></div>

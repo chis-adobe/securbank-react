@@ -12,8 +12,19 @@
     text-decoration: none;
     max-width: 400px;
     font-size: 18px;
+}
 
-    
+.articleCard {
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.articleCard:hover {
+    transform: translateY(-4px);
+}
+
+.articleCard:hover .articleHeading {
+    text-decoration: underline;
 }
 
 @media only screen and (min-width: 1400px)  {

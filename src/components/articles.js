@@ -1,5 +1,6 @@
 import './articles.css';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FetchArticle from '../api/articlerequest';
 
 const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
@@ -20,14 +21,23 @@ function imageSrc(heroImage) {
   return heroImage._publishUrl || '';
 }
 
+// Keep the card teaser to the first sentence; the full copy lives on the
+// article detail page.
+function firstSentence(text) {
+  if (!text) return '';
+  const idx = text.indexOf('.');
+  return idx === -1 ? text : text.slice(0, idx + 1);
+}
+
 function Articles({ articles }) {
   const [items, setItems] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const paths = (articles || []).map(toPath).filter(Boolean);
     if (!paths.length) {
       setItems([]);
-      return;
+      return undefined;
     }
 
     let active = true;
@@ -45,11 +55,17 @@ function Articles({ articles }) {
     return () => { active = false; };
   }, [articles]);
 
+  const openArticle = (path) => {
+    navigate(`/article?path=${encodeURIComponent(path)}`);
+  };
+
   return (
     <ul className="articleList">
       {items.map((article) => (
         <li
           key={article._path}
+          className="articleCard"
+          onClick={() => openArticle(article._path)}
           data-aue-resource={`urn:aemconnection:${article._path}/jcr:content/data/master`}
           data-aue-type="reference"
           data-aue-filter="cf"
@@ -62,7 +78,7 @@ function Articles({ articles }) {
             src={imageSrc(article.heroImage)}
           />
           <h5 data-aue-prop="headline" data-aue-type="text" className="articleHeading">{article.headline}</h5>
-          <div data-aue-prop="main" data-aue-type="richtext" className="articleDescription">{article.main?.plaintext}</div>
+          <div data-aue-prop="main" data-aue-type="richtext" className="articleDescription">{firstSentence(article.main?.plaintext)}</div>
         </li>
       ))}
     </ul>
