@@ -1,24 +1,105 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import FetchOffer from '../api/offerRequest';
 import './offer.css';
 
+/* eslint-disable no-underscore-dangle */
+
+const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
+
+// `OfferByPath` returns a single item under data.offerByPath.item.
 function getOfferItem(result) {
-  const items = result?.data?.offerList?.items;
-  if (items?.length > 0) {
-    return items[0];
-  }
-  return null;
+  return result?.data?.offerByPath?.item || null;
 }
 
-function Offer({ audienceTag }) {
+// Fallback delivery URL when no Dynamic Media smart crops are available.
+function resolveImage(img) {
+  if (!img) return '';
+  if (img._dynamicUrl) return `${aempublishurl}${img._dynamicUrl}`;
+  return img._publishUrl || '';
+}
+
+// Append a cache buster so an edited/replaced image shows immediately on reload.
+// The token is generated once per load (passed in), so re-evaluating the crop on
+// resize keeps the same URL and never triggers a reload/flicker.
+function withCacheBust(url, token) {
+  if (!url) return url;
+  const sep = url.includes('?') ? '&' : '?';
+  return `${url}${sep}ts=${token}`;
+}
+
+// Responsive banner hero. When the CF image exposes Dynamic Media smart crops
+// (_dmS7Url + _smartCrops), pick the smallest crop that still covers the banner
+// width and append its name to the Scene7 URL (`s7url:CropName`), re-evaluating
+// on resize. Native srcset/sizes only ever upgrades to a larger candidate and
+// never reverts to a smaller crop when the screen narrows, so we drive it in JS.
+// Mirrors the article hero behaviour.
+function OfferHero({ heroImage, alt }) {
+  const figureRef = useRef(null);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const figure = figureRef.current;
+    const img = imgRef.current;
+    if (!figure || !img || !heroImage) return undefined;
+
+    // One cache buster per load, shared across resize re-evaluations.
+    const bust = Date.now();
+
+    const s7 = heroImage._dmS7Url;
+    const crops = Array.isArray(heroImage._smartCrops)
+      ? heroImage._smartCrops
+        .filter((c) => c && c.name && c.width)
+        .sort((a, b) => a.width - b.width)
+      : [];
+
+    if (s7 && crops.length) {
+      const applyCrop = () => {
+        const width = figure.clientWidth || window.innerWidth || 0;
+        const crop = crops.find((c) => c.width >= width) || crops[crops.length - 1];
+        const next = withCacheBust(`${s7}:${crop.name}`, bust);
+        if (img.getAttribute('src') !== next) img.setAttribute('src', next);
+      };
+      applyCrop();
+      window.addEventListener('resize', applyCrop);
+      let ro;
+      if (typeof ResizeObserver !== 'undefined') {
+        ro = new ResizeObserver(applyCrop);
+        ro.observe(figure);
+      }
+      return () => {
+        window.removeEventListener('resize', applyCrop);
+        if (ro) ro.disconnect();
+      };
+    }
+
+    const src = resolveImage(heroImage);
+    if (src) img.setAttribute('src', withCacheBust(src, bust));
+    return undefined;
+  }, [heroImage]);
+
+  if (!heroImage) return null;
+  return (
+    <div className="offer-image-container" ref={figureRef}>
+      <img
+        ref={imgRef}
+        className="offer-image"
+        alt={alt || 'Offer image'}
+        data-aue-prop="heroImage"
+        data-aue-type="media"
+      />
+    </div>
+  );
+}
+
+function Offer({ offerPath }) {
   const [searchParams] = useSearchParams();
   const variation = searchParams.get('variation') || 'main';
   const [offer, setOffer] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!audienceTag) {
+    if (!offerPath) {
       setOffer(null);
       setLoading(false);
       return;
@@ -28,7 +109,7 @@ function Offer({ audienceTag }) {
       try {
         setLoading(true);
         setOffer(null);
-        const result = await FetchOffer(audienceTag, variation);
+        const result = await FetchOffer(offerPath, variation);
 
         const item = getOfferItem(result);
         if (item) {
@@ -42,9 +123,9 @@ function Offer({ audienceTag }) {
     };
 
     fetchOfferData();
-  }, [audienceTag, variation]);
+  }, [offerPath, variation]);
 
-  if (!audienceTag) {
+  if (!offerPath) {
     return null;
   }
 
@@ -62,23 +143,16 @@ function Offer({ audienceTag }) {
         <div className="offer-content">
           <div className="offer-error">
             <h3>No offer data available</h3>
-            <p>Unable to load an offer for audience &ldquo;{audienceTag}&rdquo;.</p>
+            <p>Unable to load an offer for &ldquo;{offerPath}&rdquo;.</p>
           </div>
         </div>
       </div>
     );
   }
 
-  const aueProps = offer._path
-    ? {
-        'data-aue-resource': `urn:aemconnection:${offer._path}/jcr:content/data/master`,
-        'data-aue-type': 'reference',
-        'data-aue-filter': 'cf',
-      }
-    : {};
-
   return (
-    <div className="offer-container" {...aueProps}>
+    <div className="offer-container">
+      <OfferHero heroImage={offer.heroImage} alt={offer.headline} />
       <div className="offer-content">
         {offer.pretitle && (
           <div className="offer-pretitle" data-aue-prop="pretitle" data-aue-type="text">{offer.pretitle}</div>
@@ -92,36 +166,11 @@ function Offer({ audienceTag }) {
           <div className="offer-detail" data-aue-prop="detail" data-aue-type="richtext">{offer.detail.plaintext}</div>
         )}
 
-        {offer.heroImage && offer.heroImage._publishUrl && (
-          <div className="offer-image-container">
-            <img
-              src={offer.heroImage._publishUrl}
-              alt={offer.headline || 'Offer image'}
-              className="offer-image"
-              data-aue-prop="heroImage"
-              data-aue-type="media"
-            />
-          </div>
-        )}
-
         {offer.callToAction && (
           <div className="offer-cta">
             <button className="offer-cta-button" data-aue-prop="callToAction" data-aue-type="text">
               {offer.callToAction}
             </button>
-          </div>
-        )}
-
-        {offer._variations && offer._variations.length > 0 && (
-          <div className="offer-variations">
-            <div className="offer-variations-label">Available for:</div>
-            <div className="offer-variations-list">
-              {offer._variations.map((offerVariation, index) => (
-                <span key={index} className="offer-variation-tag">
-                  {offerVariation.replace(/_/g, ' ')}
-                </span>
-              ))}
-            </div>
           </div>
         )}
       </div>

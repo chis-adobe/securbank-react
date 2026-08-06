@@ -20,7 +20,7 @@ function resolveImage(img) {
 // `s7url:CropName`. This is driven in JS because native srcset/sizes only ever
 // upgrades to a larger candidate and never reverts to a smaller crop when the
 // screen narrows again. Falls back to the plain delivery URL when there are no
-// smart crops. Mirrors the CIBC Mellon article block behaviour.
+// smart crops. Mirrors the WestJet article block behaviour.
 function ArticleHero({ heroImage, alt }) {
   const figureRef = useRef(null);
   const imgRef = useRef(null);

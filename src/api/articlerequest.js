@@ -1,5 +1,5 @@
 // Fetch a single article Content Fragment by its DAM path using the same
-// `articleByPath` persisted query the CIBC Mellon article block uses.
+// `articleByPath` persisted query the WestJet article block uses.
 export default async function FetchArticle(path, variation = 'main') {
   const aempublishurl = process.env.REACT_APP_AEM_PUBLISH;
   const aemauthorurl = process.env.REACT_APP_AEM_AUTHOR;

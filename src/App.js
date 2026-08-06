@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import logo from './resources/CIBCMellon_Logo_Main.png';
+import logo from './resources/WestJet_Logo_Main.png';
 import bell from './resources/bell.svg';
 import './App.css';
 import LoginModal from './components/loginModal';
@@ -52,7 +52,11 @@ function App() {
     fetchContent();
   }, []);
 
-  const itemId =  "urn:aemconnection:/content/dam/cibc-mellon/en/dashboard/account-dashboard/jcr:content/data/master";
+  const itemId =  "urn:aemconnection:/content/dam/securbank/en/dashboard/account-dashboard/jcr:content/data/master";
+
+  // Path to the Offer content fragment. The UE resolves this as an editable
+  // resource via the data-aue-resource attribute on the Offer wrapper below.
+  const offerPath = "/content/dam/west-jet/offers/welcome-bonus";
 
   return (
     <Router>
@@ -66,14 +70,14 @@ function App() {
           </div>
           <div className='header-nav'>
             <div className='header-nav-row'>
-              <img src={logo} className="logo" alt="CIBC Mellon" />
+              <img src={logo} className="logo" alt="WestJet" />
               <nav className='header-nav-links'>
                 <ul>
-                  <li><a href="https://cibc-mellon--cibc-mellon--chis-adobe.aem.page/en/">Home</a></li>
-                  <li><a href="https://cibc-mellon--cibc-mellon--chis-adobe.aem.page/creditcards">Credit Cards</a></li>
-                  <li><a href="https://cibc-mellon--cibc-mellon--chis-adobe.aem.page/insurance">Insurance</a></li>
-                  <li><a href="https://cibc-mellon--cibc-mellon--chis-adobe.aem.page/accounts">Accounts</a></li>
-                  <li><a href="https://cibc-mellon--cibc-mellon--chis-adobe.aem.page/loans">Loans</a></li>
+                  <li><a href="https://main--securbank--chis-adobe.aem.live/en/">Home</a></li>
+                  <li><a href="https://main--securbank--chis-adobe.aem.live/creditcards">Credit Cards</a></li>
+                  <li><a href="https://main--securbank--chis-adobe.aem.live/insurance">Insurance</a></li>
+                  <li><a href="https://main--securbank--chis-adobe.aem.live/accounts">Accounts</a></li>
+                  <li><a href="https://main--securbank--chis-adobe.aem.live/loans">Loans</a></li>
                 </ul>
               </nav>
               <div className="login-info">
@@ -129,8 +133,12 @@ function App() {
                 <div>
                   <FAQ faq={content && content.articles} />
                 </div>
-                <div>
-                  <Offer audienceTag={user?.tag} />
+                <div
+                  data-aue-resource={`urn:aemconnection:${offerPath}/jcr:content/data/master`}
+                  data-aue-type="reference"
+                  data-aue-filter="cf"
+                >
+                  <Offer offerPath={offerPath} />
                 </div>
                 <div>
                   <CreditCards />
