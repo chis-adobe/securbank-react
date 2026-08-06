@@ -1,14 +1,15 @@
 .expenses {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     min-height: 445px;
-    
+
     padding: 0px;
     margin: 20px 0px
 
 }
 @media only screen and (min-width: 1400px)  {
     .expenses {
-        width: 695px;
+        max-width: 695px;
     }
 }
 
@@ -19,6 +20,7 @@
 .info {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 15px;
 }
@@ -26,7 +28,7 @@
 .infoBox {
     display: flex;
     flex-direction: column;
-    width: 33%;
+    flex: 1 1 160px;
     background: var(--input-form-) 0% 0% no-repeat padding-box;
     background: #F3F2F6 0% 0% no-repeat padding-box;
     border-radius: 6px;
@@ -41,6 +43,7 @@
 .infoBox-top {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     padding-right: 1rem;
     padding-bottom: 1rem;
     padding-top: 1rem;
@@ -76,6 +79,8 @@
 .infoBox-chartBox {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .infoBox-value {
@@ -91,8 +96,10 @@
 }
 
 .infoBox-chart {
-    width: 48px;
-    height: 23px;
+    width: 75px;
+    height: 75px;
+    max-width: 100%;
+    overflow: hidden;
     /* UI Properties */
     opacity: 1;
 }

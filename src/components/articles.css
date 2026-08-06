@@ -10,6 +10,7 @@
 
 .articleList li {
     text-decoration: none;
+    flex: 1 1 300px;
     max-width: 400px;
     font-size: 18px;
 }
@@ -34,7 +35,8 @@
 }
 
 .articleImage {
-    width: 470px;
+    width: 100%;
+    max-width: 470px;
     aspect-ratio: 16 / 9 ;
     object-fit: cover;
 }
