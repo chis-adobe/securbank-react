@@ -10,9 +10,18 @@
 
 .articleList li {
     text-decoration: none;
-    flex: 1 1 300px;
-    max-width: 400px;
+    flex: 1 1 100%;
+    max-width: none;
     font-size: 18px;
+}
+
+/* Multi-column only on desktop; below this the cards stack full-width instead
+   of wrapping into an uneven 2 + 1 layout. */
+@media (min-width: 900px) {
+    .articleList li {
+        flex: 1 1 300px;
+        max-width: 400px;
+    }
 }
 
 .articleCard {
@@ -36,7 +45,6 @@
 
 .articleImage {
     width: 100%;
-    max-width: 470px;
     aspect-ratio: 16 / 9 ;
     object-fit: cover;
 }

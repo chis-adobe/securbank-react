@@ -184,15 +184,39 @@
 
 /* Responsive design */
 
-/* Portrait banner on tablet and mobile. */
+/* Tablet & mobile: stack the image above the text so the landscape hero is
+   never cropped, and give the text block a solid background so the white
+   copy stays readable (there's no image behind it once stacked). */
 @media (max-width: 1024px) {
   .offer-container {
-    aspect-ratio: 3 / 4;
-    min-height: 420px;
+    aspect-ratio: auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .offer-image-container {
+    position: static;
+    width: 100%;
+    height: auto;
+    z-index: auto;
+  }
+
+  .offer-image {
+    height: auto;
+    display: block;
   }
 
   .offer-content {
-    min-height: 420px;
+    position: static;
+    height: auto;
+    min-height: 0;
+    background: linear-gradient(135deg, #0296A6 0%, #0b3d45 100%);
+  }
+
+  .offer-headline,
+  .offer-detail {
+    max-width: 100%;
   }
 }
 
