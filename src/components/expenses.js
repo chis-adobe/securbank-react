@@ -151,9 +151,9 @@ export default function Expenses({expensesTitle}) {
             <div className='info'>
                 <div className='infoBox'>
                     <div className='infoBox-top'>
-                        <span className='infoBox-title'>Total Income</span><span className='infoBox-summary blue'><FiChevronUp/> 2.11%</span>
+                        <span className='infoBox-title'>Points Earned</span><span className='infoBox-summary blue'><FiChevronUp/> 2.11%</span>
                     </div>
-                    <div className='infoBox-chartBox'><span className='infoBox-value blue'>+ $4,266.00</span><span className="infoBox-chart"><ReactEChartsCore 
+                    <div className='infoBox-chartBox'><span className='infoBox-value blue'>+4,266 pts</span><span className="infoBox-chart"><ReactEChartsCore 
                         echarts={echarts} 
                         style={{height: '75px', width: '75px'}}
                         option={{xAxis: {
@@ -182,9 +182,9 @@ export default function Expenses({expensesTitle}) {
                 </div>
                 <div className='infoBox'>
                 <div className='infoBox-top'>
-                    <span className='infoBox-title'>Total Expense</span><span className='infoBox-summary pink'><FiChevronDown/> 2.11%</span>
+                    <span className='infoBox-title'>Points Redeemed</span><span className='infoBox-summary pink'><FiChevronDown/> 2.11%</span>
                 </div>
-                <div className='infoBox-chartBox'><span className='infoBox-value pink'>- $2,346.00</span><span className="infoBox-chart"><ReactEChartsCore 
+                <div className='infoBox-chartBox'><span className='infoBox-value pink'>-2,346 pts</span><span className="infoBox-chart"><ReactEChartsCore 
                     echarts={echarts} 
                     style={{height: '75px', width: '75px'}}
                     option={{xAxis: {
@@ -213,9 +213,9 @@ export default function Expenses({expensesTitle}) {
                 </div>
                 <div className='infoBox'>
                     <div className='infoBox-top'> 
-                        <span className='infoBox-title'>Balance</span><span className='infoBox-summary'>+15%</span>
+                        <span className='infoBox-title'>Net Points</span><span className='infoBox-summary'>+15%</span>
                     </div>
-                    <div className='infoBox-chartBox'><span className='infoBox-value'>$1,920.00</span><span className="infoBox-chart"><ReactEChartsCore 
+                    <div className='infoBox-chartBox'><span className='infoBox-value'>1,920 pts</span><span className="infoBox-chart"><ReactEChartsCore 
                         echarts={echarts} 
                         style={{height: '75px', width: '75px'}}
                         option={{xAxis: {

@@ -264,13 +264,14 @@ header {
 }
 
 .twocol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
   @media (min-width: 900px) {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: space-between;
-
   }
 }
 

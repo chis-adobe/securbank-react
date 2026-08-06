@@ -227,12 +227,11 @@ main .section {
   }
 }
 
-@media (min-width: 900px) {
-  .section > div {
-    max-width: 1480px;
-    margin: auto;
-    padding: 0 15px;
-  }
+.section > div {
+  max-width: 1480px;
+  margin: auto;
+  padding: 0 clamp(16px, 4vw, 40px);
+  box-sizing: border-box;
 }
 
 /* section metadata */
