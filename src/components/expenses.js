@@ -27,7 +27,7 @@ echarts.use(
     [TitleComponent, TooltipComponent, GridComponent, BarChart, LineChart, CanvasRenderer]
   );
 
-export default function Expenses({expensesTitle}) {
+export default function Expenses() {
 
     const [showExpenses, setshowExpenses] = useState()
 
@@ -139,7 +139,7 @@ export default function Expenses({expensesTitle}) {
 
     return (
         <div className='expenses'>
-            <h4 className='sectionHeading' data-aue-prop="expensesTitle" data-aue-type="text">{expensesTitle}</h4>
+            <h4 className='sectionHeading' data-aue-prop="expensesTitle" data-aue-type="text">Points</h4>
             {
                 showExpenses &&
                   <ReactEChartsCore 

@@ -1,15 +1,8 @@
 .transactions {
     width: 100%;
-    max-width: 600px;
     min-height: 445px;
     padding: 0px;
-    margin: 20px auto
-}
-
-@media only screen and (min-width: 1400px)  {
-  .transactions {
-    max-width: 695px;
-  }
+    margin: 20px 0
 }
 
 

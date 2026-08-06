@@ -26,6 +26,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [loginError, setLoginError] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogin = (email) => {
     const authenticated = authenticateUser(email);
@@ -70,37 +71,51 @@ function App() {
           </div>
           <div className='header-nav'>
             <div className='header-nav-row'>
+              <button
+                type="button"
+                className="nav-toggle"
+                aria-label="Toggle navigation menu"
+                aria-expanded={menuOpen}
+                onClick={() => setMenuOpen((open) => !open)}
+              >
+                <span className="nav-toggle-bar" />
+                <span className="nav-toggle-bar" />
+                <span className="nav-toggle-bar" />
+              </button>
               <img src={logo} className="logo" alt="WestJet" />
-              <nav className='header-nav-links'>
-                <ul>
-                  <li><a href="https://main--securbank--chis-adobe.aem.live/en/">Home</a></li>
-                  <li><a href="https://main--securbank--chis-adobe.aem.live/creditcards">Credit Cards</a></li>
-                  <li><a href="https://main--securbank--chis-adobe.aem.live/insurance">Insurance</a></li>
-                  <li><a href="https://main--securbank--chis-adobe.aem.live/accounts">Accounts</a></li>
-                  <li><a href="https://main--securbank--chis-adobe.aem.live/loans">Loans</a></li>
-                </ul>
-              </nav>
-              <div className="login-info">
-                <img src={bell} className="bell" alt="bell" />
-                {user ? (
-                  <div className="login-info-user">
-                    <span className="login-info-email">{user.displayName}</span>
-                    <button type="button" className="login-button login-button-secondary" onClick={handleLogout}>
-                      Log out
+              <div className={`header-nav-menu${menuOpen ? ' open' : ''}`}>
+                <nav className='header-nav-links'>
+                  <ul onClick={() => setMenuOpen(false)}>
+                    <li><a href="https://main--securbank--chis-adobe.aem.live/en/">Home</a></li>
+                    <li><a href="https://main--securbank--chis-adobe.aem.live/creditcards">Credit Cards</a></li>
+                    <li><a href="https://main--securbank--chis-adobe.aem.live/insurance">Insurance</a></li>
+                    <li><a href="https://main--securbank--chis-adobe.aem.live/accounts">Accounts</a></li>
+                    <li><a href="https://main--securbank--chis-adobe.aem.live/loans">Loans</a></li>
+                  </ul>
+                </nav>
+                <div className="login-info">
+                  <img src={bell} className="bell" alt="bell" />
+                  {user ? (
+                    <div className="login-info-user">
+                      <span className="login-info-email">{user.displayName}</span>
+                      <button type="button" className="login-button login-button-secondary" onClick={() => { setMenuOpen(false); handleLogout(); }}>
+                        Log out
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      className="login-button"
+                      onClick={() => {
+                        setMenuOpen(false);
+                        setLoginError(null);
+                        setShowLoginModal(true);
+                      }}
+                    >
+                      Log in
                     </button>
-                  </div>
-                ) : (
-                  <button
-                    type="button"
-                    className="login-button"
-                    onClick={() => {
-                      setLoginError(null);
-                      setShowLoginModal(true);
-                    }}
-                  >
-                    Log in
-                  </button>
-                )}
+                  )}
+                </div>
               </div>
             </div>
           </div>

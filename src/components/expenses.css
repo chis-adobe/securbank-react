@@ -1,20 +1,21 @@
 .expenses {
     width: 100%;
-    max-width: 600px;
     min-height: 445px;
 
     padding: 0px;
-    margin: 20px auto
+    margin: 20px 0
 
-}
-@media only screen and (min-width: 1400px)  {
-    .expenses {
-        max-width: 695px;
-    }
 }
 
 .expenses h4{
     margin-bottom: 15px;
+}
+
+/* Keep the ECharts canvas from briefly overflowing its column while the
+   chart re-sizes after a viewport change. */
+.expenses .echarts-for-react {
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .info {
